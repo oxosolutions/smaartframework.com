@@ -13,21 +13,21 @@ VERSION : 1.1
 	1> IMPORT FONTS
 	2> RESET
 	3> GENERAL
-        4> TYPOGRAPHY
-        5> BUTTON
-        6> PRELOADER
+    4> TYPOGRAPHY
+    5> BUTTON
+    6> PRELOADER
 	7> NAVIGATION
-        8> MAIN HEADER
-        9> ABOUT US
-       10> OUR WORKS
-       11> OUR TEAM
-       12> INSPIRATION
-       13> TESTIMONIAL
-       14> OUR STATS      
-       15> SERVICES
-       16> CONTACT US
-       17> SITE-FOOTER
-       18> ANIMATION
+    8> MAIN HEADER
+    9> ABOUT US
+   10> OUR WORKS
+   11> OUR TEAM
+   12> INSPIRATION
+   13> TESTIMONIAL
+   14> OUR STATS      
+   15> SERVICES
+   16> CONTACT US
+   17> SITE-FOOTER
+   18> ANIMATION
 
        
 -------------------------------------------------------*/
@@ -68,12 +68,11 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,hr,t
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 body {
 	color: #fff;
-	font: normal 16px "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: normal 16px "Open Sans", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 300;
 	background-color: ;
 	overflow-x: hidden;
 	line-height: 1.5;
-        font-family: 'Lato', sans-serif;
 	text-rendering: optimizeLegibility !important;
 	-webkit-font-smoothing: antialiased !important;
 	
@@ -197,7 +196,6 @@ text-align:justify;
 	font-weight: 700;
 	letter-spacing: 0.02em;
 	text-transform: uppercase;
-	font-family: 'Roboto Slab', serif;
 	margin-bottom: 20px;color: black; 
     font-size: 27px;    
     font-family: inherit;
@@ -212,7 +210,6 @@ text-align:justify;
 ------------------------------*/
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6{
-	font-family: 'Roboto', sans-serif;
 	margin: 0;
 }
 
@@ -220,7 +217,6 @@ h1, h2, h3, h4, h5, h6,
 ------------------------------*/
 .btn {
     font-size: 14px;
-    font-family: 'Source Sans Pro', sans-serif;
     text-transform: uppercase;
     border-radius: 0;
     margin-top: 31px;
@@ -251,7 +247,8 @@ h1, h2, h3, h4, h5, h6,
 	transition: all .5s ease-out;
 	text-transform: uppercase;
 	background-color: transparent;
-	border-color: #ffffff;    margin-top: 50px;
+	border-color: #ffffff;    
+	margin-top: 10px;
 }
 .btn-custom-outline:hover,.btn-custom-outline:focus{
 	color: #ffffff;
@@ -262,7 +259,6 @@ h1, h2, h3, h4, h5, h6,
 }
 .btn {
     font-size: 14px;
-    font-family: 'Source Sans Pro', sans-serif;
     text-transform: uppercase;
     border-radius: 5px;
     background-color: #039be5;
@@ -412,6 +408,7 @@ div.preloader {
     left: 50%;
     width: 80px;
     height: 80px;
+    background-color: :#454545;
     -webkit-transform: translate(-50%, -50%) rotate(45deg) translate3d(0, 0, 0);
     transform: translate(-50%, -50%) rotate(45deg) translate3d(0, 0, 0);
     -webkit-animation: loader 1.2s infinite ease-in-out;
@@ -433,7 +430,7 @@ div.preloader {
     border-radius:50%;
     -webkit-animation: loaderBlock 1.2s infinite ease-in-out both;
     animation: loaderBlock 1.2s infinite ease-in-out both;
-    background:#000;
+    background:#ed6f1d;
 }
 
 .loader span:nth-child(1) {
@@ -528,7 +525,7 @@ color:#fff;
 
 .main-heading
 {
-   background: url(../images/main.jpg) center center no-repeat;
+   background: url(../images/girl-in-coffeeshop.png) center center no-repeat;
 	background-size:cover;
 	background-attachment: fixed;
 	color: #cfcfcf;
@@ -543,10 +540,10 @@ color:#fff;
 	background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-	//background-attachment: fixed;
-        height:auto;
-        height:100%;
-        position:relative;
+	background-attachment: fixed;
+    height:auto;
+    height:100%;
+    position:relative;
 }
 
 .overlay > .container
@@ -633,11 +630,7 @@ p.lead
 /*----------------ABOUT US
 
 -------------------------------------------------------*/
-.aboutus>.container
-{
-    padding:60px 0px;
-  
-}
+
 
 
 
@@ -741,7 +734,6 @@ p.lead
     font-size: 0.93em;
     font-weight: 700;
     text-transform: capitalize;
-    font-family: 'Roboto Slab', serif;
     margin-bottom: 5px;
     
 }
@@ -766,7 +758,7 @@ p.lead
 }
 
 .our-team h4  {
-    font-family: 'Roboto Slab', serif;
+
    }
 
 .our-team h4,.our-team h5
@@ -800,7 +792,6 @@ p.lead
 .subheading h4 {
 	color: #ffffff;
 	font-style: italic;
-	font-family: 'Roboto Slab', serif;
 }
 .intermediate-container .heading h2 {
 	font-size: 40px;
@@ -901,7 +892,6 @@ p.lead
 	margin-left:90px;
 }
 .nim-service .nim-service-detail h4 {
-font-family: 'Roboto Slab', serif;
 }
 .nim-service .nim-service-detail p {
 	color: #9aa7af;
