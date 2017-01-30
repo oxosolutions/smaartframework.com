@@ -664,8 +664,8 @@ VERSION : 1.0
 		var backgroundColor = { fill:'transparent' };
 		
 		var series = {
-			0: {dataOpacity:'0.5'},
-			1: {dataOpacity:'0.5'},
+			0: {dataOpacity:'0.8'},
+			1: {dataOpacity:'0.8'},
 			2: {type: 'line'},
 			3: {type: 'line'},
 			4: {type: 'line'},
@@ -697,8 +697,8 @@ VERSION : 1.0
 		wrapper.setOption('backgroundColor', backgroundColor);
 	
 		//wrapper.setOption('opacity', '0.5');
-		wrapper.setOption('colors', ['#03a9f4','#f7931e','#03a9f4','#f16d63','#f7931e', '#ffb83b', '#f6c7b6', '#f3b49f']);
-		//wrapper.setOption('series', series);
+		wrapper.setOption('colors', ['#039be5','#ec6941']);
+		wrapper.setOption('series', series);
 		
 		//Not Worked Will retry
 		//wrapper.setOption('trendlines', trendlines);
@@ -926,7 +926,19 @@ transform:rotate(180deg);
 .chart-wrappper {
 		width: 620px;
 		padding: 10px;
+		position: relative;
 	}
+	/*
+	.chart-wrappper:before {
+		content:"";
+		position:absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+	*/
 	#chart_type {
     text-align: right;
 }
@@ -934,7 +946,7 @@ transform:rotate(180deg);
 		display:none;
 	}
     .chart-type-wrapper label {
-cursor: pointer;
+	cursor: pointer;
     color: #666666;
     border: 1px solid #e8e8e8;
     width: 14.7%;
@@ -949,14 +961,14 @@ cursor: pointer;
 	}
 	.chart-type-wrapper label:hover{
 		color: #ffffff;
-		background-color: #666666;
-		border: 1px solid #666666;
+		background-color: #454545;
+		border: 1px solid #454545;
 	}
 
 	.chart-type-wrapper input[type=radio]:checked + label {
 	  color: #FFFFFF;
-	  background-color: #168dc5;
-	  border:1px solid #1570a6;
+	  background-color: #039be5;
+	  border:1px solid #039be5;
 	} 
 
 	#column_chart{
