@@ -978,12 +978,12 @@ transform:rotate(180deg);
 		height: 10px;
 		display: inline-block;
 		margin-right: 10px;
-		    background-color: rgba(255,255,255,0.4);
+		background-color: rgba(255,255,255,0.4);
 		border: 1px solid rgba(255,255,255,0.7);
 		cursor:pointer;
-			-moz-transition: all 150ms ease-in-out;
-    -webkit-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
+		-moz-transition: all 150ms ease-in-out;
+		-webkit-transition: all 150ms ease-in-out;
+		transition: all 150ms ease-in-out;
 	}
 	.owl-pagination .owl-page:hover{
 		background-color:#FFFFFF;
@@ -1000,6 +1000,46 @@ transform:rotate(180deg);
 		background-color:#454545;
 	}
 	#features .owl-pagination .owl-page.active{
+		background-color:#168dc5;
+	}
+	
+	.owl-controls{
+		display: block;
+		clear: both;
+		text-align: center;
+	}
+	.owl-dots {
+		width: 50%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.owl-dots .owl-dot{
+		width: 60px;
+		height: 10px;
+		display: inline-block;
+		margin-right: 10px;
+		background-color: rgba(255,255,255,0.4);
+		border: 1px solid rgba(255,255,255,0.7);
+		cursor:pointer;
+		-moz-transition: all 150ms ease-in-out;
+		-webkit-transition: all 150ms ease-in-out;
+		transition: all 150ms ease-in-out;
+	}
+	.owl-dots .owl-dot:hover{
+		background-color:#FFFFFF;
+	}
+	.owl-dots .owl-dot.active{
+		background-color:#fcd141;
+	}
+	
+	#features .owl-dots .owl-dot{
+		background-color: #666666;
+		border: none;
+	}
+	#features .owl-dots .owl-dot:hover{
+		background-color:#454545;
+	}
+	#features .owl-dots .owl-dot.active{
 		background-color:#168dc5;
 	}
 </style>
