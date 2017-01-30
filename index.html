@@ -733,28 +733,6 @@ VERSION : 1.0
 	
 	<script type="text/javascript" >
 	jQuery(document).ready(function(){
-		var owl = jQuery('#main_slider');
-		owl.owlCarousel({
-
-			items:1,
-			
-			loop:true,
-
-			animateOut: 'fadeOut',
-			//lazyLoad: true,
-
-			autoplay:true,
-			autoplayTimeout:1000,
-			autoplayHoverPause:true
-		});
-		owl.on('mousewheel', '.owl-stage', function (e) {
-			if (e.deltaY>0) {
-				owl.trigger('next.owl');
-			} else {
-				owl.trigger('prev.owl');
-			}
-			e.preventDefault();
-		});
 		
 		//Testimonials Slider
 		var testimonials = jQuery('#testimonials');
@@ -782,7 +760,7 @@ VERSION : 1.0
 			autoplayTimeout: 5000,
 			autoplayHoverPause: true
 		});
-		testimonials.trigger('owl.play',5000);
+		features.trigger('owl.play',5000);
 		
 
 		
