@@ -174,7 +174,92 @@ VERSION : 1.0
  
  <!-- [/ABOUTUS]
  ============================================================================================================================-->
- 
+ <section id="data_collection" class="data-collection">
+	<div class="container">
+		<div class="col-md-5">
+			<div class="data-collection-demo">
+				<img class="data-collection-demo-image" src="assets/images/android-phone.png"/>
+				<div class="owl-carousel data-collection-slider" id="data_collection_slider">
+					<img src="assets/screenshots/dashboard.png"/>
+					<img src="assets/screenshots/incomplete-surveys.png"/>
+					<img src="assets/screenshots/login.png"/>
+					<img src="assets/screenshots/menu.png"/>
+					<img src="assets/screenshots/survey.png"/>
+					<img src="assets/screenshots/survey-list.png"/>
+					<img src="assets/screenshots/update-app.png"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-5 ">
+			<div class="data-collection-content">
+				<h1 class="data-collection-title">Mobile Based Data Collection</h1>
+				<p class="data-collection-desc">SMAART™ focuses on collecting the data on every device online and offline in a scientific way. Conducting the surveys was never easier enough</p>
+				<div class="data-collection-buttons">
+					<a class="data-collection-button" href="#" /><span class="data-collection-button-icon"><i class="fa fa-android"></i></span>Android Application</a>
+					<a class="data-collection-button" href="/demo/" /><span class="data-collection-button-icon"><i class="fa fa-globe"></i></span>Web Application</a>
+					<div style="clear:both;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> 
+<style>
+.data-collection{ 
+	height: 480px;
+    overflow: hidden;
+	position:relative;
+	background: #00a8e8 url(assets/images/dotted-map-01.png) top center;
+	background-size: contain;
+}
+.data-collection-demo {
+    width: 370px;
+    margin-top: 70px;
+    padding-top: 58px;
+    position: relative;
+}
+.data-collection-demo-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.data-collection-slider {
+    width: 323px;
+    height: auto;
+    overflow: hidden;
+    margin: 0 0 0 26px;
+}
+.data-collection-content{
+	padding:80px 0 0 0;
+}
+.data-collection-title{
+	font-size: 60px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+.data-collection-desc{
+	text-align: justify;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+.data-collection-buttons{
+	margin:40px 0;
+}
+.data-collection-button{
+    display: block;
+    width: 40%;
+    float: left;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0 5%;
+    padding: 10px 0;
+}
+.data-collection-button-icon{
+	padding:0 5px 0 0;
+}
+</style>
  
  
  
@@ -697,7 +782,13 @@ VERSION : 1.0
 		wrapper.setOption('backgroundColor', backgroundColor);
 	
 		//wrapper.setOption('opacity', '0.5');
-		wrapper.setOption('colors', ['#039be5','#ec6941']);
+		// wrapper.setOption('colors', ['#039be5','#ec6941']);
+    wrapper.setOption('colors', ['#C13018','#063951']);
+    // wrapper.setOption('colors', ['#1395BA','#0D3C55']);
+     // wrapper.setOption('colors', ['#01472D','#B02923']);
+     // wrapper.setOption('colors', ['#0C0938','#E62101']);
+     // wrapper.setOption('colors', ['#006591','#E31732']);
+     // wrapper.setOption('colors', ['#F46F22','#00856C']);
 		wrapper.setOption('series', series);
 		
 		//Not Worked Will retry
@@ -757,10 +848,24 @@ VERSION : 1.0
 			dots:true,
 			loop:true,
 			autoplaySpeed:400,
-			autoplayTimeout: 5000,
+			autoplayTimeout: 6000,
 			autoplayHoverPause: true
 		});
-		features.trigger('owl.play',5000);
+		features.trigger('owl.play',6000);
+		
+		//data_collection_slider Slider
+		var data_collection_slider = jQuery('#data_collection_slider');
+		data_collection_slider.owlCarousel({
+			items:1,
+			autoplay:true,
+			nav:false,
+			dots:false,
+			loop:true,
+			autoplaySpeed:300,
+			autoplayTimeout: 4000,
+			autoplayHoverPause: true
+		});
+		data_collection_slider.trigger('owl.play',4000);
 		
 
 		
