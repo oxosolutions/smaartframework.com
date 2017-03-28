@@ -1,0 +1,217 @@
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center" flex>
+
+        <!-- CONTENT HEADER -->
+        <div class="goal-header" layout="column">
+            <div flex>
+              <span class="h2 white-fg">Surveys</span>
+            </div>
+
+            <!--
+            <div class="breadcrumb" flex>
+                <md-icon md-font-icon="icon-dns" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">LIST DATA</span>
+            </div>
+            -->
+        </div>
+        <!-- / CONTENT HEADER -->
+        <style type="text/css">
+            .dataTables_wrapper .top {
+                border-bottom: 1px solid #e8e8e8;
+                padding: 0 0 24px 0;
+            }
+            .dataTables_wrapper .dataTables_filter input{
+                width: 225px;
+            }
+            .goal-header{
+                height: 75px;
+                min-height: 75px;
+                max-height: 90px;
+                padding: 24px;
+
+            }
+            .action-separator{
+                color:#787878;
+                padding: 0 4px;
+            }
+            .page-layout .top-bg{
+                height: 139px;
+            }
+            a{
+                text-decoration: none !important;
+            }
+            </style>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+                <div flex layout="row" layout-align="start center" class="pv-30 h3" hide-xs>
+                    <h3 class=" ">List of Available Surveys</h3>
+                </div>
+                <div flex layout="row" layout-align="end center">
+                    <a href="survey/add">
+                        <md-button class=" md-accent md-raised ph-15"><md-tooltip md-direction="top" class="md-body-1">Create a new Survey</md-tooltip>Add Survey</md-button>
+                    </a>
+                </div>
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+            <!-- CONTENT -->
+            <md-content class="content" ms-scroll>
+                <!-- CONTENT -->
+                <div >
+                  <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                    <thead>
+                      <tr>
+                        <th class="secondary-text sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">
+                          <div class="table-header"><span class="column-title">ID</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">
+                          <div class="table-header"><span class="column-title">Survey Name</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">
+                          <div class="table-header"><span class="column-title">Description</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">
+                          <div class="table-header"><span class="column-title">Status</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">
+                          <div class="table-header"><span class="column-title">Actions</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">
+                          <div class="table-header"><span class="column-title">Operations</span></div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="survey in surveyList">
+                        <td>{{survey.id}}</td>
+                        <td><a ui-sref="app.survey_edit({id:survey.id})" id="{{survey.id}}/" class="action-link">{{ survey.name }}<md-tooltip md-direction="top" class="md-body-1">Click here to edit this Survey.</md-tooltip></a></td>
+                        <td >{{ survey.description | limitTo:40 }} </td>
+                        <td ng-if="survey.status == '1'">
+                            <md-button ng-click="changeStatus(survey.id)" class="md-icon-button">
+                                <i class="icon-check icon-check-hover green-fg">
+                                    <md-tooltip md-direction="top" class="md-body-1">Click here to disable Survey.</md-tooltip>
+                                </i>
+                            </md-button>
+                        </td>
+                        <td ng-if="survey.status == '0'">
+                            <md-button ng-click="changeStatus(survey.id)" class="md-icon-button">
+                                <i class="icon-close icon-check-hover red-fg">
+                                    <md-tooltip md-direction="top" class="md-body-1">Click here to enable Survey.</md-tooltip>
+                                </i>
+                            </md-button>
+                        </td>
+                        <td>
+
+                            <md-menu>
+
+                                <md-button aria-label="Open demo menu" class="md-accent md-raise font-weight-300" ng-click="$mdOpenMenu($event)">
+                                <md-tooltip md-direction="top" class="md-body-1">Click here for the Dataset Action List. </md-tooltip>
+
+                                     Actions<md-icon md-font-icon="icon-chevron-down" class="s28 md-accent font-weight-300"></md-icon>
+
+                                </md-button>
+                                <md-menu-content width="4">
+                                    <md-menu-item >
+                                        <md-button ui-sref="app.survey_edit({id:survey.id})" id="{{survey.id}}/">
+                                        <md-icon md-font-icon="icon-pencil" class="s24"></md-icon>
+                                            <a ui-sref="app.survey_edit({id:survey.id})" id="{{survey.id}}/" class="action-link">
+                                                <md-tooltip md-direction="top" class="md-body-1">Edit Name,Description and survey settings in the survey</md-tooltip>Edit Survey
+                                            </a>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item >
+                                        <md-button ui-sref="app.survey_preview({id:survey.id})" id="{{survey.id}}/">
+                                        <md-icon md-font-icon="icon-clipboard-text" class="s24"></md-icon>
+                                            <a ui-sref="app.survey_preview({id:survey.id})" id="{{survey.id}}/" class="action-link">
+                                                <md-tooltip md-direction="top" class="md-body-1">Preview the form</md-tooltip>Preview Survey
+                                            </a>
+                                        </md-button>
+                                    </md-menu-item>
+                                    <md-menu-item >
+                                        <md-button ui-sref="app.survey_view({id:survey.id})" id="{{survey.id}}/">
+                                        <md-icon md-font-icon="icon-desktop-mac" class="s24"></md-icon>
+                                             <a ui-sref="app.survey_view({id:survey.id})" id="{{survey.id}}/" class="action-link">
+                                                 <md-tooltip md-direction="top" class="md-body-1">View Survey Data</md-tooltip>View Survey Data
+                                            </a>
+                                        </md-button>
+                                    </md-menu-item>
+                                     <md-menu-item >
+                                        <md-button ui-sref="app.survey_addQuestion({id:survey.id})" id="{{survey.id}}/">
+                                        <md-icon md-font-icon="icon-briefcase" class="s24"></md-icon>
+                                            <a ui-sref="app.survey_addQuestion({id:survey.id})" id="{{survey.id}}/" class="action-link">
+                                                <md-tooltip md-direction="top" class="md-body-1">Manage Groups and Questions in the survey</md-tooltip>Manage Survey Questions
+                                            </a>
+                                        </md-button>
+                                    </md-menu-item>
+
+                                  
+                                </md-menu-content>
+                            </md-menu>
+
+
+
+
+
+                        
+                        </td>
+
+                        <td>
+
+                            <md-menu>
+
+                                <md-button aria-label="Open demo menu" class="md-accent md-raise font-weight-300" ng-click="$mdOpenMenu($event)">
+                                <md-tooltip md-direction="top" class="md-body-1">Click here for the Dataset Action List. </md-tooltip>
+
+                                     Operations<md-icon md-font-icon="icon-chevron-down" class="s28 md-accent font-weight-300"></md-icon>
+
+                                </md-button>
+                                <md-menu-content width="4">
+                                    <md-menu-item >
+                                        <md-button href="javascript:;" id="{{survey.id}}/" ng-click="generateEmbed(survey.id)" >
+                                        <md-icon md-font-icon="icon-desktop-mac" class="s24"></md-icon>
+                                            <a class="action-link">
+                                                <md-tooltip md-direction="top" class="md-body-1">Generate Embed code of the Survey</md-tooltip>Generate Embed Code
+                                            </a>
+                                        </md-button>
+                                    </md-menu-item>
+                                     
+                                    <md-menu-item >
+                                        <md-button href="#" id="{{survey.id}}" ng-click="deleteSurvey(survey.id)">
+                                        <md-icon md-font-icon="icon-trash" class="s24"></md-icon>
+                                            <a href="#" id="{{survey.id}}"  class="action-link delLink" style="color:red">
+                                                 <md-tooltip md-direction="top" class="md-body-1">Delete survey</md-tooltip>Delete <md-progress-circular md-mode="indeterminate"  md-diameter="20" style="display:none;" id="{{survey.id}}"></md-progress-circular>
+                                            </a>
+                                        </md-button>
+                                    </md-menu-item>
+
+                                  
+                                </md-menu-content>
+                            </md-menu>
+
+                        
+                        
+                       
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /CONTENT -->
+            </md-content>
+            <!-- / CONTENT -->
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

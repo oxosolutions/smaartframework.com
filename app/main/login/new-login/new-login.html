@@ -1,0 +1,153 @@
+<div class="page-layout carded fullwidth single-scroll pb-30 login-v2" style="background:url(assets/images/backgrounds/december.jpg) no-repeat;background-size: cover;">
+     <div class="top-bg md-accent-bg "></div>
+     <div class="center" layout="column">
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Login</span>
+            </div>
+        </div>
+
+        <style type="text/css">
+        .login-v2{
+            height: 100%;
+            overflow: hidden;
+            background-size: cover;
+        }
+        .content{
+            overflow-y: scroll
+        }
+        .goal-header{
+            height: 75px;
+            min-height: 75px;
+            max-height: 90px;
+            padding: 24px;  
+        }
+        .page-layout .top-bg{
+            height: 139px;
+        }
+        .background{
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 5px;
+        }
+        a{
+            text-decoration:none !important;
+        }
+        </style>
+
+    <!-- CONTENT -->
+    <div layout="row" layout-align="center start" class="main_row" >
+        <div flex="60" flex-xs="100" class="mt-100 mr-40" layout="column" layout-align="start center" hide-xs >
+            <div class="pv-30 ph-20 background">
+                <div class="md-headline">
+                    Welcome to the SMAART&trade; Framework.
+                </div>
+                <div class="md-subhead left_box">
+                    <div layout="row" class="mv-10">
+                        <DIV>
+                        <md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </DIV>
+                        <div class="pl-10 line-height-32" >Type your email and password and then click on Login button.</div>
+                    </div>
+                    <div layout="row" class="mv-10">
+                        <DIV>
+                        <md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </DIV>
+                        <div class="pl-10 line-height-32">Please note that you will not able to login until the adminstrator approves your account</div>
+                    </div>
+                    <div layout="row" class="mv-10">
+                       <DIV>
+                        <md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </DIV>
+                        <div class="pl-10 line-height-32">If your account is not approved yet, Please contact adminstrator.</div>
+                    </div>
+                    <div layout="row" class="mv-10">
+                        <DIV>
+                        <md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </DIV>
+                         <div class="pl-10 line-height-32">In case you forgot your password. Please <a ui-sref="app.forgot_password">click here</a> or click on forgot password Button.</div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+        <div flex="40" flex-sm="100" flex-xs="100" class="content-card" layout="column" layout-align="center stretch">
+
+
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+                <div flex layout="row" layout-align="start center" class="pv-30 h3 " >
+                    <h3 class="font-size-18">Login to your Account</h3>
+                </div>
+            </div>
+            <md-content class="content" ms-scroll >
+             <form name="loginForm" novalidate>
+                <md-input-container class="md-block" md-no-float >
+                    <label class="font-size-18 font-weight-300 grey-600-fg" >Email</label>
+                    <input type="email" name="email" ng-model="vm.form.email" 
+                           translate
+                           ng-pattern="/^.+@.+\..+$/" required >
+                    <div ng-messages="loginForm.email.$error" role="alert" multiple>
+                        <div ng-message="required">
+                            <span translate="LOGIN.ERRORS.EMAIL_REQUIRED">Email field is required</span>
+                        </div>
+                        <div ng-message="pattern">
+                            <span translate="LOGIN.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                     <label class="font-size-18 font-weight-300 grey-600-fg" >Password</label>
+                    <input type="password" name="password" ng-model="vm.form.password" 
+                           translate 
+                           required >
+                    <div ng-messages="loginForm.password.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="LOGIN.ERRORS.PASSWORD_REQUIRED">Password field is required</span>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <span class="red-fg font-size-16" ng-hide="{{vm.user_error}}">{{error_user_login}}</span>
+                    </div>
+                </md-input-container>
+
+                <div class="remember-forgot-password" layout="row" layout-sm="column"
+                     layout-align="space-between center">
+                    <md-checkbox class="remember-me" ng-model="data.cb1" aria-label="Remember Me">
+                        <span translate="LOGIN.REMEMBER_ME">Remember Me</span>
+                    </md-checkbox>
+
+                    <a href="forgotpass" class="forgot-password md-accent-color"
+                       translate="LOGIN.FORGOT_PASSWORD">Forgot Password?</a>
+                </div>
+
+                <div layout="row">
+                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="LOG IN"
+                           ng-disabled="loginForm.$invalid || loginForm.$pristine"
+                           translate="LOGIN.LOG_IN" translate-attr-aria-label="LOGIN.LOG_IN" ng-click="userLogin()" >
+                    LOG IN
+                </md-button>
+                <md-progress-circular class="mt-15" md-mode="indeterminate" ng-show="isLoading" md-diameter="20" ></md-progress-circular>
+                </div>
+            </form>
+          
+            <br/>
+            
+    
+            <div class="register" layout="column" layout-sm="column" layout-align="center center" >
+                <div class="text font-size-16" translate="LOGIN.DONT_HAVE_ACCOUNT">Don't have an account? </div>
+                <md-button class="md-primary md-raised md-accent ph-15">
+                <div><a class="white-fg font-size-16" ui-sref="app.register" translate="LOGIN.CREATE_ACCOUNT" style="text-decoration: none "> Create an account</a></div>
+                </md-button>
+            </div>
+
+             </md-content>
+
+     </div>
+            <!-- / BASIC FORM -->
+</div>
+
+        </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,37 @@
+<!-- DIALOG -->
+<style type="text/css">
+  md-dialog md-dialog-content{
+    padding:32px 21px 0px 24px !important;
+  }
+</style>
+<md-dialog class="" aria-label="New Task">
+
+   <form name="name" class="md-inline-form" novalidate>
+      <md-toolbar class="md-accent " layout="column">
+         <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+            <span class="title">Rename dataset</span>
+            <md-button class="md-icon-button" ng-click="closeDialog()" aria-label="Close dialog" translate>
+               <md-icon md-font-icon="icon-close"></md-icon>
+            </md-button>
+         </div>
+      </md-toolbar>
+      <md-dialog-content class="" style="width: 550px;">
+         <md-input-container class="md-block mb-0" md-no-float>
+         <label>Enter new name of this dataset</label>
+                    <input type="text" name="datasetName" required ng-model="newName">
+                    <div ng-messages="datasetName.$error" role="alert" multiple>
+                        <div ng-message="required">
+                            <span>Name field is required</span>
+                        </div>
+                       
+                    </div>
+                </md-input-container>
+      </md-dialog-content>
+       <md-dialog-actions layout="row">
+      <md-button class="md-accent md-raised" ng-click="rename()">
+        Save
+      </md-button>
+    </md-dialog-actions>
+   </form>
+</md-dialog>
+

@@ -1,0 +1,270 @@
+<!--
+<div id="simple-table" class="page-layout carded fullwidth single-scroll ">-->
+
+    <!-- HEADER -->
+     <!--<div class="top-bg md-accent-bg "></div>
+
+     <div class="center " flex>
+-->
+        <!-- CONTENT HEADER -->
+       <!-- <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Add New Datasets</span>
+            </div>
+
+
+        </div>
+
+        <style type="text/css">
+            .goal-header{
+                            height: 75px;
+                            min-height: 75px;
+                            max-height: 90px;
+                            padding: 24px;
+
+                        }
+                        .page-layout .top-bg{
+                    height: 139px;
+                }
+        </style>
+-->
+    <!-- CONTENT -->
+       <!-- <div class="content-card" layout="column">-->
+
+
+
+        <!-- <div class="md-title mt-32">Basic form with validation</div>
+        <div class="pb-16">With this form example, Submit button will only be activated if all the required fields are
+            filled and if there is no error on the form.
+        </div> -->
+        <!--<div layout="column">-->
+
+            <!-- BASIC FORM -->
+            <!--<div class="form-wrapper md-whiteframe-1dp" flex="100">-->
+
+
+                <!-- <input type="file" id="file1" name="file" multiple
+            ng-files="getTheFiles($files)" />
+
+
+        <input type="button" ng-click="uploadFiles()" value="Upload" /> -->
+       <!-- <h1 style="color:red"> {{add_replace}} {{file}}</h1>-->
+
+                    <!--<div id="form_data" class="form-title">Import Tables</div>-->
+          <!--  <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+                <div flex layout="row" layout-align="start center" class="pv-10 h3" hide-xs>
+                    <h3 class=" ">Add New Datasets</h3>
+                </div>
+                <div flex layout="row" layout-align="end center">
+                    <a href="dataset/list">
+                        <md-button class="ph-15 md-accent md-raised">All Datasets</md-button>
+                    </a>
+                    <a href="dataset/import">
+                        <md-button class="ph-15 md-accent md-raised">import Dataset</md-button>
+                    </a>
+
+                </div>
+            </div>
+            <md-content class="content" >
+                    
+
+                                    <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                <thead>
+                    <tr>
+                        <th class="secondary-text sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">
+                            <div class="table-header"><span class="column-title">Sr</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">
+                            <div class="table-header"><span class="column-title">File Name</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">
+                            <div class="table-header"><span class="column-title">Created date</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">
+                            <div class="table-header"><span class="column-title">Action</span></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dataset in ::vm.datasets">
+                        <td>{{ dataset.dataset_id }}</td>
+                        <td>{{ dataset.dataset_name }}</td>
+                        <td>{{ dataset.created_date }}</td>
+                        <td><a href="datasets/dataset-record/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}/">View Records</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+                </md-content>
+
+            </div>-->
+            <!-- / BASIC FORM -->
+
+
+       <!-- </div>-->
+    <!-- / CONTENT -->
+
+<!--</div>-->
+
+
+
+
+<div id="simple-table" class="page-layout carded fullwidth single-scroll ">
+
+    <!-- HEADER -->
+     <div class="top-bg md-accent-bg "></div>
+
+     <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Add New Datasets</span>
+            </div>
+
+
+        </div>
+
+        <style type="text/css">
+            .goal-header{
+                            height: 75px;
+                            min-height: 75px;
+                            max-height: 90px;
+                            padding: 24px;
+
+                        }
+                        .page-layout .top-bg{
+                    height: 139px;
+                }
+        </style>
+
+    <!-- CONTENT -->
+        <div class="content-card" layout="column">
+
+
+
+        <!-- <div class="md-title mt-32">Basic form with validation</div>
+        <div class="pb-16">With this form example, Submit button will only be activated if all the required fields are
+            filled and if there is no error on the form.
+        </div> -->
+        <!--<div layout="column">-->
+
+            <!-- BASIC FORM -->
+            <!--<div class="form-wrapper md-whiteframe-1dp" flex="100">-->
+
+
+                <!-- <input type="file" id="file1" name="file" multiple
+            ng-files="getTheFiles($files)" />
+
+
+        <input type="button" ng-click="uploadFiles()" value="Upload" /> -->
+       <!-- <h1 style="color:red"> {{add_replace}} {{file}}</h1>-->
+
+                    <!--<div id="form_data" class="form-title">Import Tables</div>-->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+                <div flex layout="row" layout-align="start center" class="pv-10 h3" hide-xs>
+                    <h3 class=" ">Add New Datasets</h3>
+                </div>
+                <div flex layout="row" layout-align="end center">
+                    <a href="dataset/list">
+                        <md-button class="ph-15 md-accent md-raised">All Datasets</md-button>
+                    </a>
+                    <a href="dataset/import">
+                        <md-button class="ph-15 md-accent md-raised">import Dataset</md-button>
+                    </a>
+
+                </div>
+            </div>
+            <md-content class="content" >
+                    
+                    <div class="md-display-1">
+                        ...Coming Soon...
+                    </div>
+
+
+                    <!-- <form name="dataset" class="md-inline-form" novalidate>
+                    <div layout="column" layout-gt-sm="row">
+                        <md-input-container flex>
+                            <p>Import Source</p>
+                            <md-radio-group ng-model="data.uploadby">
+                                  <md-radio-button value="file">File Upload</md-radio-button>
+                                  <md-radio-button value="url"> URL </md-radio-button>
+                                  <md-radio-button value="file_server">File on server</md-radio-button>
+                                  <md-radio-button value="manual">Manual Input</md-radio-button>
+                            </md-radio-group>
+                        </md-input-container>
+
+                    </div>-->
+                    <!--  -->
+                  <!--  <md-input-container class="md-block">
+                        <md-button id="uploadButton" class="md-raised md-primary ph-15" ng-click="upload()"> Choose Files </md-button>
+                        <input id="fileInput" name="file" type="file" class="ng-hide"  multiple ng-files="getTheFiles($files)" aria-label="file input" >
+                    <div class="errors" ng-messages="dataset.file.$error">
+                    <div ng-message="required">Required</div>
+                    </div>
+
+                    </md-input-container>
+
+                    <div layout="column" layout-gt-xs="row">
+                        <md-input-container flex>
+                            <label>Import Format</label>
+                            <md-select name="state" ng-model="data.state" required>--><!-- // ng-model="vm.basicForm.state" -->
+                               <!-- <md-option value="csv">CSV (Character-Seprated Values</md-option>
+                                <md-option value="excel">Excel (Microsoft Excel 2013)</md-option>
+                                <md-option value="html">HTML (Hypertext Markup Language)</md-option>
+                                <md-option value="json">JSON (Javascript Object Notation)</md-option>
+                            </md-select>
+                    <div class="errors" ng-messages="dataset.state.$error">
+                    <div ng-message="required">Required</div>
+                    </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="column" layout-gt-xs="row">
+                        <md-input-container flex>
+                            <label>Add, Replace or Append?</label>
+                            <md-select name="action"  ng-model="data.action" ng-change="addReplaceOrAppend()" required>
+
+                                <md-option value="newtable">Add as new table</md-option>
+                                <md-option value="replace">Replace existing table</md-option>
+                                <md-option value="append">Append rows to existing table</md-option>
+                            </md-select>
+                            <div class="errors" ng-messages="dataset.action.$error">
+                             <div ng-message="required">Required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="column" layout-gt-xs="row">
+                        <md-input-container flex>
+                            <label>Table to replace or append to:</label>
+                            <md-select name="tableToreplace" ng-model="data.tableToreplace" ng-disabled="model.isDisabled">
+                                <md-option value="dataset1">Dataset 1</md-option>
+                                <md-option value="dataset2">Dataset 2</md-option>
+                                <md-option value="dataset3">Dataset 3</md-option>
+                                <md-option value="dataset4">Dataset 4</md-option>
+                                <md-option value="dataset5">Dataset 5</md-option>
+                            </md-select>
+                             <div class="errors" ng-messages="dataset.tableToreplace.$error">
+                             <div ng-message="required">Required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <md-button type="submit" ng-click="uploadFiles()" class="md-raised md-accent" aria-label="Submit">
+                        Import
+                    </md-button>
+                    </form>-->
+                </md-content>
+
+            </div>
+            <!-- / BASIC FORM -->
+
+
+        </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,289 @@
+<!-- <link rel="stylesheet" type="text/css" href="app/main/dataset/dataset.scss"> -->
+
+<style type="text/css">
+a{
+	text-decoration:none !important; 
+}
+
+</style>
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg "></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+            	<span class="h2 white-fg">Datasets</span>
+            </div>
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+				<div flex layout="row" layout-align="start center" class="pv-30 h3" hide-xs>
+                    <h3 class=" ">List of Available Datasets</h3>
+                </div>
+                <div flex layout="row" layout-xs="column" layout-align-xs="center none" layout-align="end center" class="dataset-nav">
+
+                	<a href="dataset/import/wizard">
+                		
+						<md-button layout="row" layout-wrap class="ph-15 md-accent md-raised" style="width:164px" aria-label="start wizard">
+							<md-tooltip md-direction="top" class="md-body-1">Start a wizard to create ,visualize and manage the dataset</md-tooltip>
+							<div>
+								<md-icon md-font-icon="icon-auto-fix" class="s20 mr-10" ></md-icon>
+							</div>
+							<div>
+							Start Wizard
+							</div>
+						</md-button>
+					</a>
+					
+					<a href="dataset/create">
+						<md-button class="ph-15 md-accent md-raised" layout="row" style="width:180px"><md-tooltip md-direction="top" class="md-body-1">Create a new Dataset</md-tooltip>
+							<div >
+								<md-icon md-font-icon="icon-grid" class="s20 mr-10"></md-icon>
+							</div>
+							<div>
+							Create dataset
+							</div>
+						</md-button>
+					</a>
+					
+					<a href="dataset/import/">
+						<md-button class="ph-15 md-accent md-raised" layout="row" style="width:181px"><md-tooltip md-direction="top" class="md-body-1">Import csv, excel, sql file to dataset </md-tooltip>
+							<div >
+								<md-icon md-font-icon="icon-arrow-left" class="s20 mr-10"></md-icon>
+							</div>
+							<div>
+							Import dataset
+							</div>
+						</md-button>
+					</a>
+                </div>
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+            <style type="text/css">
+            	.dataTables_wrapper .top {
+    					border-bottom: 1px solid #e8e8e8;
+    				    padding: 0 0 24px 0;
+						}
+				.goal-header{
+						height: 75px;
+					    min-height: 75px;
+					    max-height: 90px;
+					    padding: 24px;
+
+    					}
+
+    			.dataTables_wrapper .dataTables_filter input{
+    	    			width: 225px;
+    					}
+    			.page-layout .top-bg{
+    				height: 139px;
+    			}
+    			.icon-check-hover{
+    				color:green;
+    			}
+    			.icon-check-hover:hover{
+    				    color: #fff;
+    				        background-color: green;
+    				            border-radius: 50%;
+    			}
+    			.icon-cross-hover{
+    				color:red;
+    			}
+    			.icon-cross-hover:hover{
+    				 color: #fff;
+    				        background-color: red;
+    				            border-radius: 50%;
+    			}
+
+    		
+            </style>
+
+            <!-- CONTENT -->
+
+            <md-content class="content" ms-scroll>
+
+                <!-- CONTENT -->
+				<div >
+					<table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+						<thead>
+							<tr>
+								<th class="secondary-text sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Sr No">
+									
+									<div class="table-header"><md-tooltip md-direction="top" class="md-body-1">Dataset ID</md-tooltip><span class="column-title">ID</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="File Name">
+									
+									<div class="table-header"><md-tooltip md-direction="top" class="md-body-1">Name of the dataset</md-tooltip><span class="column-title">Dataset Name</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Created date">
+									
+									<div class="table-header"><md-tooltip md-direction="top" class="md-body-1">Dataset creation date</md-tooltip><span class="column-title">Created date</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Validated">
+									
+									<div class="table-header"><md-tooltip md-direction="top" class="md-body-1">Weather the dataset is defined or not</md-tooltip><span class="column-title">Defined</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Validated">
+									
+									<div class="table-header"><md-tooltip md-direction="top" class="md-body-1">Weather the dataset is validated or not</md-tooltip><span class="column-title">Validated</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions">
+									
+									<div class="table-header"><md-tooltip md-direction="top" class="md-body-1">Action perform on dataset</md-tooltip><span class="column-title">Actions</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions">
+									
+									<div class="table-header"><md-tooltip md-direction="top" class="md-body-1">Operations may applied on dataset</md-tooltip><span class="column-title">Operations</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions">
+									
+									<div class="table-header"><md-tooltip md-direction="top" class="md-body-1">Download dataset </md-tooltip><span class="column-title">Export</span></div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="dataset in ::vm.datasets">
+								<td>{{ dataset.dataset_id }}</td>
+								<td><a href="dataset/view/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}/" style="text-decoration: none"><md-tooltip md-direction="top" class="md-body-1">Click to view the dataset</md-tooltip>{{ dataset.dataset_name }}</a></td>
+								<td>{{ dataset.created_date }}</td>
+								<td><i class="icon-check icon-check-hover" ng-show="dataset.dataset_columns != null"><md-tooltip md-direction="top" class="md-body-1">This dataset is defined.</md-tooltip></i><a href="column/validate/{{dataset.dataset_id}}/" id="{{dataset.dataset_id}}/" style="text-decoration: none"><i class="icon-close icon-cross-hover" ng-show="dataset.dataset_columns == null"><md-tooltip md-direction="top" class="md-body-1">This dataset is not defined. Click here to define this dataset</md-tooltip></i></a></td>
+								<td><i class="icon-check icon-check-hover"  ng-show="dataset.validated == 1"><md-tooltip md-direction="top" class="md-body-1">This dataset is validated.</md-tooltip></i><a href="dataset/validate/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}/" style="text-decoration: none""><i class="icon-close icon-cross-hover"  ng-show="dataset.validated == 0"><md-tooltip md-direction="top" class="md-body-1">This dataset is not validated. Click here to validate this dataset</md-tooltip></i></a></td>
+
+			 					<td>
+		                        	<md-menu>
+
+									    <md-button aria-label="Open demo menu" class="md-accent md-raise font-weight-300" ng-click="$mdOpenMenu($event)">
+									   	<md-tooltip md-direction="top" class="md-body-1">Click here for the Dataset Action List. </md-tooltip>
+
+									        <md-icon md-font-icon="icon-dots-vertical" class="s28 md-accent font-weight-300"></md-icon> Actions
+
+									    </md-button>
+									    <md-menu-content width="4">
+									        <md-menu-item >
+									            <md-button href="dataset/view/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}/" >
+									            <md-icon md-font-icon="icon-desktop-mac" class="s24"></md-icon>
+									                <a href="dataset/view/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}/" class="action-link"><md-tooltip md-direction="top" class="md-body-1">View records of dataset</md-tooltip>View</a>
+									            </md-button>
+									        </md-menu-item>
+									         <md-menu-item >
+									            <md-button href="dataset/edit/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}/">
+									            <md-icon md-font-icon="icon-pencil" class="s24"></md-icon>
+									                <a href="dataset/edit/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}" class="action-link"><md-tooltip md-direction="top" class="md-body-1">Edit records of dataset</md-tooltip>Edit</a>
+									            </md-button>
+									        </md-menu-item>
+
+									         <md-menu-item >
+									            <md-button ng-click="showCustom($event,dataset.dataset_id)">
+									            <md-icon md-font-icon="icon-chart-bar" class="s24"></md-icon>
+									                <a ng-click="showCustom($event,dataset.dataset_id)" href="javascript:;" id="" class="action-link"><md-tooltip md-direction="top" class="md-body-1">Create visualization of dataset</md-tooltip>Visualize</a>
+									            </md-button>
+									        </md-menu-item>
+									         <md-menu-item >
+									            <md-button href="#" id="{{dataset.dataset_id}}/" ng-click="deleteDataset(dataset.dataset_id)" >
+									            <md-icon md-font-icon="icon-delete" class="s24"></md-icon>
+									                <a class="action-link" style="color:red"><md-tooltip md-direction="top" class="md-body-1">Delete dataset</md-tooltip>Delete</a>
+									            </md-button>
+									        </md-menu-item>
+									    </md-menu-content>
+									</md-menu>
+			                    </td>
+			 					<td>
+		                        	<md-menu >
+									    <md-button aria-label="Open demo menu" class="md-accent font-weight-300 orange-500-fg" ng-click="$mdOpenMenu($event)">
+									    <md-tooltip md-direction="top" class="md-body-1">Click here for the Dataset Operations List. </md-tooltip> 
+									        <md-icon md-font-icon="icon-cog" class="s28 orange-500-fg font-weight-300"></md-icon> Operations
+									    </md-button>
+									    <md-menu-content width="4">
+									         <md-menu-item >
+									            <md-button href="column/validate/{{dataset.dataset_id}}/" id="{{dataset.dataset_id}}/">
+									            <md-icon md-font-icon="icon-blinds" class="s24"></md-icon>
+									                <a href="column/validate/{{dataset.dataset_id}}/" id="{{dataset.dataset_id}}/" class="action-link"><md-tooltip md-direction="top" class="md-body-1">Define type of variables</md-tooltip>Define</a>
+									            </md-button>
+									        </md-menu-item>
+
+									         <md-menu-item >
+									            <md-button href="dataset/validate/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}/" >
+									            <md-icon md-font-icon="icon-check-bookmark" class="s24"></md-icon>
+									                <a href="dataset/validate/{{dataset.dataset_id}}" id="{{dataset.dataset_id}}/" class="action-link"><md-tooltip md-direction="top" class="md-body-1">Validate dataset for errors</md-tooltip>Validate</a>
+									            </md-button>
+									        </md-menu-item>
+									         <md-menu-item >
+									            <md-button href="dataset/filter/{{dataset.dataset_id}}/" id="{{dataset.dataset_id}}/" >
+									            <md-icon md-font-icon="icon-filter" class="s24"></md-icon>
+									                <a href="dataset/filter/{{dataset.dataset_id}}/" id="{{dataset.dataset_id}}/" class="action-link"><md-tooltip md-direction="top" class="md-body-1">Create subset of Dataset</md-tooltip>Filter Dataset</a>
+									            </md-button>
+									        </md-menu-item>
+									        </md-menu-item>
+									    </md-menu-content>
+									</md-menu>
+			                    </td>
+
+			                    <td>
+									<md-menu >
+									    <md-button aria-label="Open demo menu" class="md-accent font-weight-300 red-500-fg" ng-click="$mdOpenMenu($event)">
+									        <md-icon md-font-icon="icon-download" class="s28 font-weight-300 red-500-fg">
+									        </md-icon>
+									        Download As
+									        <md-tooltip md-direction="top" class="md-body-1">Export dataset as CSV / XLSX / SQL </md-tooltip>
+									    </md-button>
+									    <md-menu-content width="4">
+									        
+									         <md-menu-item >
+									            <md-button ng-click="downloadCSV(dataset.dataset_id)">
+									            <md-icon md-font-icon="icon-file" class="s24"></md-icon>
+									                <span md-menu-align-target>Export as</span>
+									                CSV
+									            </md-button>
+									        </md-menu-item>
+									         <md-menu-item >
+									            <md-button ng-click="downloadExcel(dataset.dataset_id)">
+									            <md-icon md-font-icon="icon-file-excel" class="s24"></md-icon>
+									                <span md-menu-align-target>Export as</span>
+									                XLSX
+									            </md-button>
+									        </md-menu-item>
+									        <md-menu-item >
+									            <md-button ng-click="downloadSql(dataset.dataset_id)">
+									            <md-icon md-font-icon="icon-file" class="s24"></md-icon>
+									                <span md-menu-align-target>Export as</span>
+									                SQL
+									            </md-button>
+									        </md-menu-item>
+									    </md-menu-content>
+									</md-menu>
+								</td>
+
+
+
+
+
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+                <!-- /CONTENT -->
+
+            </md-content>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

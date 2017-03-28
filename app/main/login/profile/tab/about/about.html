@@ -1,0 +1,144 @@
+<div layout="row" layout-wrap>
+
+    <div class="" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="100">
+        <md-card class="profile-box info-box general md-whiteframe-1dp" layout="column" style="box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2), 0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12)">
+            <header class="md-accent-bg" layout="row">
+                <div flex="50" class="md-title p-16">Profile Information</div>
+                <div flex="50" layout="row" layout-align="end start"><md-button class="md-icon-button" ng-click="editProfile()"><md-tooltip md-direction="left" md-visible="tooltipVisible">Edit Details</md-tooltip><md-icon md-font-icon="icon-pencil" class="s28" style="color:#fff"></md-icon></md-button>
+                </div>
+            </header>
+
+            <div class="content p-16">
+                <div class="info-line">
+                    <div class="md-subhead" >App Activate Code</div>
+                    <div class="info capitalized" style="margin-top: 0.5%;" >{{userProfile.activation_code}}</div>
+                </div>
+                <div class="info-line">
+                    <div class="md-subhead" >App Password</div>
+                    <div class="info capitalized" style="margin-top: 0.5%;" >{{userProfile.app_pass}}</div>
+                </div>
+                <md-divider></md-divider>
+                <div class="info-line">
+                    <div class="md-subhead" >Name</div>
+                    <div class="info capitalized" >{{userProfile.name}}</div>
+                </div>
+                <md-divider></md-divider>
+                <div class="info-line mt-10">
+                    <div class="md-subhead">Phone</div>
+                    <div class="info">{{userProfile.phone}}</div>
+                </div>
+                <md-divider></md-divider>
+
+
+
+                <div class="info-line  mt-10">
+                    <div class="md-subhead">Email</div>
+                    <div class="info">{{userProfile.email}}</div>
+                </div>
+                 <md-divider></md-divider>
+
+
+               <!--  <div class="info-line  mt-10">
+                    <div class="md-subhead">Designation</div>
+                    <div class="info">{{userProfile.designation_name}}</div>
+                </div>
+                <md-divider></md-divider> -->
+
+
+                <div class="info-line  mt-10">
+                    <div class="md-subhead">Address</div>
+                    <div class="info location" >
+                        <span>{{userProfile.address}}</span>
+                        <md-icon md-font-icon="icon-map-marker" class="s16"></md-icon>
+                    </div>
+                </div>
+                <md-divider></md-divider>
+               <!--  <div class="info-line  mt-10 ">
+                    <div class="md-subhead">Departments</div>
+                    <div class="">
+                        <span class="text-boxed md-accent-bg" ng-repeat="department in userProfile.departments">
+                            {{department.department_name}}
+                        </span>
+                    </div>
+                </div>
+                 <md-divider></md-divider>
+ -->
+
+
+
+
+
+                <div class="info-line  mt-10">
+                    <div class="md-subhead">Organization</div>
+                    <div class="pt-5 ">
+                        <span class="text-boxed md-green-600-bg white-fg font-size-16 mt-5" style="font-size: 16px"  >
+                            {{userProfile.organization}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </md-card>
+        
+
+        <!--<md-card class="profile-box info-box work md-whiteframe-1dp" layout="column">
+            <header class="md-accent-bg">
+                <div class="md-title p-16">Work</div>
+            </header>
+
+            <div class="content p-16">
+                <div class="info-line mb-24">
+                    <div class="md-subhead" >Occupation</div>
+                    <div class="info">software developer</div>
+                </div>
+
+                <div class="info-line mb-24">
+                    <div class="md-subhead">Skills</div>
+                    <div class="info">java,android</div>
+                </div>
+
+                <div class="info-line mb-24">
+                    <div class="md-subhead">Jobs</div>
+                    <table class="info jobs">
+                        <tr class="job">
+                            <td class="company">oxo solutions</td>
+                            <td class="date">15 sept 2016</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </md-card>-->
+
+        <!--<md-card class="profile-box info-box contact md-whiteframe-1dp" layout="column">
+            <header class="md-accent-bg">
+                <div class="md-title p-16">Contact</div>
+            </header>
+            <div class="content p-16">
+                <div class="info-line mb-24">
+                    <div class="md-subhead">Address</div>
+                    <div class="info">17 model town asr</div>
+                </div>
+                <div class="info-line mb-24">
+                    <div class="md-subhead">Tel.</div>
+                    <div class="info" >
+                        <span>8566820937</span>
+                    </div>
+                </div>
+                <div class="info-line mb-24">
+                    <div class="md-subhead" >Website</div>
+                    <div class="info" >
+                        <span>darlic.com</span>
+                    </div>
+                </div>
+                <div class="info-line mb-24">
+                    <div class="md-subhead" >Emails</div>
+                    <div class="info" >
+                        <span>ashish9436@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </md-card>-->
+    </div>
+
+
+
+</div>

@@ -1,0 +1,159 @@
+<!-- DIALOG -->
+<md-dialog class="" aria-label="New Task" style="width:500px;overflow:hidden;">
+
+    <form name="updateUser" class="md-inline-form" novalidate>
+
+        <!-- DIALOG TOOLBAR -->
+        <md-toolbar class="md-accent " layout="column">
+
+            <!-- TOOLBAR TOP -->
+            <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+                <span class="title">Edit User</span>
+                <md-button class="md-icon-button" ng-click="closeDialog()" aria-label="Close dialog" translate>
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+            <!-- / TOOLBAR TOP -->
+
+            <!-- TOOLBAR MIDDLE -->
+            <div class="md-toolbar-tools md-toolbar-tools-middle" flex layout="column" layout-align="center center" >
+                <div layout="column" layout-align="center center" class="mt-35" style="min-height:100px">
+                	
+                    <img ng-src="{{imagePath}}profile_pic/{{imageName}}" class="md-avatar avatar contact-avatar huge" alt="" />
+                    <div class="contact-name"></div>
+                </div>
+            </div>
+             
+
+        </md-toolbar>
+        <!-- / DIALOG TOOLBAR -->
+
+        <!-- DIALOG CONTENT -->
+        <md-dialog-content class="mt-30" ms-scroll>
+            
+            <md-input-container class="md-icon-float md-block">
+                <label>User Name </label>
+                <md-icon md-font-icon="icon-account" class="name"></md-icon>
+                <input name="username" ng-model="username" type="text" required md-autofocus>
+                 <div ng-messages="updateUser.username.$error" role="alert" multiple>
+                          <div ng-message="required">
+                            <span>Name is required</span>
+                          </div>
+                  </div>
+
+
+
+            </md-input-container>
+
+            
+                <md-input-container class="md-block">
+                    <md-icon md-font-icon="icon-phone"></md-icon>
+                    <input name="phone" type="text" placeholder="Phone" ng-model="phone" ng-minlength="10" ng-maxlength="10" required ng-pattern="/^(0|[1-9][0-9]*)$/">
+                     <div ng-messages="updateUser.phone.$error" role="alert">
+                         <div ng-message="required">
+                             <span>Phone is required</span>
+                         </div>
+                         <div ng-message="minlength">
+                             <span>Invalid phone number</span>
+                         </div>
+                         <div ng-message="maxlength">
+                             <span>Invalid phone number</span>
+                         </div>
+
+                         <div ng-message="pattern">
+                             <span>Invalid phone number</span>
+                         </div>
+                   
+
+                     </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <md-icon md-font-icon="icon-email" class="email"></md-icon>
+                    <input name="email" ng-model="email" type="email" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required>
+                    <div ng-messages="updateUser.email.$error" role="alert" multiple>
+                          <div ng-message="required">
+                              <span>Email is required</span>
+                          </div>
+                          <div ng-message="pattern">
+                              <span>Invalid Email Address</span>
+                          </div>
+                    </div>
+                </md-input-container>
+
+
+            
+
+               
+
+
+
+
+                <md-input-container class="md-block md-input-focused" md-no-float style="margin-top:8%;">
+
+                    <label class="font-size-16 font-weight-300">Change Profile Picture</label>
+                    <lf-ng-md-file-input lf-files="files" lf-api="api09" lf-maxcount="1" lf-filesize="2MB" lf-totalsize="2MB" accept="image/*" progress preview></lf-ng-md-file-input>
+                    <div ng-messages="LoginForm.file.$error" role="alert">
+                        <div ng-message="required">This is required.</div>
+                        <div ng-message="maxcount">Too much files.</div>
+                        <div ng-message="filesize">File size too large.</div>
+                        <div ng-message="totalsize">Total size too large.</div>
+                        <div ng-message="mimetype">Invalid File Type</div>
+                    </div>
+                    <div><span style="font-size: 16px; color: red;" ng-hide=""></span></div>
+
+                </md-input-container>
+
+                <!--  <div layout="row" class="md-block textarea-wrapper" layout-align="start start">
+                   <md-icon md-font-icon="icon-note"></md-icon>
+                   <md-input-container flex>
+                       <label translate translate-attr-placeholder="CONTACTS.NOTES">Notes</label>
+                       <textarea ng-model="vm.contact.notes" type="text" max-rows="4"></textarea>
+                   </md-input-container>
+               </div>
+               
+               <div layout="row" layout-align="center center">
+                   <md-button class="md-accent" ng-click="vm.allFields = false" translate="CONTACTS.FEWER_FIELDS">Fewer
+                       Fields
+                   </md-button>
+               </div> -->
+
+
+        </md-dialog-content>
+        <!-- / DIALOG CONTENT -->
+        <!-- DIALOG ACTIONS -->
+        <md-dialog-actions layout="row" layout-align="space-between center">
+            <div layout="row" layout-align="start center">
+                <!--   <md-button type="submit" ng-if="!vm.newContact" ng-click="vm.saveContact()"
+            class="send-button md-accent md-raised mh-15"
+            ng-disabled="contactForm.$invalid || contactForm.$pristine"
+            aria-label="SAVE" >
+     Save User
+     </md-button>
+  
+  <md-button type="submit" ng-if="vm.newContact" ng-click="vm.addNewContact()"
+           class="send-button md-accent md-raised"
+           ng-disabled="contactForm.$invalid || contactForm.$pristine"
+           aria-label="Add Task" translate="CONTACTS.ADD_CONTACT"
+           translate-attr-aria-label="CONTACTS.ADD_CONTACT">
+    ADD CONTACT
+    </md-button>
+   -->
+            </div>
+
+            <div layout="row" layout-align="center end">
+                <!--  <md-button class="md-icon-button" ng-click="vm.deleteContactConfirm($event)" aria-label="Delete"
+                          translate translate-attr-aria-label="CONTACTS.DELETE">
+                   <md-icon md-font-icon="icon-delete"></md-icon>
+                   <md-tooltip><span translate="CONTACTS.DELETE">DELETE</span></md-tooltip>
+               </md-button> -->
+                <md-button type="submit" ng-click="saveEdituser(userid)" class="send-button md-accent md-raised ph-15" >
+                    Save User
+                </md-button>
+            </div>
+        </md-dialog-actions>
+
+    </form>
+
+</md-dialog>
+<!-- / DIALOG -->

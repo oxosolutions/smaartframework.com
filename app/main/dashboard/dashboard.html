@@ -1,0 +1,43 @@
+<link rel="stylesheet" type="text/css" href="app/main/dashboard/dashboard.css">
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <div class="top-bg md-accent-bg "></div>
+
+    <div class="center " flex>
+
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Manage Users</span>
+            </div>
+
+        </div>
+ 
+        <div class="content-card">
+
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+                <div flex layout="row" layout-align="start center" class="pv-30 h3" hide-xs>
+                    <h3 class=" ">List of all users</h3>
+                </div>
+                <div flex layout="row" layout-align="end center">
+
+                </div>
+            </div>
+
+            <md-content class="content" ms-scroll>
+
+                <div >
+                    <div ng-include="'app/main/dashboard/tabs/manage-user.html'">
+                </div>
+
+            </md-content>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+

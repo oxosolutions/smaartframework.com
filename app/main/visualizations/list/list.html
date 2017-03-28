@@ -1,0 +1,108 @@
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center" flex>
+
+        <!-- CONTENT HEADER -->
+        <div class="goal-header" layout="column">
+            <div flex>
+              <span class="h2 white-fg">Visualizations</span>
+            </div>
+
+            <!--
+            <div class="breadcrumb" flex>
+                <md-icon md-font-icon="icon-dns" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">LIST DATA</span>
+            </div>
+            -->
+        </div>
+        <!-- / CONTENT HEADER -->
+        <style type="text/css">
+                .dataTables_wrapper .top {
+                        border-bottom: 1px solid #e8e8e8;
+                        padding: 0 0 24px 0;
+                        }
+                        .dataTables_wrapper .dataTables_filter input{
+                        width: 225px;
+                        }
+                    .goal-header{
+                            height: 75px;
+    min-height: 75px;
+    max-height: 90px;
+    padding: 24px;
+
+    }
+    .action-separator{
+    color:#787878;
+    padding: 0 4px;
+}
+    .page-layout .top-bg{
+                    height: 139px;
+                }
+
+            </style>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+                <div flex layout="row" layout-align="start center" class="pv-30 h3" hide-xs>
+                    <h3 class=" ">List of Available Visualizations</h3>
+                </div>
+                <div flex layout="row" layout-align="end center">
+                    <a href="visualizations/add">
+                        <md-button class=" md-accent md-raised ph-15">Add Visualization</md-button>
+                    </a>
+                </div>
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+            <!-- CONTENT -->
+            <md-content class="content" ms-scroll>
+                <!-- CONTENT -->
+                <div >
+                  <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+                    <thead>
+                      <tr>
+                        <th class="secondary-text sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">
+                          <div class="table-header"><span class="column-title">ID</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">
+                          <div class="table-header"><span class="column-title">Dataset</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">
+                          <div class="table-header"><span class="column-title">Visualisation Name</span></div>
+                        </th>
+                        <th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">
+                          <div class="table-header"><span class="column-title">Actions</span></div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="visual in vm.visuals">
+                        <td>{{ $index + 1}}</td>
+                        <td>{{ visual.dataset_name }}</td>
+                        <td>{{ visual.visual_name }}</td>
+                        <td>
+                        <a href="visualizations/view/{{visual.id}}/{{visual.dataset_id}}" id="{{visual.id}}/" class="action-link">View</a><span class="action-separator">/</span>
+                        <a href="visualizations/edit/{{visual.id}}" id="{{visual.id}}/" class="action-link">Edit</a><span class="action-separator">/</span>
+                        <a href="#" id="{{visual.id}}" ng-click="deleteVisual(visual.id)" class="action-link delLink" style="color:red">Delete <md-progress-circular md-mode="indeterminate"  md-diameter="20" style="display:none;" id="{{visual.id}}"></md-progress-circular></a>
+                        </td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /CONTENT -->
+            </md-content>
+            <!-- / CONTENT -->
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

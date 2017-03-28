@@ -1,0 +1,43 @@
+<div id="profile" class="page-layout simple tabbed">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="space-between end" style="height: 150px !important;min-height: 150px !important;">
+        <div class="user-info" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="start center">
+            
+
+             <div>
+                     <img class="profile-image avatar huge" ng-src="{{userProfile.profile_pic}}" ng-click="triggerUpload()"><input type="file" ng-file-select="uploadImage($files)" style="display:none" id="fileInput" name="filedata" accept="image/*"/>
+                     <md-tooltip md-direction="down" md-visible="tooltipVisible">Change Image</md-tooltip>
+             </div>
+             
+            <div class="md-display-2 capitalized" >Edit Profile</div>
+
+        </div>
+
+        <div class="actions" layout="row" layout-align="end center">
+          
+        </div>
+    </div>
+
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" flex>
+
+        <md-tabs md-dynamic-height>
+            <md-tab>
+                <md-tab-label>
+                    <span >Profile</span>
+                </md-tab-label>
+                <md-tab-body>
+                    <md-content class="about-tab" flex="100"
+                                ng-include="'app/main/login/edit-profile/edit-tabs/about/about.html'">
+                    </md-content>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

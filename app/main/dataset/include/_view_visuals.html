@@ -1,0 +1,51 @@
+<!-- DIALOG -->
+<md-dialog class="" aria-label="New Task">
+   <form name="visuals" class="md-inline-form" novalidate style="width: 624px;">
+      <md-toolbar class="md-accent " layout="column">
+         <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+            <span class="title">List of Available visuals for this dataset</span>
+            <md-button class="md-icon-button" ng-click="closeDialog()" aria-label="Close dialog" translate>
+               <md-icon md-font-icon="icon-close"></md-icon>
+            </md-button>
+         </div>
+      </md-toolbar>
+      <md-dialog-content class="pt-20">
+         <div layout="row" layout-align="end center">
+          <md-button class="md-primary" ng-click="createVisual(dataset_id)" ng-controller="ListDatasetController" class="ph-15"><div layout="row" ><md-icon md-font-icon="icon-plus" class="mr-10"></md-icon><div>Create new visual</div></div></md-button>
+          </div>
+         <md-divider></md-divider>
+         <md-list>
+            <div class="">
+               List of available Visuals for this dataset.
+            </div>
+            <md-divider></md-divider>
+
+            <md-list-item layout="row" ng-repeat="item in listVisual">
+                  <md-divider></md-divider>
+                  <div flex="60" layout="row" layout-align="start center">
+                     {{item.visual_name}}
+                  </div>
+                  <div flex="40" layout="row" layout-align="end center">
+                     <md-button class="md-icon-button" area-label="viz" href="visual/view/{{item.id}}"><md-icon md-font-icon="icon-eye"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">View visualization</span></md-tooltip></md-icon></md-button>
+                     <md-button class="md-icon-button" area-label="viz" href="visual/edit/{{item.id}}"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Edit visualization</span></md-tooltip><md-icon md-font-icon="icon-pencil-box-outline"></md-icon></md-button>
+                  </div>
+               
+                  <md-divider></md-divider>
+            
+            </md-list-item>
+            <div ng-if="listVisual == ''">
+               <div layout="row" layout-align=" center center" class="ph-30 pv-20">
+                  <div class="ph-30 pv-20" style="border: 1px dashed #a8a8a8;color:#a8a8a8">
+                     There is no visual available for this dataset. Click above button to create. 
+                  </div>
+               </div>
+            </div>
+            
+           
+            
+         </md-list>
+      </md-dialog-content>
+     
+   </form>
+</md-dialog>
+

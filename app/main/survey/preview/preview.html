@@ -1,0 +1,60 @@
+
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <div class="top-bg md-accent-bg "></div>
+
+    <div class="center " flex>
+
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Preview survey data</span>
+            </div>
+
+
+        </div>
+  
+        <div class="content-card">
+
+            <style type="text/css">
+                
+            </style>
+            <div class="toolbar" layout="row" layout-xs="row" layout-align="start center">
+
+                <div flex layout="row" layout-align="start center" class="pv-30 h3" hide-xs>
+                   
+                </div>
+                <div flex ng-controller="EditSurveyController">
+                    <!-- <a ui-sref="app.survey_add" >
+                        <md-button class=" md-accent md-raised ph-15" aria-label="all surveys"><md-tooltip md-direction="top" class="md-body-1">Add a new survey </md-tooltip>Add new survey</md-button>
+                    </a>
+                    <a ui-sref="app.survey_edit({id:survey.id})" id="survey.id">
+                        <md-button class=" md-accent md-raised ph-15" aria-label="all surveys"><md-tooltip md-direction="top" class="md-body-1">Edit this survey</md-tooltip>Edit Survey</md-button>
+                    </a>
+                    <a ui-sref="app.survey_list">
+                        <md-button class=" md-accent md-raised ph-15" aria-label="all surveys"><md-tooltip md-direction="top" class="md-body-1">view list of all surveys </md-tooltip>All Surveys</md-button>
+                    </a>
+                    <a ui-sref="app.survey_addQuestion">
+                        <md-button class=" md-accent md-raised ph-15" aria-label="all surveys"><md-tooltip md-direction="top" class="md-body-1">Mange Questions </md-tooltip>Edit Manage Questions</md-button>
+                    </a> -->
+                    <div layout="row" layout-align="end center"  ng-include="'/app/main/survey/_include.html'"></div>
+                </div>
+               
+                     
+
+                  
+               
+    
+            </div>
+
+
+            <!-- CONTENT -->
+            <md-content class="content" >
+                
+            </md-content>
+        </div>
+
+
+    </div>
+
+
+</div>

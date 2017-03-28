@@ -1,0 +1,310 @@
+<link rel="stylesheet" type="text/css" href="app/main/register/register.scss">
+<div class="page-layout carded fullwidth single-scroll pb-30 register-v2" style="background:url(assets/images/backgrounds/august.jpg) no-repeat;background-size: cover;">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+
+    <!-- / TOP BACKGROUND -->
+
+
+
+    <!-- CENTER -->
+    <div class="center" layout="column" >
+
+        <!-- CONTENT HEADER -->
+        <div class="goal-header">
+            <span class="h2 white-fg">Register</span>
+        </div>
+        <!-- / CONTENT HEADER -->
+        <style type="text/css">
+       
+        	 a{
+            text-decoration:none !important;
+        }
+        </style>
+
+		<div layout="row" layout-align="end start" >
+        <!-- CONTENT CARD -->
+        	<div flex="60" flex-xs="100" class="mt-100 mr-40" layout="column" layout-align="start end" hide-sm hide-xs>
+        		<div  class="white-bg-transparent pv-30 ph-20">
+                <div class="md-headline">
+                    Welcome to the SMAART™ Framework.
+                </div>
+                <div class="md-subhead">
+                    <div layout="row" class="mv-10">
+                        <div>
+                        	<md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </div>
+                        <div class="pl-10 line-height-32">Please fill the Registration form and then click on the Register button.</div>
+                    </div>
+                    <div layout="row" class="mv-10">
+                        <div>
+                        	<md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </div>
+                        <div class="pl-10 line-height-32">After successful Registration administrator will be notified.</div>
+                    </div>
+                    <div layout="row" class="mv-10">
+                       <div>
+                        	<md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </div>
+                        <div class="pl-10 line-height-32">You will able to login after administrator approves your account.</div>
+                    </div>
+                    <div layout="row" class="mv-10">
+                       <div>
+                        	<md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </div>
+                        <div class="pl-10 line-height-32">If your account is not approved yet, Do not Register again and contact with adminstrator.</div>
+                    </div>
+                    <div layout="row" class="mv-10">
+                        <div>
+                        	<md-icon md-font-icon="icon-arrow-right-bold-circle md-accent" class="s32"></md-icon>
+                        </div>
+                         <div class="pl-10 line-height-32">In case you forgot your password. Please <a ui-sref="app.forgot_password">click here</a> to reset your password. </div>
+                    </div>                
+                </div>
+            </div>
+        	</div>
+
+       		 <div class="content-card" flex="40" flex-sm="100" flex-xs="100">
+
+	            <!-- CONTENT TOOLBAR -->
+	            <div class="toolbar font-size-18" layout="row" layout-align="start center">
+	                <span>Register a New User Account</span>
+	            </div>
+	            <!-- / CONTENT TOOLBAR -->
+
+	            <!-- CONTENT -->
+	            <md-content class="content" ms-scroll>
+
+	              <form name="loginForm" novalidate>
+	                <md-input-container class="md-block" md-no-float>
+                        <label class="font-size-18 font-weight-300 grey-600-fg">Your Name</label>
+	                    <input type="text" name="name" ng-model="vm.loginForm.name" required area-label="name">
+	                    <div ng-messages="loginForm.name.$error" role="alert" multiple>
+	                        <div ng-message="required">
+	                            <span>Name is required</span>
+	                        </div>
+	                        <!-- <div ng-message="pattern">
+	                            <span translate="REGISTER.ERRORS.NAME_MUST_VALID">Email must be a valid e-mail address</span>
+	                        </div> -->
+	                    </div>
+	                </md-input-container>
+
+	               <!--  <md-input-container class="md-block" md-no-float>
+	                                       <label class="font-size-18 font-weight-300">Username</label>
+	                   <input type="text" name="username" ng-model="vm.loginForm.username"  area-label="username">
+	                   <div ng-messages="loginForm.username.$error" role="alert" multiple>
+	                       <div ng-message="required">
+	                           <span>Username is required</span>
+	                       </div>
+	                       <div ng-message="pattern">
+	                           <span translate="REGISTER.ERRORS.NAME_MUST_VALID">Email must be a valid e-mail address</span>
+	                       </div>
+	                   </div>
+	               </md-input-container> -->
+
+	                <md-input-container class="md-block" md-no-float>
+                        <label class="font-size-18 font-weight-300 grey-600-fg">Email</label>
+	                    <input type="email" name="email" ng-model="vm.loginForm.email" ng-pattern="/^.+@.+\..+$/" required>
+	                    <div ng-messages="loginForm.email.$error" role="alert" multiple>
+	                        <div ng-message="required">
+	                            <span>Email is required</span>
+	                        </div>
+	                        <div ng-message="pattern">
+	                            <span>Invalid Email Address</span>
+	                        </div>
+	                    </div>
+	                </md-input-container>
+
+	                <md-input-container class="md-block" md-no-float>
+                        <label class="font-size-18 font-weight-300 grey-600-fg">Password</label>
+	                    <input type="password" name="password" ng-model="vm.loginForm.password" ng-minlength="6" required>
+	                    <div ng-messages="loginForm.password.$error" role="alert">
+	                        <div ng-message="required">
+	                            <span>Password is required</span>
+	                        </div>
+	                         <div ng-message="minlength">
+	                           <span>Minimum Password length should be 6 characters</span>
+	                       </div>
+	                    </div>
+	                </md-input-container>
+
+	                <md-input-container class="md-block" md-no-float>
+                        <label class="font-size-18 font-weight-300 grey-600-fg">Confirm Password</label>
+	                    <input type="password" name="confpassword" ng-model="vm.loginForm.confpassword" required ng-pattern="vm.loginForm.password">
+	                    <div ng-messages="loginForm.confpassword.$error" role="alert">
+	                        <div ng-message="required">
+	                            <span>Confirm Password is required</span>
+	                        </div>
+                            <div ng-message="pattern">
+                                <span >Passwords do not match!</span>
+                            </div>
+	                    </div>
+	                </md-input-container>
+
+	                <md-input-container class="md-block" md-no-float>
+                        <label class="font-size-18 font-weight-300 grey-600-fg">Your Address</label>
+	                    <textarea name="address" ng-model="vm.loginForm.address" required></textarea>
+	                    <div ng-messages="loginForm.address.$error" role="alert" multiple>
+	                        <div ng-message="required">
+	                            <span>Address is required</span>
+	                        </div>
+	                    </div>
+	                </md-input-container>
+
+	                <md-input-container class="md-block" md-no-float>
+                        <label class="font-size-18 font-weight-300 grey-600-fg">Phone</label>
+	                    <input type="text" name="phone" ng-model="vm.loginForm.phone" ng-minlength="10" ng-maxlength="10" required ng-pattern="/^(0|[1-9][0-9]*)$/">
+
+	                   <div ng-messages="loginForm.phone.$error" role="alert">
+	                       <div ng-message="required">
+	                           <span>Phone is required</span>
+	                       </div>
+	                       <div ng-message="minlength">
+	                           <span>Invalid phone number</span>
+	                       </div>
+	                       <div ng-message="maxlength">
+	                           <span>Invalid phone number</span>
+	                       </div>
+
+	                       <div ng-message="pattern">
+	                           <span>Invalid phone number</span>
+	                       </div>
+	                 
+
+	                   </div>
+	                  
+
+	                </md-input-container>
+
+                    <md-input-container class="md-block grey-600-fg mb-15 font-size-18 font-weight-300" md-no-float >
+                        <!-- <label 	>Organization</label>
+                        <md-select ng-model="vm.loginForm.ministryList" name="minitries">
+                            <md-option ng-value="{{organization.id}}" ng-repeat="organization in orgs" class="md-body-1" >{{organization.org_name}}</md-option>
+                            <md-option ng-value="others"  class="md-body-1" >Others</md-option>
+                        </md-select> -->
+                        <label 	>Add or select Organization</label>
+                        <select ui-select2 ng-model="vm.loginForm.ministryList" ng-change="changeOrg()" data-placeholder="Select Map" style="width: 100%;" class="font-size-16 org">
+
+                            <option value="{{organization.id}}" ng-repeat="organization in orgs" class="font-size-16" >{{organization.org_name}}</option>
+                            <option value="others">Add New Organization</option>
+                        </select>
+                        <div ng-messages="loginForm.minitries.$error" role="alert" multiple>
+                            <div ng-message="required">
+                                <span>Organization is required</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <div class="md-body-1" layout="row" layout-align="center center" ng-show="other_org">Add New Organization</div>
+                   
+                    <md-input-container class="md-block" md-no-float ng-show="other_org">
+
+                        <label class="font-size-18 font-weight-300 grey-600-fg">New Organization Name</label>
+	                   	<input type="text" name="others" value="" ng-model="vm.loginForm.other_org" >
+	                    
+	                </md-input-container>
+
+<!-- 	                <md-input-container class="md-block" md-no-float style="margin-bottom:9%;font-size: 1.9rem;font-weight:300">
+                        <label class="font-size-18 font-weight-300">Department</label>
+                        <md-select ng-model="vm.loginForm.departmentsList" name="department">
+                          <md-option ng-value="{{department.id}}" ng-repeat="department in departments" class="md-body-1">{{department.dep_name}}</md-option>
+                        </md-select>
+	                    <div ng-messages="loginForm.departmentsList.$error" role="alert" multiple>
+	                        <div ng-message="required">
+	                            <span>Department is required</span>
+	                        </div>
+	                    </div>
+	                </md-input-container>
+
+
+                    <md-input-container class="md-block" md-no-float style="margin-bottom:9%;font-size: 1.9rem;font-weight:300">
+                        <label class="font-size-18 font-weight-300">Designation</label>
+                        <md-select ng-model="vm.loginForm.designationList" name="designation">
+                          <md-option ng-value="{{designation.id}}" ng-repeat="designation in designations" class="md-body-1">{{designation.designation}}</md-option>
+                        </md-select>
+	                    <div ng-messages="loginForm.designation.$error" role="alert" multiple>
+	                        <div ng-message="required">
+	                            <span>Designation is required</span>
+	                        </div>
+	                    </div>
+	                </md-input-container> -->
+
+
+
+	                <md-input-container class="md-block md-input-focused mb-15 " md-no-float >
+
+		                <label class="font-size-16 font-weight-300"></label>
+		                <lf-ng-md-file-input lf-placeholder="Select Profile Picture" lf-files="files" lf-api="api09" lf-maxcount="1" lf-filesize="2MB" lf-totalsize="2MB" accept="image/*" progress preview ></lf-ng-md-file-input>
+					    <div ng-messages="LoginForm.file.$error" role="alert">
+					        <div ng-message="required">This is required.</div>
+					        <div ng-message="maxcount">Too much files.</div>
+					        <div ng-message="filesize">File size too large.</div>
+					        <div ng-message="totalsize">Total size too large.</div>
+					        <div ng-message="mimetype">Invalid File Type</div>
+					    </div>
+					    <div><span class="font-size-16 red-fg" ng-hide="{{vm.user_error}}">{{error_user_login}}</span></div>
+
+                    </md-input-container>
+     
+
+	                <div class="red-fg font-size-16 mv-10">{{serverErrorMessage}}</div>
+	                <div layout="row">
+	                <md-button type="submit" class="ph-15 md-raised md-accent submit-button" aria-label="Register Now"
+	                           ng-disabled="loginForm.$invalid || loginForm.$pristine" ng-click="userRegister()"  ng-disabled="isDisabled">
+	                    Register Now
+	                </md-button><md-progress-circular md-mode="indeterminate" md-diameter="20" ng-show="isLoading" class="mt-15"></md-progress-circular>
+	                </div>
+	            </form>
+	            <br>
+	            <br>
+	            <div class="register" layout="column" layout-sm="column" layout-align="center center">
+	                <div class="text font-size-16">Already have an account? </div>
+	                  <md-button class="md-primary md-raised md-accent ph-15">
+	                <div><a class="white-fg font-size-16" ui-sref="app.new-login"  style=" text-decoration: none"> Login Here</a></div>
+	                  </md-button>
+	            </div>
+
+
+
+	            </md-content>
+            <!-- / CONTENT -->
+			</div>
+
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
+<style type="text/css">
+	.select2-container a{
+       border: none !important;
+       background:#fff  !important;
+       border-bottom: 1px solid #e1e1e1;
+
+
+    }
+   
+    .select2-arrow{
+        background: #fff !important;
+        border-left: none !important;
+
+    }
+     .select2-arrow b:after{
+       display: block;
+       content: '\25BC';
+       position:relative;
+       top:2px;
+       speak:none;
+       font-size: 13px;
+       transform: scaleY(0.5) scaleX(1);
+
+
+
+    }
+    .select2-container{
+        border-bottom: 1px solid #e1e1e1 !important;
+    }
+</style>

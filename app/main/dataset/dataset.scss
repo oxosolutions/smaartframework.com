@@ -1,0 +1,41 @@
+	.md-button:not([disabled]).md-raised:active,.md-button:not([disabled]).md-fab:active{
+	background-color:rebeccapurple !important;
+}
+.md-warn {
+	width: 110px;
+}
+.md-warn > md-icon{
+	margin-top: 8px;
+	float: left;
+} 
+.action-separator{
+	color:#787878;
+	padding: 0 4px;
+}
+.dataset-nav > a > button{
+width:92%;
+margin-right: 10px;
+
+}
+.dataset-nav > a > button > .ng-scope{
+	float: left;
+}
+
+.dataTables_wrapper .top {
+                    border-bottom: 1px solid #e8e8e8;
+                        padding: 0 0 24px 0;
+                    }
+                    .goal-header{
+                            height: 75px;
+    min-height: 75px;
+    max-height: 90px;
+    padding: 24px;
+
+    }
+
+    .dataTables_wrapper .dataTables_filter input{
+            width: 225px;
+    }
+    .page-layout .top-bg{
+                    height: 139px;
+                }

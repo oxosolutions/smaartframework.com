@@ -1,0 +1,95 @@
+<div id="ie_warning">
+
+<p style="color:red;font-size: 16px;"><span class="close_button">Close</span> You are using Internet Explorer. Some features of the website use latest technologies which are not supported by Internet Explorer. Please use recent version of <strong>Google Chrome</strong> or <strong>Mozilla Firefox</strong> for best user experience.</h1>
+</div>
+<script>
+$( document ).ready(function() {
+    $( ".close_button" ).click(function() {
+	  $( "#ie_warning" ).hide();
+	});
+});
+</script>
+
+<div class="top-row" layout="row" layout-sm="column" layout-align="start start">
+
+    <div flex="70" flex-sm="60" layout="row" layout-align="start start" >
+        <div class="navigation-toggle" hide-gt-sm>
+            <md-button class="md-icon-button" ng-click="vm.toggleHorizontalMobileMenu()"
+                       aria-label="Toggle Mobile Navigation">
+                <md-icon md-font-icon="icon-menu"></md-icon>
+            </md-button>
+        </div>
+
+        <div class="logo-images" layout="row" flex="80" layout-align="center center">
+
+             <div flex="10" layout="row" layout-align="end center" class="pl-15"><span >  <a href="http://fhts.ac.in/" target="_blank"><img md-menu-align-target class="Logo" src="assets/images/logo/logo_fhts.png" height="100%"></a></span></div>
+
+            <div flex="10" layout="row" layout-align="center center" class=""><span class=""><a href="/"><img md-menu-align-target class="Logo" src="assets/images/logo/logo_smaart.png" height="80%"></a></span></div>
+           
+            <div flex class="pr-15"><span > <a href="/" style="font-size: 30px;text-decoration: none;">SMAART™ Framework</a></span></div>
+          
+           
+        </div>
+    </div>
+
+    <div flex layout="row" layout-align="end center" hide-sm>
+        <md-progress-circular id="toolbar-progress" ng-if="$root.loadingProgress" class="md-accent"
+                              md-mode="indeterminate" md-diameter="32">
+        </md-progress-circular>
+
+
+       <md-menu-bar id="user-menu" ng-show="isLogined">
+            <md-menu md-position-mode="left bottom">
+                <md-button class="user-button" ng-click="$mdOpenMenu()"
+                           aria-label="User settings"
+                           translate translate-attr-aria-label="TOOLBAR.USER_SETTINGS">
+                    <div layout="row" layout-align="space-between center">
+                        <div class="avatar-wrapper">
+                            <img md-menu-align-target class="avatar" ng-src="{{profile_pic}}">
+                        </div>
+                        <span class="username" hide-sm style="text-transform: capitalize;">{{userName}}</span>
+                        <md-icon md-font-icon="icon-chevron-down"
+                                 class="icon s16" hide-sm></md-icon>
+                    </div>
+                </md-button>
+
+                <md-menu-content width="3" ng-show="isLogined">
+                    <md-menu-item class="md-indent" ui-sref="app.profile">
+                        <md-icon md-font-icon="icon-account" class="icon"></md-icon>
+                        <md-button>View Profile</md-button>
+                    </md-menu-item>
+
+                    <md-menu-item class="md-indent" ui-sref="app.edit-profile">
+                        <md-icon md-font-icon="icon-pencil" class="icon"></md-icon>
+                        <md-button>Edit Profile</md-button>
+                    </md-menu-item>
+
+                    <md-menu-item class="md-indent" ui-sref="app.change_password">
+                        <md-icon md-font-icon="icon-key-variant" class="icon"></md-icon>
+                        <md-button>Change Password</md-button>
+                    </md-menu-item>
+
+                    <md-menu-item class="md-indent" ui-sref="app.dashboard">
+                        <md-icon md-font-icon="icon-account-multiple" class="icon"></md-icon>
+                        <md-button>Manage User</md-button>
+                    </md-menu-item>
+
+                    <md-menu-item class="md-indent" ui-sref="app.settings">
+                        <md-icon md-font-icon="icon-cog" class="icon"></md-icon>
+                        <md-button>Settings</md-button>
+                    </md-menu-item>
+
+                 
+                    <md-menu-divider></md-menu-divider>
+
+                    <md-menu-item class="md-indent" ui-sref="app.logout">
+                        <md-icon md-font-icon="icon-logout" class="icon"></md-icon>
+                        <md-button>Logout</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-menu-bar>
+
+
+    </div>
+</div>

@@ -1,0 +1,158 @@
+#toolbar {
+    height: $toolbarHeight;
+    min-height: $toolbarHeight;
+    max-height: $toolbarHeight;
+    z-index: 55 !important;
+    border-bottom:1px solid #e8e8e8;
+
+    #navigation-toggle {
+        width: $toolbarHeight;
+        min-width: $toolbarHeight;
+        height: $toolbarHeight;
+        margin: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 0;
+    }
+
+    #user-menu {
+        height: $toolbarHeight;
+        padding: 0;
+
+        md-menu-item .md-button {
+            font-size: 15px;
+
+            md-icon {
+                margin: auto 16px auto 0;
+            }
+        }
+
+        .user-button {
+            margin: 0;
+            padding: 0 16px;
+            height: $toolbarHeight;
+            text-transform: none;
+
+            .avatar-wrapper {
+                position: relative;
+
+                .status {
+                    position: absolute;
+                    bottom: -3px;
+                    right: 5px;
+                }
+            }
+
+            .username {
+                margin: 0 12px 0 8px;
+            }
+        }
+    }
+
+    #language-menu {
+        height: $toolbarHeight;
+
+        .language-button {
+            min-width: $toolbarHeight;
+            height: $toolbarHeight;
+            margin: 0;
+            padding: 0 16px;
+            border-radius: 0;
+
+            .iso {
+                text-transform: uppercase;
+            }
+
+            .flag {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    #quick-panel-toggle {
+        width: $toolbarHeight;
+        height: $toolbarHeight;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .toolbar-separator {
+        height: $toolbarHeight;
+        width: 1px;
+        background: rgba(0, 0, 0, 0.12);
+    }
+}
+
+#language-menu-content {
+
+    md-menu-item {
+
+        .flag {
+            margin-right: 16px;
+        }
+    }
+}
+
+#language-message {
+    min-height: 88px;
+    max-width: 600px;
+
+    .md-toast-content {
+        height: 90px;
+    }
+}
+
+// RESPONSIVE
+@media screen and (max-width: $layout-breakpoint-xs) {
+
+    #toolbar {
+
+        #user-menu {
+
+            .user-button {
+                min-width: 64px;
+                padding: 0 2px 0 10px;
+            }
+        }
+    }
+}
+
+
+//scrollbar
+.ps-container>.ps-scrollbar-y-rail>.ps-scrollbar-y {
+    width: 10px;
+}
+
+.page-layout .top-bg {
+    background-image: url(../assets/images/backgrounds/header-bg.png);
+}
+#profile .header {
+    background: url(../assets/images/backgrounds/march.jpg) no-repeat 0 45%;
+}
+
+#ie_warning {
+    position: absolute;
+    width: 800px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 2px solid #cc0000;
+    top: 122px;
+    left: 50%;
+    margin-left: -400px;
+    text-align: justify;
+    display: none;
+}
+html.explorer #ie_warning{
+display:block;
+}
+.close_button {
+    float: right;
+    padding: 0px 4px;
+    color: #ffffff;
+    cursor: pointer;
+    background-color: #cc0000;
+    margin: -24px -6px 0 0;
+}
+
+html.explorer .layout-column > .select_goal_prop.flex {
+    min-height: 100px;
+}

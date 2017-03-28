@@ -1,0 +1,78 @@
+<!-- <link rel="stylesheet" type="text/css" href="app/main/dataset/dataset.css"> -->
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg "></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Validate Dataset: {{dataset_name}}</span>
+            </div>
+
+
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+               
+                    <div flex="100" layout="row" layout-align="end center" ng-include="'app/main/dataset/include/_action.html'"></div>
+             
+            </div>
+           
+            <md-content class="content" >
+
+               <div  layout="row" ng-show="showTable">
+                    <div flex layout="row" layout-align="start center" class="md-subhead">
+                        <span class="text-boxed md-red-bg p-10"></span>
+                        Datacells with error values are highlighted with red background.
+                    </div>
+                    <div flex layout="row" layout-align="end center">
+                    <a href="javascript:;">
+                        <md-button class="ph-15 md-accent md-raised" ng-click="saveEditedDataset()" ng-disabled="isDisabled" style="float:right;">Save Dataset</md-button>
+                        <md-progress-circular md-mode="indeterminate" ng-show="isLoading" md-diameter="20" style="float:right;margin-top:8%;"></md-progress-circular><span style="color:red;font-size:13px;">{{error_message}}</span>
+                    </a>
+                    </div>
+
+
+                </div>
+                <div ng-show="noWrongData" layout="row" layout-align="center center" class="pv-20">
+                    <div flex="70" layout="row" layout-align="center center" class="pv-20" style="border: 1px dashed #c8c8c8;">
+                        <h1 style="color:#a8a8a8">Dataset is validated successfully. <br><span class="md-body-1 text-center" layout="row" layout-align="center center">No error found in the dataset!</span></h1>
+                    </div>
+                     
+                </div>
+                <div ng-show="showNotdefined" layout="row" layout-align="center center" class="pv-20">
+                    <div flex="70" layout="row" layout-align="center center" class="pv-20" style="border: 1px dashed #c8c8c8;">
+                        <h1 style="color:#a8a8a8">Dataset is not defined yet<br><span class="md-body-1 " layout="row" layout-align="center center">Please define the dataset first to validate the data</span></h1>
+                    </div>
+                     
+                </div>
+                <div ng-show="showTable">
+                    <p style="font-style: italic;">Showing those rows which data is not as per your defined data type.</p>
+                    <hot-table settings="settings"
+                               row-headers="false"
+                               min-spare-rows="minSpareRows"
+                               datarows="items"
+                               height="500"
+                               width="1255" hot-id="my-handsontable">
+                            <hot-column data='{{key}}' title="key" ng-repeat="(key, item) in items[0]" read-only="key == 'id'"></hot-column>
+                    </hot-table>    
+                </div>
+                
+            </md-content>
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

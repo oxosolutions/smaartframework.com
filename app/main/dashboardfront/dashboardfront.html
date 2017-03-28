@@ -1,0 +1,839 @@
+ <div class="page-layout simple fullwidth">
+
+    
+    <div class="header md-accent-bg">
+        <span class="h2">Dashboard</span>
+    </div>
+
+    
+    <style type="text/css">
+        .page-layout.simple.fullwidth > .header{
+                height: 70px;
+                min-height: 70px;
+                max-height: 70px;
+        } 
+        a{
+            text-decoration: none;
+        }
+        .list_numaric{
+            width:36px;
+            text-align: center;
+            border-radius: 100%;
+            color:white;
+        }
+        a{
+            text-decoration: none
+        }
+        .ms-widget-front > .filp-widget{
+           
+            cursor: pointer;
+        }
+        .ms-widget-back .md-subhead{
+            padding-bottom: 14px;
+        }
+        .ng-isolate-scope > .ms-widget-front{
+            min-height: 340px;
+        }
+        .profile_buttons .md-accent-bg:hover{
+            background: rgb(10,92,255);
+            color: white
+        }
+        .card-footer{
+            margin-top:10px;
+        }
+        .ms-widget-front button:hover, .ms-widget-front a:hover{
+            color:black;
+
+        }
+        ms-widget-back > .ng-scope > a:hover {
+            color:black;
+            opacity: 1 !important;
+        }
+        .flip-to-front > md-icon{
+            font-size:18px;
+             width: 24px !important;
+    line-height: 24px !important;
+    height: 24px !important;
+    text-align: center;
+        }
+        .flip-to-front > md-icon:hover{
+            font-size:18px;
+            background-color: red;
+    /* padding: 2px; */
+  
+    width: 24px !important;
+    line-height: 24px !important;
+    height: 24px !important;
+    text-align: center;
+    color: white;
+    border-radius: 100%;
+}
+.white-bg a{
+    text-decoration: none;
+    color: black
+}
+.ms-widget-back .flip-to-front > .icon-close{
+    cursor: pointer;
+}
+.border-bottom{
+    border-bottom:1px solid #e8e8e8;
+}
+.border-bottom.last-border-none:last-child{
+    border-bottom:none;
+}
+.hover-anchor{
+    
+    padding: 6px 12px;
+    
+   
+    
+}
+.hover-anchor:hover{
+    background-color: orange;
+    padding: 6px 12px;
+    color: #fff !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+    </style> 
+    
+    <div class=" md-background-bg md-hue-2 p-10" ng-show="dashboard">
+        <div class="pv-10 ph-15 " >
+           
+            
+            <div class="widget-group" layout="row" flex="100" layout-wrap>
+
+
+                <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33" ng-show="profile">
+
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                        <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" ng-click="flipWidget()">
+                           <div class="md-title ">
+                               Profile
+                           </div>
+                           <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Flip the widget</span></md-tooltip>
+                        </div>
+                         <md-divider></md-divider>
+                        <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                            <div class="red-fg font-size-92 line-height-72 pv-24">
+                                <img md-whiteframe="2" class="md-avatar avatar contact-avatar huge md-raised" ng-src="{{profilePic}}">
+                            </div>
+                            <div class="h3 secondary-text font-weight-500">Welcome {{userProfile[0].name}}</div>
+                        </div>
+
+                        <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                            <div layout="row" flex="90">
+                            </div>
+                            <div layout="row" layout-align="center center">
+                                <md-button class="md-accent-bg ph-15" ui-sref="app.profile">view profile</md-button>
+                            </div>
+                        </div>
+                    </ms-widget-front>
+                    <!-- / Front -->
+
+                    <!-- Back -->
+                    <ms-widget-back class="pv-15 grey-50-bg">
+                        <div class="md-subhead pb-10 pl-15"> Actions</div>
+                      
+                        <div class="flip-to-front mr-15 mt-15" layout="column" layout-align="center center">
+
+                           
+                                <md-icon md-font-icon="icon-close" class="" ng-click="flipWidget()"></md-icon>
+                                                       
+                        </div>
+                        <md-divider></md-divider>
+
+                        <div layout="column" layout-align="center stretch" class="mt-25 ph-15 profile_buttons">
+                            <md-button class="blue-bg white-fg " ui-sref="app.profile" style="padding:5px;margin-bottom: 18px;opacity:0.7">View Profile</md-button>
+                            
+                            <md-button class="red-bg white-fg" ui-sref="app.edit-profile" style="padding:5px;margin-bottom: 18px;opacity:0.7">Edit Profile</md-button>
+                            
+                            <md-button class="blue-bg white-fg " ui-sref="app.change_password" style="padding:5px;margin-bottom: 18px;opacity:0.7">Change Password</md-button>
+                           
+                            <md-button class="red-bg white-fg"  ui-sref="app.settings" style="padding:5px;margin-bottom: 18px;opacity:0.7">Settings</md-button>
+                        </div>
+                       
+                       
+                    </ms-widget-back>
+                    <!-- / Back -->
+
+                </ms-widget>
+
+
+                <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33" ng-show="userlist">
+
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                        <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" ng-click="">
+                           <div class="md-title ">
+                              Organization Detail
+                           </div>
+
+                           
+                        </div>
+                         <md-divider></md-divider>
+                        <div class="" layout="column" layout-align="center stretch">
+                            
+                            
+                            <div layout="row" layout-wrap>
+                                <div flex="100" class="md-subhead text-center pv-10 ">Organization Name</div>
+                                <div flex="100" class="md-subhead text-center pv-5 grey-100-bg mh-10 mb-10">{{organization_detail['organization_name']}}</div>
+                            </div>
+                            <md-divider></md-divider>
+                            <div layout="row"  layout-wrap>
+                                <div flex="100" class="md-subhead text-center pv-10 ">Organization ID</div>
+                                <div flex="100" class="md-subhead text-center pv-5 grey-100-bg mh-10 mb-10">{{organization_detail['id']}}</div>
+                            </div>
+                            <md-divider></md-divider>
+                            <div layout="row" layout-wrap>
+                                <div flex="100" class="md-subhead text-center pv-10 ">App Activation Code</div>
+                                <div flex="100" class="md-subhead text-center pv-5 grey-100-bg mh-10 mb-10">{{organization_detail['activation_code']}}</div>
+                              
+                            </div>
+                            
+                        </div>
+
+                       
+                    </ms-widget-front>
+                    <!-- / Front -->
+
+                   
+                </ms-widget>
+
+
+                <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33" ng-show="userlist">
+
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                        <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" ng-click="flipWidget()">
+                           <div class="md-title ">
+                              Manage Users
+                           </div>
+
+                           
+                        </div>
+                         <md-divider></md-divider>
+                        <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                            <div class="teal-fg font-size-92 line-height-72 pv-35">
+                                {{userCount}}
+                            </div>
+                            <div class="h3 secondary-text font-weight-500"> Users Avaliable</div>
+                        </div>
+
+                        <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                            <div layout="row" flex="50">
+                                 <md-button class="md-accent-bg ph-15" ui-sref="app.dashboard">All users</md-button>
+                               
+                                
+                            </div>
+                            <div layout="row" flex layout-align="center center">
+                               <!--  <md-button class="md-icon-button" aria-label="more" ng-click="flipWidget()">
+                                      <md-icon md-font-icon="icon-swap-horizontal"></md-icon>
+                                </md-button> -->
+                                 <md-button class="md-primary-bg ph-15" ng-click="flipWidget()" aria-label="recent user">ReCents users</md-button>
+                               
+                            </div>
+                        </div>
+                    </ms-widget-front>
+                    <!-- / Front -->
+
+                    <!-- Back -->
+                    <ms-widget-back layout="column" class="pv-15 grey-50-bg">
+                        <div >
+                            <div class="md-subhead pb-10 pl-15">Recent Users</div>
+                            <div class="flip-to-front mr-15 mt-15" layout="column" layout-align="center center">
+
+                               
+                                    <md-icon md-font-icon="icon-close" class="" ng-click="flipWidget()"></md-icon>
+                                                           
+                            </div>
+                        </div>
+                        <md-divider ></md-divider>
+
+                        <div  class="ph-15" ms-scroll>
+                            <!-- <div ng-repeat='user in userList' class="p-10" layout="row">
+
+                                 <div flex="100">
+                                    <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to view the User</span></md-tooltip>
+                                    <div layout="row"  flex="100" ng-click="null" ui-sref="#" class="md-body-1 mr-10 md-0-line">
+
+                                        <span class="teal-bg list_numaric">{{$index + 1}}</span>
+
+                                        <div class="ml-10">{{user.name}}</div>
+                                        <md-divider></md-divider>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div  ng-repeat='user in userList' >
+                                <div layout="row">
+                                    <div flex="80" layout="row" class="md-button " ui-sref="app.dashboard">
+                                        <div>
+                                          <div class="teal-bg white-fg line-height-24 text-center mv-10" style="width:24px;border-radius:50%">
+                                              {{$index+1}}
+                                          </div>
+                                        </div>
+                                        <div class="pl-5">
+                                            <span class="font-size-14 font-weight-400" style="text-transform: capitalize;">{{user.name}}</span>
+                                        </div> 
+                                         <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to View User</span></md-tooltip>
+                                    </div>
+                                    <div ng-if="user.approved == '0'" ng-click="approve(user.id,$index)" flex="10" class="md-button " layout="row" layout-align="center center">
+                                        <span class="font-size-14 font-weight-400" style="text-transform: capitalize;">Approve</span>
+                                         <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to Approve the user</span></md-tooltip>
+                                    </div>
+                                    <div ng-if="user.approved == '1'" ng-click="unapprove(user.id,$index)" flex="10" class="md-button " layout="row" layout-align="center center">
+                                        <span class="font-size-14 font-weight-400" style="text-transform: capitalize;">un-Approve</span>
+                                        <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to un-Approve the user</span></md-tooltip>
+                                    </div>
+                                </div>
+                                <md-divider ng-if="$index < userList.length - 1"></md-divider>
+                            </div>
+                            <div>
+                                <md-progress-circular md-mode="indeterminate" md-diameter="10" style="float:left;margin-top:1%;display: none;" class="loader_{{$index}}"></md-progress-circular>
+                            </div>
+                            
+                            
+                        </div>  
+                        <md-divider></md-divider>
+                        <div flex layout="row" layout-align="end center">
+                            <a ui-sref="app.dashboard" class="pt-15 pr-15">
+                            <md-button class="blue-bg white-fg ph-15" aria-label="all user">
+                            All Users<md-tooltip md-direction="top" class="md-body-1"><span class="p-10">List of all Users</span></md-tooltip>
+                            </md-button>
+                             </a>
+                        </div>
+                    </ms-widget-back>
+                    <!-- / Back -->
+
+                </ms-widget>
+
+
+                <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33" ng-show="survey">
+
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                        <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" ng-click="flipWidget()">
+                           <div class="md-title ">
+                               Surveys
+                           </div>
+
+                           
+                        </div>
+                         <md-divider></md-divider>
+                        <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                            <div class="orange-fg font-size-92 line-height-72 pv-35 ">
+                                {{surveyCount}}
+                            </div>
+                            <div class="h3 secondary-text font-weight-500">Surveys Avaliable</div>
+                        </div>
+
+                        <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                           <div layout="row" flex="50">
+                                 <md-button class="md-accent-bg ph-15" ui-sref="app.survey_list" aria-label="all surveys">All Surveys</md-button>
+                               
+                                
+                            </div>
+                            <div layout="row" flex layout-align="center center">
+                               <!--  <md-button class="md-icon-button" aria-label="more" ng-click="flipWidget()">
+                                      <md-icon md-font-icon="icon-swap-horizontal"></md-icon>
+                                </md-button> -->
+                                 <md-button class="md-primary-bg ph-15" ng-click="flipWidget()" aria-label="recent surveys">Recents Surveys</md-button>
+                               
+                            </div>
+                        </div>
+                    </ms-widget-front>
+                    <!-- / Front -->
+
+                    <!-- Back -->
+                    <ms-widget-back class="p-16 grey-50-bg">
+                        <div class="md-subhead">Recent Surveys</div>
+                        <div class="flip-to-front mr-15 mt-15" layout="column" layout-align="center center">
+
+                           
+                                <md-icon md-font-icon="icon-close" class="" ng-click="flipWidget()"></md-icon>
+                                                       
+                        </div>
+                        <md-divider></md-divider>
+                            <div class="p-0">
+                               <!--  <md-list ng-repeat='item in surveyList' class="p-0" layout="row" >
+                                    <div layout="row">
+                                        <div flex="85" style="width:370px;">
+                                            <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to view the survey</span></md-tooltip>
+                                            <md-list-item flex="90" class=" md-body-1">
+
+                                               <span class="light-blue-bg list_numaric" style="padding: 7px">{{$index + 1}}</span> <div class="ml-10 ">{{item.name}}</div>
+                                               <md-divider></md-divider>
+                                            </md-list-item>
+                                        </div>
+                                        <div flex layout="row" layout-align=" start center">
+                                            <a ui-sref="app.dataset_edit({id:item.id})">
+                                            <a ui-sref="#">
+                                            <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to edit the survey</span></md-tooltip>edit</a>  
+                                        </div>
+                                    </div>
+                                </md-list> -->
+                                <!-- <span class="font-weight-400 grey-fg md-title " layout="row" layout-align="center center" >OOPS! no survey available</span>  -->
+                                <div  ng-repeat='item in surveyList' >
+                                    <div layout="row" >
+                                        <div flex="90" layout="row" class="md-button " ui-sref="app.survey_addQuestion({id:item.id})">
+                                            <div flex="10">
+                                              <div class="orange-bg white-fg line-height-24 text-center mv-10" style="width:24px;border-radius:50%">
+                                                  {{$index+1}}
+                                              </div>
+                                            </div>
+                                            <div flex="90" class="pl-5" layout="row" layout-align="start center" >
+                                                <span class="font-size-14 font-weight-400" style="text-transform: capitalize;text-align:left">{{item.name}}</span>
+                                            </div>
+                                            <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to View Survey</span></md-tooltip>
+                                        </div>
+                                        <div flex="10" class="md-button " ui-sref="app.survey_edit({id:item.id})" layout="row" layout-align="center center">
+                                            <span class="font-size-14 font-weight-400" style="text-transform: capitalize;">Edit</span>
+                                            <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to edit Survey</span></md-tooltip>
+                                        </div>
+                                    </div>
+                                    <md-divider ng-if="$index < surveyList.length - 1"></md-divider>
+                                </div>
+                                
+                            </div>
+                    </ms-widget-back>
+                    <!-- / Back -->
+
+                </ms-widget>
+               
+                <!-- WIDGET 1 -->
+                <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33" ng-show="dataset">
+
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                        <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" ng-click="flipWidget()">
+                           <div class="md-title ">
+                               Datasets
+                           </div>
+
+                           
+                        </div>
+                         <md-divider></md-divider>
+                        <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                            <div class="light-blue-fg font-size-92 line-height-72 pv-35">
+                                {{DatasetsCount}}
+                            </div>
+                            <div class="h3 secondary-text font-weight-500">Datasets Avaliable</div>
+                        </div>
+
+                        <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                           <div layout="row" flex="50">
+                                 <md-button class="md-accent-bg ph-15 font-size-12" ui-sref="app.dataset_list" aria-label="all dataset">all datasets</md-button>
+                               
+                                
+                            </div>
+                            <div layout="row" flex layout-align="center center">
+                               <!--  <md-button class="md-icon-button" aria-label="more" ng-click="flipWidget()">
+                                      <md-icon md-font-icon="icon-swap-horizontal"></md-icon>
+                                </md-button> -->
+                                 <md-button class="md-primary-bg ph-15 font-size-12" ng-click="flipWidget() " aria-label="recent dataset">recent datasets</md-button>
+                               
+                            </div>
+                        </div>
+                    </ms-widget-front>
+                    <!-- / Front -->
+
+                    <!-- Back -->
+                    <ms-widget-back class="p-16 grey-50-bg" layout="column">
+                        <div >
+                            <div class="md-subhead">Recent datasets</div>
+                            <div class="flip-to-front mr-15 mt-15" layout="column" layout-align="center center">
+
+                           
+                                <md-icon md-font-icon="icon-close" class="" ng-click="flipWidget()"></md-icon>
+                                                       
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+
+                        <div>
+                          <!--   <md-list ng-repeat='item in DatasetsList' class="p-0" layout="row" >
+                                
+                                <div layout="row">
+                                    <div flex="85" style="width:370px;">
+                                        <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to view the dataset</span></md-tooltip>
+                                        <md-list-item flex="90"  ui-sref="app.dataset_view({id:item.id})" class=" md-body-1">
+
+                                           <span class="light-blue-bg list_numaric">{{$index + 1}}</span> <div class="ml-10 p-0">{{item.dataset_name}}</div>
+                                           <md-divider></md-divider>
+                                        </md-list-item>
+                                    </div>
+                                    <div flex layout="row" layout-align=" start center">
+                                        <a ui-sref="app.dataset_edit({id:item.id})"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to edit the dataset</span></md-tooltip>edit</a>  
+                                    </div>
+                                </div>
+
+
+
+                                <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to view the dataset</span></md-tooltip>
+                            <md-list-item flex="90"  ui-sref="app.dataset_view({id:item.id})" class=" md-body-1">
+
+                                   <span style="background-color:#03a9f4;width:36px;text-align: center;border-radius: 100%;color:white">{{$index + 1}}</span> <div class="ml-10 p-0">{{item.dataset_name}}</div>
+                                   <md-divider></md-divider>
+                                </md-list-item>
+
+                                <div layout="row" layout-align="end center "><a ui-sref="app.dataset_edit({id:item.id})"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to edit the dataset</span></md-tooltip>edit</a></div>
+                                
+                                  
+                           </md-list> -->
+                           <div  ng-repeat='item in DatasetsList' >
+                                <div layout="row" >
+                                    <div flex="90" layout="row" class="md-button " ui-sref="app.dataset_view({id:item.id})">
+                                        <div flex="10">
+                                          <div class="blue-bg white-fg line-height-24 text-center mv-10" style="width:24px;border-radius:50%">
+                                              {{$index+1}}
+                                          </div>
+                                        </div>
+                                        <div flex="90" class="pl-5" layout="row" layout-align="start center">
+                                            <span class="font-size-14 font-weight-400" style="text-transform: capitalize;text-align:left">{{item.dataset_name}}</span>
+                                        </div>
+                                        <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to View dataset</span></md-tooltip>
+                                    </div>
+                                    <div flex="10" class="md-button " ui-sref="app.dataset_edit({id:item.id})" layout="row" layout-align="center center">
+                                        <span class="font-size-14 font-weight-400" style="text-transform: capitalize;">Edit</span>
+                                        <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to edit dataset</span></md-tooltip>
+                                    </div>
+                                </div>
+                                <md-divider ></md-divider>
+                            </div>
+                            
+                        </div>
+                        <nd-divider></nd-divider>
+                        <div  layout="row" layout-align="end center" >
+                            <a ui-sref="app.dataset_list"  class="p-5">
+                            <md-button class="blue-bg white-fg ph-15" aria-label="list dataset">
+                            All Datasets<md-tooltip md-direction="top" class="md-body-1"><span class="p-10">List of all dataset</span></md-tooltip>
+                            </md-button>
+                            </a>
+                        </div>
+
+                    </ms-widget-back>
+                    <!-- / Back -->
+
+                </ms-widget>
+                <!-- WIDGET 2 -->
+                <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33" ng-show="visualization">
+
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                        <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" ng-click="flipWidget()">
+                           <div class="md-title ">
+                               Visualizations
+                           </div>
+
+                           
+                        </div>
+                        <md-divider></md-divider>
+                        <div class="pt-8 pb-32" layout="column" layout-align="center center">
+                            <div class="red-fg font-size-92 line-height-72 pv-35">
+                                {{VizCount}}
+                            </div>
+                            <div class="h3 secondary-text font-weight-500">Visualizations Availables</div>
+                        </div>
+
+                        <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                            <div layout="row" flex="50">
+                                 <md-button class="md-accent-bg ph-15 font-size-12" ng-click="allViz()" aria-label="all viz">All Visualizations</md-button>
+                               
+                                
+                            </div>
+                            <div layout="row" flex layout-align="center center">
+                               <!--  <md-button class="md-icon-button" aria-label="more" ng-click="flipWidget()">
+                                      <md-icon md-font-icon="icon-swap-horizontal"></md-icon>
+                                </md-button> -->
+                                 <md-button class="md-primary-bg ph-15 font-size-12" ng-click="flipWidget()" aria-label="recent viz">ReCents visualizations</md-button>
+                               
+                            </div>
+                        </div>
+                    </ms-widget-front>
+                    <!-- / Front -->
+
+                    <!-- Back -->
+                    <ms-widget-back class="p-16 grey-50-bg">
+                        <div class="md-subhead">Recent Visualizations</div>
+                        <div class="flip-to-front mr-15 mt-15" layout="column" layout-align="center center">
+                            <md-icon md-font-icon="icon-close" class="" ng-click="flipWidget()"></md-icon>                           
+                        </div>
+                        <md-divider></md-divider>
+
+                        <div class="" >
+                            <!-- <md-list ng-repeat='item in VizList' class="p-0 border-bottom last-border-none" layout="row">
+                                 <div layout="row">
+                                    <div flex="85" style="width:370px">
+                                         <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to view the Visualizations</span></md-tooltip>
+                                        <md-list-item flex="90" ui-sref="app.genvisual_view({id:item.id})" class="md-body-1 mr-10 mv-0">
+                                           <span class="red-bg list_numaric">{{$index + 1}}</span>
+                                           <div class="ml-10">{{item.visual_name}}</div>
+                                        </md-list-item>
+                                    </div>
+                                    <div flex layout="row" layout-align=" start center">
+                                        <a ui-sref="app.genvisuals_edit({id:item.id})" ><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to edit the Visualizations</span></md-tooltip>edit</a>    
+                                    </div>
+                                    
+                                </div>
+                            </md-list> -->
+                            <div  ng-repeat='item in VizList' >
+                                <div layout="row" >
+                                    <div flex="90" layout="row" class="md-button " ui-sref="app.genvisual_view({id:item.id})">
+                                        <div flex="10">
+                                          <div class="red-bg white-fg line-height-24 text-center mv-10" style="width:24px;border-radius:50%">
+                                              {{$index+1}}
+                                          </div>
+                                        </div>
+                                        <div flex="90" class="pl-5" layout="row" layout-align="start center">
+                                            <span class="font-size-14 font-weight-400" style="text-transform: capitalize;text-align:left">{{item.visual_name}}</span>
+                                        </div>
+                                        <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to View Visualization</span></md-tooltip>
+                                    </div>
+                                    <div flex="10" class="md-button " ui-sref="app.genvisuals_edit({id:item.id})" layout="row" layout-align="center center">
+                                        <span class="font-size-14 font-weight-400" style="text-transform: capitalize;">Edit</span>
+                                        <md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Click to edit Visualization</span></md-tooltip>
+                                    </div>
+                                </div>
+                                <md-divider ng-if="$index < VizList.length - 1"></md-divider>
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout="row" layout-align="end center" class="">
+                            <md-button class="blue-bg white-fg ph-15" ng-click="allViz()">
+                            All Visualizations<md-tooltip md-direction="top" class="md-body-1"><span class="p-10">click to view all visualizations</span></md-tooltip>
+                            </md-button>
+                        </div>
+                    </ms-widget-back>
+                    <!-- / Back -->
+
+                </ms-widget>
+                <!-- WIDGET 3 -->
+                <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33">
+
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                    <a href="http://www.smaartframework.com/" target="_blank" title="" class="about_redirect">
+                        <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" >
+                           <div class="md-title ">
+                               About SMAART&trade; Framework
+                           </div>
+                        </div>
+                    </a>
+                        <md-divider></md-divider>
+                        <div class="pv-20" layout="column" layout-align="center center"  style="position: relative;">
+                            <div class="gery-400-fg md-subhead ph-20" style="text-align: justify;max-height:164px;" ms-scroll>
+                                SMAART™ (Sustainable Multisector Accessible Affordable Reimbursable Tailored) is a Human Centered Informatics Platform to support Visual Analytics of Big Data to make it meaningful so that data driven evidence based informed decision making is done SMAART™ (Sustainable Multisector Accessible Affordable Reimbursable Tailored) is a Human Centered Informatics Platform to support Visual Analytics of Big Data to make it meaningful so that data driven evidence based informed decision making is done....
+
+                            </div>
+                            
+                        </div>
+
+                        <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                            <div layout="row" flex="50">
+                                
+                               
+                                
+                            </div>
+                            <div layout="row" flex layout-align="center center">
+                               <!--  <md-button class="md-icon-button" aria-label="more" ng-click="flipWidget()">
+                                      <md-icon md-font-icon="icon-swap-horizontal"></md-icon>
+                                </md-button> -->
+                                 <md-button class="md-primary-bg ph-15" href="http://www.smaartframework.com/" target="_blank">read more</md-button>
+                               
+                            </div>
+                        </div>
+                    </ms-widget-front>
+                    <!-- / Front -->
+                </ms-widget>
+
+                <ms-widget flippable="true" layout="column" flex="100" flex-gt-xs="50" flex-gt-md="33" ng-show="tweet" >
+
+                    <!-- Front -->
+                    <ms-widget-front class="white-bg">
+                        <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" >
+                           <div class="md-title ">
+                               Latest Tweets
+                           </div>
+                        </div>
+                        <md-divider></md-divider>
+                        <div class="" layout="column" layout-align="center center" ng-if="twt">
+                            <div class="gery-400-fg md-subhead" style="text-align: justify;min-height:250px;max-height:275px;overflow: hidden;width: 100%;text-align: center;position: relative;" ms-scroll>
+                                <a class="twitter-timeline" href="https://twitter.com/{{twitter_username}}" ng-if="twitter_username != '' ">Tweets by
+                                <span ng-if="twitter_username != '' ">{{twitter_username}}</span>
+                                </a>
+                                <p ng-click="visitSettings()" ng-if="twitter_username == '' " style="padding-bottom: 23px;margin-left: 21px;border: 2px dashed #ededed;margin-right: 21px;font-size: 21px;font-weight: 400;color: red;margin-top: 74px; cursor: pointer"> <br> Click here to define Twitter handler. </p>
+
+                                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </div>
+                        </div>
+                    </ms-widget-front>
+                    <!-- / Front -->
+                </ms-widget>
+            </div>
+        </div>
+    </div>
+
+    <div layout="row" layout-wrap="" layout-align="start space-around "  class="mt-40" ng-show="loginLinks">
+
+
+        <ms-widget flippable="true" layout="column" flex="33" flex-xs="100" flex-md="50" flex-sm="50">
+
+            <!-- Front -->
+            <ms-widget-front class="white-bg">
+                <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" >
+                   <div class="md-title ">
+                       About SMAART&trade; Framework
+                   </div>
+
+                   
+                </div>
+                <md-divider></md-divider>
+                <div class="pt-20 pb-20" layout="column" layout-align="center center" >
+                    <div class="gery-400-fg md-subhead pv-10 ph-10" style="text-align: justify;min-height: 163px;max-height:206px" ms-scroll>
+                        SMAART™ (Sustainable Multisector Accessible Affordable Reimbursable Tailored) is a Human Centered Informatics Platform to support Visual Analytics of Big Data to make it meaningful so that data driven evidence based informed decision making is done...
+
+                    </div>
+                    
+                </div>
+
+                <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                    <div layout="row" flex="50" layout-align="center center">
+                        
+                       
+                        
+                   
+                         <md-button class="md-primary-bg ph-15" href="http://www.smaartframework.com/" target="_blank">Read More</md-button>
+                       
+                    </div>
+                </div>
+            </ms-widget-front>
+            <!-- / Front -->
+
+           
+        </ms-widget>
+
+
+        <ms-widget flippable="true" layout="column" flex="33" flex-xs="100" flex-md="50" flex-sm="50">
+
+            <!-- Front -->
+            <ms-widget-front class="white-bg">
+                <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center">
+                    <div class="md-title ">
+                        Login
+                    </div>
+                </div>
+                <md-divider></md-divider>
+                <div class="" layout="column" layout-align="center center">
+                    <div class="red-fg font-size-92 line-height-72 pv-30">
+                        <md-icon md-font-icon="icon-lock-unlocked" class="md-accent-fg s120"></md-icon>
+                    </div>
+                    <div class="h3 secondary-text font-weight-500">Sign in to your account</div>
+                </div>
+
+                <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                     <div layout="row" flex="100" layout-align="center stretch">
+
+                         <md-button class="md-accent-bg ph-15" ui-sref="app.new-login">Login Now</md-button>
+                       
+                    </div>
+                </div>
+            </ms-widget-front>
+            <!-- / Front -->
+
+            <!-- Back -->
+            <ms-widget-back class="p-16 grey-50-bg">
+                
+
+
+            </ms-widget-back>
+            <!-- / Back -->
+
+        </ms-widget>
+
+
+        <ms-widget flippable="true" layout="column" flex="33" flex-xs="100" flex-md="50" flex-sm="50">
+
+            <!-- Front -->
+            <ms-widget-front class="white-bg">
+                <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" >
+                   <div class="md-title ">
+                       Register
+                   </div>
+
+                   
+                </div>
+                 <md-divider></md-divider>
+                <div class="" layout="column" layout-align="center center">
+                    <div class="light-blue-fg font-size-92 line-height-72 pv-15">
+                        <md-icon md-font-icon="icon-account" class="md-accent-fg s148"></md-icon>
+                    </div>
+                    <div class="h3 secondary-text font-weight-500">Sign up a new user account</div>
+                </div>
+
+                <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start center">
+                   <div layout="row" flex="100" layout-align="center stretch">
+
+                         <md-button class="md-accent-bg ph-15" ui-sref="app.register">Register Now</md-button>
+                       
+                    </div>
+                </div>
+            </ms-widget-front>
+            <!-- / Front -->
+
+           
+
+        </ms-widget>
+        <!-- WIDGET 2 -->
+      
+        <ms-widget flippable="true" layout="column" flex="33" flex-xs="100" flex-md="50" flex-sm="50" >
+
+            <!-- Front -->
+            <ms-widget-front class="white-bg">
+                <div class="ph-8 pv-16 h-55 filp-widget" layout="row" layout-align="center center" ui-sref="app.forgot_password">
+                   <div class="md-title ">
+                       Forgot Password
+                   </div>
+
+                   
+                </div>
+                 <md-divider></md-divider>
+                <div class="" layout="column" layout-align="center center">
+                    <div class="light-blue-fg font-size-92 line-height-72 pv-25">
+                        <md-icon md-font-icon="icon-key-variant" class="md-accent-fg s124"></md-icon>
+                    </div>
+                    <div class="h3 secondary-text font-weight-500">Reset password of your account</div>
+                </div>
+
+                <div class="p-16 grey-50-bg border-top card-footer" layout="row" layout-align="start start">
+                   <div layout="row" flex="100" layout-align="center stretch">
+
+                         <md-button class="md-accent-bg ph-15" ui-sref="app.forgot_password">Reset Password</md-button>
+                       
+                    </div>
+                </div>
+            </ms-widget-front>
+            <!-- / Front -->
+
+           
+
+        </ms-widget>
+
+        <!-- WIDGET 3 -->
+       
+
+
+
+    </div>
+
+   
+    
+
+</div>
+
+
+
+
+
+
+

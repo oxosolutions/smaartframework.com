@@ -1,0 +1,36 @@
+<!-- DIALOG -->
+<md-dialog class="" aria-label="New Task" style="width:50%">
+   <form name="embedSettings" class="md-inline-form" novalidate>
+      <md-toolbar class="md-accent " layout="column">
+         <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+            <span class="title">Custom CSS and JS</span>
+            <md-button class="md-icon-button" ng-click="closeDialog()" aria-label="Close dialog" translate>
+               <md-icon md-font-icon="icon-close"></md-icon>
+            </md-button>
+         </div>
+      </md-toolbar>
+      <md-dialog-content class="" >
+	        <label class="font-size-16 font-weight-500 grey-600-fg mt-10">Embed CSS</label>
+	        <md-input-container class="md-block">
+	            
+	            <textarea rows="5" ng-model="chartsData.embedCss" md-select-on-focus aria-label="embedCss"></textarea>
+	        </md-input-container>
+
+	        <label class="font-size-16 font-weight-500 grey-600-fg mt-10">Embed JS</label>
+	        <md-input-container class="md-block">
+	            
+	            <textarea rows="5" ng-model="chartsData.embedJS" md-select-on-focus aria-label="embedCss"></textarea>
+	        </md-input-container>
+      </md-dialog-content>
+      <md-dialog-actions layout="row" layout-align="space-between center">
+         <div layout="row" layout-align="start center">
+         </div>
+         <div layout="row" layout-align="center end">
+            <md-button type="submit" ng-click="saveEmbedSettings()" class="send-button md-accent md-raised ph-1" >
+               Save Settings
+            </md-button>
+         </div>
+      </md-dialog-actions>
+   </form>
+</md-dialog>
+

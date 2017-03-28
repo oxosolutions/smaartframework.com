@@ -1,0 +1,156 @@
+<!-- <link rel="stylesheet" type="text/css" href="app/main/dataset/dataset.css"> -->
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg "></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Filter Dataset: {{dataset_name}}</span>
+            </div>
+
+
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center" ng-show="wizardCheck">
+                <div flex layout="row" layout-align="end center">
+                    <div flex layout="row" layout-align="end center" ng-include="'app/main/dataset/include/_action.html'"></div>
+                </div>
+            </div>
+
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="end center" ng-show="wizardSteps">
+                <div ng-show="wizardSteps" layout="row" style="margin-right: 26%;">
+                    <div layout="row" layout-align="center center"  >
+                        <md-icon  md-font-icon="icon-check" class="white-fg green-bg line-height-24 text-center" style="width:24px;border-radius: 50%;font-size:16px"></md-icon>
+                    </div>
+                    <div layout="row" layout-align="center center" class="md-accent-bg line-height-24 text-center mh-20" style="width:24px;border-radius: 50%;">
+                    2
+                    </div>
+                    <div>
+                        <div layout="row" layout-align="center center" class="grey-400-bg white-fg line-height-24 text-center" style="width:24px;border-radius: 50%;">
+                        3
+                        </div>
+                    </div>
+                    <!-- <div style="float: left;font-size: 25px;" class="wiz_step1">&#x25CB;</div>
+                    <div style="float: left;font-size: 25px;" class="wiz_step2">&#x25CB;</div>
+                    <div style="float: left;font-size: 25px;" class="wiz_step3">&#x25CB;</div> -->
+                </div>
+                <h3 style="float: right;opacity: 0.6;" ng-show="wizardSteps">Step 2</h3>
+                <md-button type="submit" ng-click="nextStep()" class="md-raised md-accent" aria-label="Submit" ng-disabled="next" style="float:right;" ng-show="wizardSteps">
+                    Next
+                </md-button>
+
+                <md-button class="md-raised md-primary ph-15" ng-click="skipStep()" style="float: right;" ng-show="wizardSteps" ng-disabled="disabelSkip">
+                    Skip this step
+                </md-button>
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+           
+
+            <!-- CONTENT -->
+            <div layout="row" layout-sm="row" layout-wrap layout-align="center stretch">
+                <div flex="50" layout="row" layout-align="start center" class="mv-20">
+                    <a href="javascript:;" >
+                        <span style="color:red;font-size:13px; float:right; margin-top:7%;">{{error_message}}</span>
+                    </a>
+                </div>
+                 <div flex="50" layout="row" layout-align="end center">
+                    <md-progress-circular md-mode="indeterminate" ng-show="isLoading" md-diameter="20" style="float:left;"></md-progress-circular>
+                    <span> Save a New Dataset from Selected Columns </span>
+                    <a href="javascript:;" >
+                        <md-button  class="ph-15 md-accent md-raised" ng-click="saveSubset()" style="float:right;"><md-tooltip md-direction="top" class="md-body-1">Create a subset of the selected dataset</md-tooltip>Create Subset</md-button>
+                        <span style="color:red;font-size:13px; float:right; margin-top:7%;">{{error_message}}</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+                
+                <div layout="row">
+                    <div flex="50" layout-wrap layout="row">
+                        <md-card flex="100" style="max-height: 260px;" class="ml-15">
+                            <h3 class="font-size-18 font-weight-700 pl-15">Data Filter by Row wise</h3>
+                            <md-divider></md-divider>
+                                <md-input-container flex="100" style="flex: 0" class="pl-20">
+                                  <label>Select Columns </label>
+                                  <md-select name="type" ng-model="column_key" ng-change="selectColumn(column_key)">
+                                    <md-option value="{{key}}" ng-repeat="(key,column) in columns track by $index" ng-if="$index != 0">{{column}}</md-option>
+                                  </md-select>
+                                </md-input-container>
+                                <md-input-container flex="100" style="flex: 0" class="pl-20">
+                                  <label>Select Value</label>
+                                  <md-select name="type" ng-model="column_val" multiple>
+                                    <md-option value="{{val}}" ng-repeat="(key, val) in colData track by $index" ng-if="$index != 0">{{val}}</md-option>
+                                  </md-select>
+                                </md-input-container>
+                            <div flex="100">
+                                <md-button class="ph-15 md-accent md-raised end end" ng-click="clear()" style="float:right;"><md-tooltip md-direction="top" class="md-body-1">Clear selected row wise filter</md-tooltip>Clear Row Filter</md-button>
+                            </div>
+                        </md-card>
+                    </div>
+                    <div flex="50" layout-wrap layout="row">
+                        <md-card flex="100" class="mr-15">
+                            <label class="font-size-18 font-weight-700 p-15">Select Columns to Create a Subset</label>
+                            <md-divider></md-divider>
+                            <div flex="100" class="ph-15" ng-repeat="(key,column) in columns " >
+                                <md-checkbox style="display:block;margin-bottom:5px;margin-top: 5px;" ng-model="vm.datasetColumns[key]" ng-value="key" ng-change="displayColumns()" ng-if="key != 'id'"  ng-click="checkNow($index)" ng-model="disablelist">
+                                            <label class="font-size-18 font-weight-300">{{column}}</label>
+                                </md-checkbox>
+                                <md-divider ng-if="$index!=0"></md-divider>
+                            </div>
+                        </md-card>
+                    </div>
+                </div>
+                
+
+                <!-- <div flex flex-sm="50" class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label class="font-size-18 font-weight-700">Select Columns To Display</label>
+                             <md-select ng-model="datasetColumns" multiple ng-change="displayColumns()">
+                                 <md-option ng-repeat="(key,column) in columns" value="{{key}}" ng-if="key != 'id'">
+                                         {{column}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div> -->
+
+                <div layout="row" flex="100" layout-wrap style="">
+                    
+                    
+                </div>
+
+            <div layout="column" layout-sm="row" layout-wrap layout-align="center stretch">
+                <div flex flex-sm="50" class="p-10">
+                    <md-checkbox ng-model="showDataset" aria-label="Checkbox 1" ng-change="previewData()">
+                      Preview the Subset to be created
+
+                    </md-checkbox>
+                </div>
+            </div>
+            <md-content class="content" >
+                <hot-table settings="settings"
+                           row-headers="false"
+                           min-spare-rows="minSpareRows"
+                           datarows="vm.items"
+                           height="500"
+                           ng-show="showHot" hotInstance ="tableIntance" ms-scroll>
+                        <hot-column data='{{key}}' title="item"  ng-repeat="(key, item) in vm.items[0]"></hot-column>
+                </hot-table>
+            </md-content>
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

@@ -1,0 +1,68 @@
+<!-- <link rel="stylesheet" type="text/css" href="app/main/dataset/dataset.css"> -->
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg "></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Edit Dataset: {{dataset_name}}</span>
+            </div>
+
+
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+                <div flex layout="row" layout-align="end center">
+                    <div flex layout="row" layout-align="end center" ng-include="'app/main/dataset/include/_action.html'"></div>
+                </div>
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+  
+
+            <!-- CONTENT -->
+            <md-content class="content" >
+                <div flex layout="row" layout-align="end center">
+                    <a href="javascript:;">
+                        <md-button class="ph-15 md-accent md-raised" ng-click="saveEditedDataset()" ng-disabled="isDisabled" style="float:right;">Save Changes</md-button>
+                        <md-progress-circular md-mode="indeterminate" ng-show="isLoading" md-diameter="20" style="float:right;margin-top:8%;"></md-progress-circular><span style="color:red;font-size:13px;">{{error_message}}</span>
+                    </a>
+
+                </div>
+
+
+                <md-button class="ph-15 md-accent md-raised" ng-click="next(nextPage)" ng-disabled="isDisabledNext" style="float:right;" ng-show="total_records > 1000">Next Records</md-button><md-progress-circular md-mode="indeterminate" ng-show="isLoadingNext" md-diameter="20" style="float:right;margin-top: 1.3%;"></md-progress-circular>
+                
+    
+                <md-button class="ph-15 md-accent md-raised" ng-click="prev(prevPage)" ng-disabled="isDisabledPrev" style="float:left;" ng-show="total_records > 1000">Previous Records</md-button>
+                <md-progress-circular md-mode="indeterminate" ng-show="isLoadingPrev" md-diameter="20" style="float:left;margin-top: 1.3%;"></md-progress-circular>
+                <div style="text-align: center;" ng-show="total_records > 1000">
+                    Showing {{from}} to {{to}} of {{total_records}} records
+                </div>
+                <hot-table settings="settings"
+                           row-headers="false"
+                           min-spare-rows="minSpareRows"
+                           datarows="vm.items"
+                           height="500"
+                            hot-id="my-handsontable"><!-- type="'numeric'" -->
+                        <hot-column data='{{key}}' title="key"  ng-repeat="(key, item) in vm.items[0]" read-only="key == 'id'"></hot-column>
+                </hot-table>
+            </md-content>
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

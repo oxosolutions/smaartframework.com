@@ -1,0 +1,194 @@
+<style type="text/css">
+    .questType , .pattern, .required{
+    border: none !important;
+    background:#fff  !important;
+    border-bottom: 1px solid #e8e8e8;
+}
+.text-field-design{
+    border:1px solid hsla(0, 0%, 0%, 0.12) !important;
+    border-width: 1px !important;
+    padding :8px !important;
+    
+}
+.text-field-design:focus{
+    border:1px solid !important;
+    border-width: 1px !important;
+    padding :8px !important;
+    
+}
+</style>
+<div md-whiteframe="2" class="mt-10 group-frame questDiv" flex="100" style="background-color: #fff">
+    <div layout="row">
+        <div>
+            <div class="md-primary-bg ph-10 pv-5 md-headline mt-5 quest-count">1</div>
+        </div>
+        <div class="md-subhead pl-10" layout="row" flex="90" layout-align="start center">
+            <div flex="50" layout="row" layout-align="start center">
+                Question
+            </div>
+            <div flex="50" layout="row" layout-align="end center">
+                <span class="text-boxed md-accent-bg white-fg font-size-14">Question ID:<span class="font-size-14 pl-10 questID"></span></span>
+            </div>
+        </div>
+        <div flex="10" layout="row" layout-align="end center" class="pr-10">
+            <md-button class="md-icon-button delete-question"><md-tooltip md-direction="top" class="md-body-1">Delete Question</md-tooltip><md-icon md-font-icon="icon-trash"></md-icon></md-button>
+
+            <md-button class="md-icon-button accrodian" style="transform: rotate(0deg);"><md-tooltip md-direction="top" class="md-body-1">Minimize / Maximize </md-tooltip><md-icon md-font-icon="icon-chevron-down"></md-icon></md-button>
+        </div>
+    </div>
+    <md-divider></md-divider>
+    <div layout="row" class="main-row">
+        <div flex="50" class="ph-20">
+                                            <md-input-container class="md-block grey-600-fg mb-15 font-size-18 font-weight-600 mt-25" md-no-float  >
+                                               <div class="md-subhead font-weight-300 ">Select question type</div>
+                                               <!--<md-select ng-model="survey.questType" ng-change="questionType()">
+                                                    <md-option ng-value="1" class="md-body-1" >Text box</md-option>
+                                                    <md-option ng-value="2" class="md-body-1" >Check Box</md-option>
+                                                    <md-option ng-value="3" class="md-body-1" >Radio Button</md-option>
+                                                    <md-option ng-value="4" class="md-body-1" >Dropdown</md-option>
+                                                    <md-option ng-value="5" class="md-body-1" >Text Only</md-option>
+                                                    <md-option ng-value="6" class="md-body-1" >Text With image</md-option>
+                                                </md-select>-->
+
+                                                <!-- <select ui-select2 ng-model="rand" style="width: 100%;" class="font-size-16 questType">
+                                                    <option value="1" class="md-body-1" selected="selected">Text box</option>
+                                                    <option value="2" class="md-body-1" >Check Box</option>
+                                                    <option value="3" class="md-body-1" >Radio Button</option>
+                                                    <option value="4" class="md-body-1" >Dropdown</option>
+                                                    <option value="5" class="md-body-1" >Text Only</option>
+                                                    <option value="6" class="md-body-1" >Text With image</option>
+                                                </select> -->
+                                                <select style="width: 100%;border: 1px solid #e8e8e8 !important;padding:5px" class="font-size-16 questType">
+                                                    <option value="text" class="md-body-1" selected="selected">Text (Single box)</option>
+                                                    <option value="checkbox" class="md-body-1" >Multiple choice (Checkboxes)</option>
+                                                    <option value="radio" class="md-body-1" >Single choice (Radio button)</option>
+                                                    <option value="dropdown" class="md-body-1" >Dropdown (Select box)</option>
+                                                    <option value="text_only" class="md-body-1" >Paragraph (Text area)</option>
+                                                    <option value="text_image" class="md-body-1" >Message</option>
+                                                </select>
+                                            </md-input-container>
+                                            <!-- <md-input-container class="md-block mt-35" md-no-float >
+                                                <label class="font-size-18 font-weight-500 grey-600-fg">Question title</label>
+                                                <input type="text" name="title" class="questTitle">
+                                                
+                                            </md-input-container> -->
+                                            <div layout="column" layout-align="center stretch" class="mv-20">   
+                                                <label class="font-size-14 font-weight-300 grey-600-fg mb-10">Question title</label>
+                                                <input type="text" name="name" class="questTitle text-field-design"  />
+                                            </div>
+                                            <label class="font-size-14 font-weight-300 grey-600-fg mb-10">Question Description</label>
+                                            <md-input-container class="md-block" md-no-float >
+                                                
+                                                <textarea class="questDescription" aria-label="textarea" rows="3" md-select-on-focus></textarea>
+                                                
+                                                
+                                            </md-input-container>
+                                            <div>
+                                                <md-button class="ph-15 md-accent md-raised add_media" >add media</md-button>
+                                            </div>
+                                            <!-- <md-input-container class="md-block" md-no-float>
+                                                <label class="font-size-18 font-weight-500 grey-600-fg">Question key</label>
+                                                 <input type="text" name="title" class="questKey" />
+                                                
+                                            </md-input-container> -->
+                                            <div layout="column" layout-align="center stretch" class="mv-20">   
+                                                <label class="font-size-14 font-weight-300 grey-600-fg mb-10">Question key</label>
+                                                <input type="text" name="name" class="questKey text-field-design"  />
+                                            </div>
+                                            <!-- <md-input-container class="md-block" md-no-float>
+                                               <md-checkbox name="tos" ng-model="project" class="requiredQuest" required>
+                                                  Required
+                                               </md-checkbox>
+                                                                                         
+                                            </md-input-container> -->
+                                            <md-input-container class="md-block" md-no-float >
+                                                <div class="font-size-14 font-weight-300 grey-600-fg mb-10">
+                                                    Required
+                                                </div>
+                                                <select style="width: 100%;border: 1px solid #ededed !important;padding: 5px;" class="font-size-16 required" >
+                                                   
+                                                    <option value="yes" class="md-body-1" >Yes</option>
+                                                    <option value="no" class="md-body-1" >No</option>
+                                                   
+                                                </select>
+                                                
+                                            </md-input-container>   
+                                            <!-- <md-input-container class="md-block" md-no-float>
+                                                <label class="font-size-18 font-weight-500 grey-600-fg">Next Question</label>
+                                                <input type="text" name="title" class="nextQuest">
+                                                
+                                            </md-input-container> -->
+                                            <div layout="column" layout-align="center stretch" class="mv-20">   
+                                                <label class="font-size-14 font-weight-300 grey-600-fg mb-10">Next Question</label>
+                                                <input type="text" name="name" class="nextQuest text-field-design"  />
+                                            </div>
+                                            <md-input-container class="md-block" md-no-float >
+                                                <div class="font-size-14 font-weight-300 grey-600-fg mb-10">
+                                                    Pattern
+                                                </div>
+                                                <select style="width: 100%;border: 1px solid #e8e8e8 !important;" class="font-size-16 pattern text-field-design" >
+                                                   <option value="blank" class="md-body-1" ></option>
+                                                    <option value="email" class="md-body-1" >Email</option>
+                                                    <option value="number" class="md-body-1" >Numbers</option>
+                                                    <option value="text" class="md-body-1" >Text</option>
+                                                    <option value="others" class="md-body-1" >Others</option>
+                                                   
+                                                </select>
+                                                
+                                            </md-input-container>
+                                            <md-input-container class="md-block mt-35" md-no-float ng-show="other_pattern" >
+                                                <label class="font-size-18 font-weight-500 grey-600-fg">Enter Pattern</label>
+                                                <input type="text" name="title" class="othetPattern">
+                                                
+                                            </md-input-container>
+                                        </div>
+        <md-divider></md-divider>
+        <div flex="50" class="ph-15 addQuestion_right_section" layout="column" >
+            <div layout="column">
+                <div flex="100" id="div-one" layout="row" layout-wrap>
+                    <div flex="100" layout="row">
+                        <div flex="50" class="md-subhead mt-20">
+                            Options
+                        </div>
+                    </div>
+                    <div class="keyValue">
+                        <div flex="100" layout="row" class="extraOptions">
+                        
+                            <div flex="45">
+                                <!-- <md-input-container class="md-block" md-no-float>
+                                <label class="font-size-18 font-weight-500 grey-600-fg">Key</label>
+                                <input type="text" name="title" class="optionKey">
+                                
+                                </md-input-container> -->
+                                <div layout="column" layout-align="center stretch" class="mv-20">   
+                                    <label class="font-size-14 font-weight-300 grey-600-fg mb-5">Option value</label>
+                                    <input type="text" name="title" class="optionKey text-field-design"  />
+                                </div>
+                            </div>
+                            <div flex="45" class="pl-10">
+                                <!-- <md-input-container class="md-block" md-no-float>
+                                <label class="font-size-18 font-weight-500 grey-600-fg">value</label>
+                                <input type="text" name="title" class="optionValue">
+                                
+                                </md-input-container> -->
+                                <div layout="column" layout-align="center stretch" class="mv-20">   
+                                    <label class="font-size-14 font-weight-300 grey-600-fg mb-5">Option label</label>
+                                    <input type="text" name="title" class="optionValue text-field-design"  />
+                                </div>
+                            </div>
+                            <div flex="10" class="mt-10"><md-button class="md-icon-button addKeys"><md-icon md-font-icon="icon-plus-circle-outline green-fg"></md-icon></md-button></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="div-two">
+                    <md-input-container class="md-block md-input-focused mb-15 font-size-20 font-weight-300" md-no-float >
+                        <label class="font-size-16 font-weight-300"></label>
+                        <lf-ng-md-file-input lf-files="files" lf-api="api09" lf-maxcount="1" lf-filesize="2MB" lf-totalsize="2MB" accept="image/*" progress preview ></lf-ng-md-file-input>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

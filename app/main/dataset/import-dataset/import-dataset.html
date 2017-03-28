@@ -1,0 +1,208 @@
+<div id="simple-table" class="page-layout carded fullwidth single-scroll pb-30 ">
+
+    <!-- HEADER -->
+     <div class="top-bg md-accent-bg "></div>
+
+     <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Add New Datasets</span>
+            </div>
+
+
+        </div>
+
+        <style type="text/css">
+            .goal-header{
+                            height: 75px;
+                            min-height: 75px;
+                            max-height: 90px;
+                            padding: 24px;
+
+                        }
+                        .page-layout .top-bg{
+                    height: 139px;
+                }
+                .lf-ng-md-file-input-container{
+            height: 40px;
+        }
+        </style>
+
+    <!-- CONTENT -->
+        <div class="content-card" layout="column">
+
+
+
+
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+                <div flex layout="row" layout-align="start center" class="pv-10 h3" hide-xs>
+                    <h3 class=" ">Import Datasets</h3>
+                </div>
+                
+                <div ng-show="wizardSteps" layout="row">
+                    <div layout="row" layout-align="center center" class="md-accent-bg line-height-24 text-center" style="width:24px;border-radius: 50%;">
+                        1
+                    </div>
+                    <div layout="row" layout-align="center center" class="grey-400-bg white-fg line-height-24 text-center mh-20" style="width:24px;border-radius: 50%;">
+                        2
+                    </div>
+                    <div layout="row" layout-align="center center" class="grey-400-bg white-fg line-height-24 text-center" style="width:24px;border-radius: 50%;">
+                        3
+                    </div>
+
+                    <!-- <div style="float: left;font-size: 25px;" class="wiz_step">&#x25CB;</div>
+                    <div style="float: left;font-size: 25px;" class="wiz_step">&#x25CB;</div>
+                    <div style="float: left;font-size: 25px;" class="wiz_step">&#x25CB;</div> -->
+                </div>
+
+                <div flex layout="row" layout-align="end center">
+                    <a href="dataset/list">
+                        <md-button class="ph-15 md-accent md-raised" ng-show="allDataset"><md-tooltip md-direction="top" class="md-body-1">View list of all datasets</md-tooltip>All Datasets</md-button>
+                    </a>
+                    <!--
+                    <a href="dataset/import">
+                        <md-button class="ph-15 md-accent md-raised">import Dataset</md-button>
+                    </a>
+                    -->
+
+                </div>
+                <h3 style="float: right;opacity: 0.6;" ng-show="wizardSteps">Step 1</h3>
+                <md-button type="submit" ng-click="nextStep()" class="md-raised md-accent" aria-label="Submit" ng-disabled="next" style="float:right;" ng-show="wizardSteps">
+                        Next
+                </md-button>
+                
+            </div>
+            <md-content class="content" >
+                     <form name="dataset" class="md-inline-form" novalidate>
+                     
+                    <md-input-container class="md-block" md-no-float>
+                        <p>Dataset Name<span style="color:red">*</span></p>
+                        <input type="text" name="datasetname" value="" ng-model="data.datasetname" required aria-label="abc">
+                        <md-tooltip md-direction="bottom" class="md-body-1">Enter the name of the bataset</md-tooltip>
+                        <div ng-messages="dataset.datasetname.$error" role="alert" multiple>
+                            <div ng-message="required">
+                                <span>Dataset name is required</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <div layout="column" layout-gt-sm="row">
+                        <md-input-container flex>
+                            <p>Import Source</p>
+                            <md-radio-group ng-model="data.uploadby" ng-change="uploadby(data.uploadby)">
+                                  <md-radio-button value="file">File Upload</md-radio-button><br><!-- Upload file from local computer-->
+                                  <md-radio-button value="url"> URL </md-radio-button><br><!-- Remote Server URL-->
+                                  <md-radio-button value="file_server">File on server</md-radio-button><br><!-- Local Server Path -->
+                                  <!--
+                                  <md-radio-button value="manual">Manual Input</md-radio-button>
+                                  -->
+                                  <!-- Do it later-->
+                                 <md-tooltip md-direction="right" class="md-body-1">Select an appropriate option for dataset source </md-tooltip>
+                            </md-radio-group>
+                        </md-input-container>
+
+                    </div>
+                    <!--  -->
+                    
+
+                    <md-input-container class="md-block" ng-show="showFileUpload">
+                        <p>Select CSV / XLSX / SQL File</p>
+                        <lf-ng-md-file-input lf-files="files" progress preview lf-api="api01" ng-disabled="disabled01"></lf-ng-md-file-input>
+
+                        <span style="color:{{message_color}};font-size:13px;" id="wrongFile">{{message_text}}</span>
+                        <div class="errors" ng-messages="dataset.file.$error">
+                            <div ng-message="required">Required</div>
+                        </div>
+                        <md-progress-linear md-mode="determinate" value="{{percent}}" class="md-accent"></md-progress-linear>
+                        <!-- Status: <span ng-show="uploading">Uploading..</span> -->
+                    </md-input-container>
+
+                    <md-input-container class="md-block" md-no-float ng-show="showFilePath">
+                        <p>Enter File Path</p>
+                        <input type="text" name="filepath" ng-model="data.filepath" aria-label="abc">
+                        <div ng-messages="dataset.filepath.$error" role="alert" multiple>
+                            <div ng-message="required">
+                                <span>File path field is required</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" md-no-float ng-show="showFileUrl">
+                        <p>Enter File URL</p>
+                        <input type="text" name="fileurl" ng-model="data.fileurl" aria-label="abc" required >
+                       <!--  <div ng-messages="dataset.fileurl.$error" role="alert" multiple>
+                            <div ng-message="required">
+                                <span>File path field is required</span>
+                            </div>
+                             <div ng-message="pattern">
+	                           <span>Invalid File Url</span>
+	                       </div>
+                        </div> -->
+                    </md-input-container>
+
+                    <div layout="column" layout-gt-xs="row" style="display:none;">
+                        <md-input-container flex>
+                            <label>Import Format</label>
+                            <md-select name="state" ng-model="data.state" required ><!-- // ng-model="vm.basicForm.state" -->
+                                <md-option value="csv" selected>CSV (comma-separated values)</md-option>
+                                <md-option value="text-comma">Text (comma-separated values)</md-option>
+                                <md-option value="text-tab">Text (Tab separated values)</md-option>
+                                <md-option value="text-pipe">Text (Pipe separated values)</md-option>
+                                <!--
+                                <md-option value="excel">Excel (Microsoft Excel 2013)</md-option>
+                                <md-option value="html">HTML (Hypertext Markup Language)</md-option>
+                                <md-option value="json">JSON (Javascript Object Notation)</md-option>
+                                -->
+                            </md-select>
+                        <div class="errors" ng-messages="dataset.state.$error">
+                            <div ng-message="required">Required</div>
+                        </div>
+                        </md-input-container>
+                    </div>
+
+                    
+
+                    <div layout="column" layout-gt-xs="row">
+                        <md-input-container flex>
+                            <p>Add, Replace or Append?</p>
+                            <md-select name="action"  ng-model="data.action" ng-change="addReplaceOrAppend()" required aria-label="abc">
+
+                                <md-option value="newtable" selected>Add as new table</md-option>
+                                <!-- <md-option value="replace">Replace existing table</md-option> -->
+                                <md-option value="append">Append rows to existing table</md-option>
+                            </md-select>
+                            <div class="errors" ng-messages="dataset.action.$error">
+                             <div ng-message="required">Required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="column" layout-gt-xs="row">
+                        <md-input-container flex>
+                            <p>Table to replace or append to:</p>
+                            <md-select name="tableToreplace" ng-model="data.tableToreplace" ng-disabled="model.isDisabled" aria-label="abc">
+                                <md-option ng-repeat="dataset in datasetsList" value="{{dataset.dataset_id}}">{{dataset.dataset_name}}</md-option>
+                            </md-select>
+                             <div class="errors" ng-messages="dataset.tableToreplace.$error">
+                             <div ng-message="required">Required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <md-button type="submit" ng-click="uploadFiles(data.uploadby)" class="md-raised md-accent ph-20" aria-label="Submit" style="float:left;">
+                        Import File to Database
+                    </md-button><md-progress-circular md-mode="indeterminate" ng-show="isLoading" md-diameter="20" style="float:left;margin-top:1%;"></md-progress-circular><span style="color:red;font-size:13px;float: left;margin-top: 1.3%">{{error_message}}</span>
+                    </form>
+                </md-content><!-- ng-disabled="dataset.$invalid || dataset.$pristine" -->
+                
+
+            </div>
+            <!-- / BASIC FORM -->
+
+
+        </div>
+    <!-- / CONTENT -->
+
+</div>

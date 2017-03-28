@@ -1,0 +1,138 @@
+<div layout="row" layout-wrap >
+
+
+<br>
+<br>
+
+    <div class="" layout="column" flex="100"  flex-gt-md="100">
+    <form name="profileForm" novalidate>
+        <md-card class="profile-box info-box general md-whiteframe-1dp" layout="column" layout-align="center stretch">
+            <header class="md-accent-bg">
+                <div class="md-title p-16">Profile Information</div>
+            </header>
+
+            <div class="content p-16">
+                <div class="info-line mb-24">
+                    <div class="md-subhead" >Name</div>
+                    <md-input-container class="md-block" >
+                     <input ng-value="userProfile.name" name="name" ng-model="vm.name" aria-label="Your Name" />
+                   </md-input-container>
+                </div>
+
+                <div class="info-line mb-24">
+                    <div class="md-subhead">Phone</div>
+                     <md-input-container class="md-block" >
+                     <input ng-value="userProfile.phone" name="phone" ng-model="userProfile.phone" aria-label="Your Phone" ng-minlength="10" ng-maxlength="10" ng-pattern="/^(0|[1-9][0-9]*)$/" />
+                     {{vm.phone}}
+                        <div ng-messages="profileForm.phone.$error" role="alert">
+                           <div ng-message="required">
+                               <span>Phone is required</span>
+                           </div>
+                           <div ng-message="minlength">
+                               <span>Invalid phone number</span>
+                           </div>
+                           <div ng-message="maxlength">
+                               <span>Invalid phone number</span>
+                           </div>
+
+                           <div ng-message="pattern">
+                               <span>Invalid phone number</span>
+                           </div>
+                     
+
+                       </div>
+                   </md-input-container>
+                </div>
+
+
+                <div class="info-line mb-24">
+                    <div class="md-subhead">Email</div>
+                     <md-input-container class="md-block" >
+                     <input type="email" name="email" ng-model="vm.email" ng-value="userProfile.email" aria-label="Your Email" ng-disabled="true">
+                   </md-input-container>
+                </div>
+
+                <div class="info-line mb-24">
+                    <div class="md-subhead">App Password</div>
+                     <md-input-container class="md-block" >
+                     <input type="text" name="app_pass" ng-model="userProfile.app_pass" aria-label="App Password" >
+                   </md-input-container>
+                </div>
+
+                <!-- <div class="info-line mb-24">
+                    <div class="md-subhead">Designation</div>
+                     <md-input-container class="md-block" >
+                         <md-select ng-model="vm.designationsList" placeholder="Select a state">
+                           <md-option ng-value="{{designation.id}}" ng-repeat="designation in designations">{{designation.designation}}</md-option>
+                         </md-select>
+                   </md-input-container>
+                </div> -->
+
+                <div class="info-line mb-24">
+                    <div class="md-subhead">Address</div>
+                     <md-input-container class="md-block" aria-label="Degination">
+                     <textarea name="address" aria-label="address" ng-model="userProfile.address" ng-minlength="1" ng-maxlength="35" required></textarea>
+                     <div ng-messages="profileForm.address.$error" role="alert">
+                         <div ng-message="required">
+                             <span>Empty Address field!</span>
+                         </div>
+                         <div ng-message="minlength">
+                             <span>Address too short</span>
+                         </div>
+                         <div ng-message="maxlength">
+                             <span>35 charecter allowed</span>
+                         </div>
+
+                       
+
+                     </div>
+                   </md-input-container>
+                </div>
+
+                
+ <div class="info-line mb-24">
+                <md-input-container class="md-block md-input-focused mb-15 " md-no-float >
+
+                    <label class="font-size-16 font-weight-300"></label>
+                    <lf-ng-md-file-input lf-placeholder="Select Profile Picture"  lf-files="files" lf-api="api09" lf-maxcount="1" lf-filesize="2MB" lf-totalsize="2MB" accept="image/*" progress preview ></lf-ng-md-file-input>
+              <div ng-messages="LoginForm.file.$error" role="alert">
+                <!--   <div ng-message="required">This is required.</div> -->
+                  <div ng-message="maxcount">Too much files.</div>
+                  <div ng-message="filesize">File size too large.</div>
+                  <div ng-message="totalsize">Total size too large.</div>
+                  <div ng-message="mimetype">Invalid File Type</div>
+              </div>
+              <div><span class="font-size-16 red-fg" ng-hide="{{vm.user_error}}">{{error_user_login}}</span></div>
+
+                    </md-input-container>
+      </div>
+              <!--   <div class="info-line mb-24">
+                    <div class="md-subhead">Department</div>
+                    <md-input-container class="md-block">
+                     <md-select ng-model="vm.departmentsList" placeholder="Departments">
+                       <md-option ng-value="{{department.id}}" ng-selected="department.id == userProfile.departments[0].id" ng-repeat="department in departments">{{department.dep_name}}</md-option>
+                     </md-select>
+                    </md-input-container>
+                </div> -->
+
+             <!--    <div class="info-line mb-24">
+                    <div class="md-subhead">Organization</div>
+                     <md-input-container class="md-block" >
+                         <md-select ng-model="vm.Organization" placeholder="Select an Organization">
+
+                           <md-option ng-value="{{org.id}}" ng-selected="org.id == userProfile.organization.id" ng-repeat="org in orgs" selected="selected">{{org.org_name}}</md-option>
+                         </md-select>
+                   </md-input-container>
+                </div> -->
+                <div class="info-line mb-24">
+                    <md-button class="md-accent md-raised ph-15" ng-click="updateProfile()" >Save Profile</md-button>
+                     <md-button class="md-primary md-raised ph-15" ng-click="goBack()" >Cancel</md-button>
+                </div>
+            </div>
+        </md-card>
+    </form>
+    </div>
+
+
+
+</div>

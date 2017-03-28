@@ -1,0 +1,113 @@
+<!-- DIALOG -->
+<style type="text/css">
+   /*.capitalized > .title{
+      padding-left: 14px !important;
+   }
+   .collapsible-item .title{
+      padding: 0px;
+   }*/
+</style>
+<md-dialog class="" aria-label="New Task" style="width:80%">
+   <form name="visualSettings" class="md-inline-form" novalidate>
+      <md-toolbar class="md-accent " layout="column">
+         <div class="md-toolbar-tools md-toolbar-tools-top" layout="row" layout-align="space-between center">
+            <span class="title">Chart Design Setting</span>
+            <md-button class="md-icon-button" ng-click="closeDialog()" aria-label="Close dialog" translate>
+               <md-icon md-font-icon="icon-close"></md-icon>
+            </md-button>
+         </div>
+      </md-toolbar>
+      <md-dialog-content class="" >
+         <ang-accordion one-at-a-time="true" >
+            <collapsible-item item-title="General" class="capitalized">
+               <div class="chartSettings" ng-repeat="(key, setting) in settings">
+                  <div ng-show="setting.isArray == 'false'" ng-if="selectedChart[chart] == setting.chartType[0] || setting.chartType[0] == 'all'">
+                     <div ng-show="setting.type == 'text'">
+                        <md-input-container class="md-block">
+                           <label>{{setting.label}}</label>
+                              <input type="text" name="test" ng-model="visualSettings['chart_settings'][key]" value="" aria-label="text" />
+                        </md-input-container>
+                     </div>
+                     <div ng-show="setting.type == 'select'">
+                        <md-input-container class="md-block">
+                           <label>{{setting.label}}</label>
+                              <md-select ng-model="visualSettings['chart_settings'][key]" aria-label="select">
+                                 <md-option value="{{keyopt}}" ng-repeat="(keyopt, opt) in setting.options track by $index">{{opt}}</md-option>
+                              </md-select>
+                        </md-input-container>
+                     </div>
+                  </div>
+               </div>
+            </collapsible-item>
+         </ang-accordion>
+
+         <div class="chartSettings" ng-repeat="(key, setting) in settings">
+            <div ng-show="setting.isArray == 'true'" ng-if="selectedChart[chart] == setting.chartType[0] || setting.chartType[0] == 'all'">
+                  <ang-accordion one-at-a-time="true" >
+                     <collapsible-item item-title="{{key}}" style="text-transform: capitalize;" >
+                        <div ng-repeat="(ikey,isetting) in setting track by $index">
+
+                           <div ng-show="isetting.isArray == 'true'">
+                              <div class="md-title" style="text-transform: capitalize;">{{ikey}}</div>
+                              <div ng-repeat="(iikey, iisetting) in isetting track by $index">
+                                 <div ng-show="iisetting.type == 'text'">
+                                    <md-input-container class="md-block">
+                                       <label>{{iisetting.label}}</label>
+                                          <input type="text" name="test" ng-model="visualSettings['chart_settings'][ikey][iikey]" value="" aria-label="text" />
+                                    </md-input-container>
+                                 </div>
+                                 <div ng-show="iisetting.type == 'select'" ng-if="iisetting.type == 'select'">
+                                    <md-input-container class="md-block">
+                                       <label>{{iisetting.label}}</label>
+                                          <md-select ng-model="visualSettings['chart_settings'][ikey][iikey]" aria-label="select">
+                                             <md-option value="{{ikeyopt}}" ng-repeat="(ikeyopt,iopt) in iisetting.options">{{iopt}}</md-option>
+                                          </md-select>
+                                    </md-input-container>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div ng-show="isetting.isArray == 'false'">
+                              <div ng-show="isetting.type == 'text'">
+                                 <md-input-container class="md-block">
+                                    <label>{{isetting.label}}</label>
+                                       <input type="text" name="test" ng-model="visualSettings['chart_settings'][key][ikey]" value="" />
+                                 </md-input-container>
+                              </div>
+                              <div ng-show="isetting.type == 'select'" ng-if="setting.chartType[0] == 'CustomMap'">
+                                 <md-input-container class="md-block">
+                                    <label>{{isetting.label}}</label>
+                                       <md-select ng-model="visualSettings['chart_settings'][key][ikey]" aria-label="select">
+                                          <md-option value="{{opt}}" ng-repeat="(keyopt,opt) in isetting.options track by $index">{{opt}} <span style="background-color: {{opt}}; width: 54px; height: 26px; position: absolute;margin: -0.3% 0% 0 1%;"></span></md-option>
+                                       </md-select>
+                                 </md-input-container>
+                              </div>
+
+                              <div ng-show="isetting.type == 'select'" ng-if="setting.chartType[0] != 'CustomMap'">
+                                 <md-input-container class="md-block">
+                                    <label>{{isetting.label}}</label>
+                                       <md-select ng-model="visualSettings['chart_settings'][key][ikey]" aria-label="select">
+                                          <md-option value="{{keyopt}}" ng-repeat="(keyopt,opt) in isetting.options track by $index">{{opt}}</md-option>
+                                       </md-select>
+                                 </md-input-container>
+                              </div>
+
+                           </div>
+                        </div>
+                     </collapsible-item>
+                  </ang-accordion>
+            </div>
+         </div>
+      </md-dialog-content>
+      <md-dialog-actions layout="row" layout-align="space-between center">
+         <div layout="row" layout-align="start center">
+         </div>
+         <div layout="row" layout-align="center end">
+            <md-button type="submit" ng-click="saveVisualSettings()" class="send-button md-accent md-raised ph-15" >
+               Save Settings
+            </md-button>
+         </div>
+      </md-dialog-actions>
+   </form>
+</md-dialog>
+

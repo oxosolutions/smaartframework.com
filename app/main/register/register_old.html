@@ -1,0 +1,141 @@
+<div id="register-v2" layout="row" layout-align="start">
+
+    <div id="register-v2-intro" flex hide show-gt-sm>
+        <div class=" gradient1 overlay">
+        </div>
+        <div class="logo md-accent-bg relative">
+            <span>S</span>
+        </div>
+        <div class="title relative white" translate="REGISTER.INTRO_TITLE">
+            Welcome to the SDG India.
+        </div>
+        <div class="description relative white" translate="REGISTER.INTRO_DESCRIPTION">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat,
+            vel convallis elit fermentum pellentesque. Sed mollis velit facilisis facilisis viverra.
+        </div>
+        <div class="relative" layout="column" layout-align="start center">
+
+        <md-button class="md-raised md-accent mt-20 ph-10 relative" ng-click="goHome()">
+            <div layout="row" layout-align="center center">
+                <span>
+                    <md-icon md-font-icon="icon-arrow-left" class="s16"></md-icon>
+                    <span translate="LOGIN.BACK_BUTTON">Back</span>
+                </span>
+            </div>
+        </md-button>
+
+        </div>
+    </div>
+    <style>
+    #register-v2{
+        height: 100%;
+        overflow: hidden;
+        background: url(/assets/images/backgrounds/march.jpg) no-repeat;
+        background-size: cover;
+    }
+    .overlay{
+        background-color:rgba(0,0,0,0.5);
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+    .relative{
+        position: relative;
+        z-index: 2;
+    }
+    .white{
+        color:#ffffff;
+    }
+    </style>
+
+    <div id="register-v2-form-wrapper" class="flex-scrollable md-whiteframe-8dp relative" layout="column" flex ms-scroll>
+        <div id="register-v2-form" >
+            <div class="logo md-accent-bg" hide-gt-sm>
+                <span>S</span>
+            </div>
+
+            <div class="title" translate="REGISTER.TITLE">Create an account</div>
+            <div class="description" translate="REGISTER.DESCRIPTION">Sed mollis velit facilisis facilisis viverra
+            </div>
+
+            <form name="registerForm" novalidate>
+                <md-input-container class="md-block" md-no-float>
+                    <input name="username" ng-model="vm.form.username" placeholder="Name"
+                           translate translate-attr-placeholder="REGISTER.NAME"
+                           required>
+                    <div ng-messages="registerForm.username.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="REGISTER.ERRORS.USERNAME_REQUIRED">Username field is required</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="email" name="email" ng-model="vm.form.email" placeholder="Email"
+                           translate translate-attr-placeholder="REGISTER.EMAIL"
+                           ng-pattern="/^.+@.+\..+$/" required>
+                    <div ng-messages="registerForm.email.$error" role="alert" multiple>
+                        <div ng-message="required">
+                            <span translate="REGISTER.ERRORS.EMAIL_REQUIRED">Email field is required</span>
+                        </div>
+                        <div ng-message="pattern">
+                            <span translate="REGISTER.ERRORS.EMAIL_MUST_VALID">Email must be a valid e-mail address</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="password" ng-model="vm.form.password" placeholder="Password"
+                           translate translate-attr-placeholder="REGISTER.PASSWORD"
+                           required>
+                    <div ng-messages="registerForm.password.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="REGISTER.ERRORS.PASSWORD_REQUIRED">Password field is required</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="passwordConfirm" ng-model="vm.form.passwordConfirm"
+                           placeholder="Password (Confirm)"
+                           translate translate-attr-placeholder="REGISTER.PASSWORD_CONFIRM"
+                           required>
+                     <div ng-show="isVisible" role="alert" style="font-size:13px; color:red;">
+                         <span>Password not mathced!</span>
+                     </div>
+                     <div ng-show="serverError" role="alert" style="font-size:13px; color:red;">
+                         <span>{{serverErrorMessage}}</span>
+                     </div>
+                    <div ng-messages="registerForm.passwordConfirm.$error" role="alert">
+                        <div ng-message="required">
+                            <span translate="REGISTER.ERRORS.PASSWORD_CONFIRM_REQUIRED">Password (Confirm) field is required</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <div class="terms" layout="row" layout-align="center center">
+                    <md-checkbox name="terms" ng-model="data.cb1" aria-label="I read and accept" required></md-checkbox>
+                    <div layout="row" layout-sm="column" layout-align="start center">
+                        <span translate="REGISTER.READ_ACCEPT">I read and accept</span>
+                        <a href="#" class="md-accent-color" translate="REGISTER.TERMS_COND">terms and conditions</a>
+                    </div>
+                </div>
+
+                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="CREATE MY ACCOUNT"
+                           ng-disabled="registerForm.$invalid || registerForm.$pristine"
+                           translate="REGISTER.CREATE_ACCOUNT"
+                           translate-attr-aria-label="REGISTER.CREATE_ACCOUNT" ng-click="register()">
+                    CREATE MY ACCOUNT
+                </md-button>
+            </form>
+
+            <div class="login" layout="row" layout-sm="column" layout-align="center center">
+                <span class="text" translate="REGISTER.ALREADY_HAVE">Already have an account?</span>
+                <a class="link" href="login" translate="REGISTER.LOGIN">Log in</a>
+            </div>
+        </div>
+    </div>
+</div>

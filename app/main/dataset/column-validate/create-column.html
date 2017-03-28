@@ -1,0 +1,103 @@
+
+<md-dialog aria-label="Mango (Fruit)" layout="column" layout-align="center stretch">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Create Column</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="assets/images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content" >
+        <form name="loginForm" novalidate>
+          
+              <div layout="column" layout-align="center stretch" >
+                  <md-input-container class="md-block" md-no-float style="width:500px">
+                        <label class="font-size-18 font-weight-300">Column Name</label>
+                      <input type="text" name="name" ng-model="colNm" required area-label="name">
+                      
+                  </md-input-container>
+
+                  <md-input-container >
+                      <label>Column After</label>
+                      <md-select name="type" ng-model="columnAfter" required><!-- // ng-model="vm.basicForm.state" -->
+                          <md-option value="{{key}}" ng-repeat="(key, column) in columns">{{column}}</md-option>
+                      </md-select>
+                      <div class="errors" ng-messages="dataset.state.$error">
+                      <div ng-message="required">Required</div>
+                      </div>
+                  </md-input-container>
+
+                  <md-input-container >
+                      <label>Select Type</label>
+                      <md-select name="type" ng-model="columnType" required><!-- // ng-model="vm.basicForm.state" -->
+                          <md-option value="string">String</md-option>
+                          <md-option value="integer">Numeric</md-option>
+                          <md-option value="date">Date</md-option>
+                          <md-option value="areacode">Area Code</md-option>
+                      </md-select>
+                      <div class="errors" ng-messages="dataset.state.$error">
+                      <div ng-message="required">Required</div>
+                      </div>
+                  </md-input-container>
+                  <md-input-container>
+                        <label class="font-size-18 font-weight-300">Default Value/Formula for the column</label>
+                        <input type="text" name="col3" ng-model="operation" required area-label="col3_operation">
+                        <div class="errors" ng-messages="dataset.state.$error">
+                        <div ng-message="required">Required</div>
+                        </div>
+                    </md-input-container>
+                 <!--  <md-checkbox ng-model="setFormula" ng-change="setFormulacheck()" >
+                       <label class="font-size-18 font-weight-300">Set Formula</label>
+                 </md-checkbox> -->
+                  <div layout="row" ng-show="formulaDiv" style="display:none">
+                    <md-input-container>
+                            <label>Column 1</label>
+                            <md-select name="col1" ng-model="colOne" required><!-- // ng-model="vm.basicForm.state" -->
+                                <md-option value="{{key}}" ng-repeat="(key, column) in columns">{{column}}</md-option>
+                            </md-select>
+                                <div class="errors" ng-messages="dataset.state.$error">
+                                <div ng-message="required">Required</div>
+                            </div>
+                    </md-input-container>
+                    <div flex class="p-25">with</div>
+                    <md-input-container >
+                            <label>Column 2</label>
+                            <md-select name="col2" ng-model="colTwo" required><!-- // ng-model="vm.basicForm.state" -->
+                                <md-option value="{{key}}" ng-repeat="(key, column) in columns">{{column}}</md-option>
+                            </md-select>
+                                <div class="errors" ng-messages="dataset.state.$error">
+                                <div ng-message="required">Required</div>
+                            </div>
+                    </md-input-container>
+                    
+                    
+                  </div>
+                  <md-input-container class="md-block">
+                        <md-checkbox name="tos" >
+                          Embed formula
+                        </md-checkbox>
+                       
+                  </md-input-container>
+
+              </div>
+        </form>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       Cancel
+      </md-button>
+      <md-button ng-click="createCol()">
+        Create
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+

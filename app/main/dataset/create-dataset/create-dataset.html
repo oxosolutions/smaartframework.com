@@ -1,0 +1,81 @@
+<div id="simple-table" class="page-layout carded fullwidth single-scroll pb-30 ">
+
+    <!-- HEADER -->
+     <div class="top-bg md-accent-bg "></div>
+
+     <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Create Dataset</span>
+            </div>
+
+
+        </div>
+
+        <style type="text/css">
+            .goal-header{
+                            height: 75px;
+                            min-height: 75px;
+                            max-height: 90px;
+                            padding: 24px;
+
+                        }
+                        .page-layout .top-bg{
+                    height: 139px;
+                }
+        </style>
+
+    <!-- CONTENT -->
+        <div class="content-card" layout="column">
+
+
+
+
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+                <div flex layout="row" layout-align="start center" class="pv-10 h3" hide-xs>
+                    <h3 class=" ">Create Dataset</h3>
+                </div>
+               
+                
+            </div>
+            <md-content class="content" >
+                <form name="form1">
+                    <md-input-container class="md-block" md-no-float>
+                        <label class="font-size-18 font-weight-300 grey-600-fg">Dataset Name</label>
+                        <input type="text" name="name" value="" ng-model="datasetname" required>
+                        <div ng-messages="form1.name.$error" role="alert" multiple>
+                            <div ng-message="required">
+                                <span >Name field is required</span>
+                            </div>
+                           
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" md-no-float class="font-size-18 font-weight-300 grey-600-fg">
+                        <label>Number of columns</label>
+                        <md-select  ng-model="someModel" ng-change="drawColumn()">
+                            <md-option value="{{value}}" ng-repeat="value in numberOfColumns">{{value}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </form>
+                <div class="columns" style="margin-top: 5%;">
+                    <div class="repeatColumns" ng-repeat="column in columns" style="margin-top: 2%;">
+                        <md-input-container class="md-block" md-no-float>
+                            <label class="font-size-18">Column Header {{$index+1}}</label>
+                            <input type="text" name="column" ng-model="listColumns['column_'+($index+1)]" />
+                        </md-input-container>
+                    </div>
+                </div>
+                <md-button flex="14" md-colors-watch="false" aria-label="SAVE DATASET" style="margin-top: 2%;" ng-click="saveDatset()" class="ph-15 md-raised md-accent">Save Dataset</md-button>
+            </md-content>
+        </div>
+          
+
+
+    </div>
+    
+
+</div>
+

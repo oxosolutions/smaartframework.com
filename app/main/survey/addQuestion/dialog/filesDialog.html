@@ -1,0 +1,114 @@
+ <style type="text/css">
+	.input-field{
+		padding: 5px !important;
+		border:1px solid #a8a8a8 !important;
+		width: 300px !important;
+	}
+	table tr td, table tr th {
+		border-bottom: 1px solid #CCC;
+	}
+	table tr{
+		height: 35px;
+	}
+	table{
+		
+		margin-left: 16px;
+   		margin-right: 16px;
+	}
+	.custom-menu {
+	    display: none;
+	    z-index: 1000;
+	    position: absolute;
+	    overflow: hidden;
+	    border: 1px solid #CCC;
+	    white-space: nowrap;
+	    font-family: sans-serif;
+	    background: #FFF;
+	    color: #333;
+	    border-radius: 5px;
+	    padding: 0;
+	}
+
+	/* Each of the items in the list */
+	.custom-menu li {
+	    padding: 8px 12px;
+	    cursor: pointer;
+	    list-style-type: none;
+	    transition: all .3s ease;
+	}
+
+	.custom-menu li:hover {
+	    background-color: #DEF;
+	}
+	.customMenu ul{
+		background-color: #FFF;
+		    list-style: none;
+	}
+	a{
+		text-decoration:none !important;
+		color: black !important;
+	}
+</style>
+
+
+
+
+<md-dialog aria-label="Mango (Fruit)" layout="column" layout-align="center stretch">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <div>
+			File manager
+		</div>
+        <md-button class="md-icon-button" ng-click="closeDialog()">
+          <md-icon md-svg-src="assets/images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content style="padding: 0px;">
+      <div class="md-dialog-content" style="padding: 0px;">
+       <table style="text-align: left" class="file-manager">
+			<tr>
+				
+				<th  style="width:300px;">File Name</th>
+				<th style="width:200px;">Size</th>
+				<th style="width:200px;">Type</th>
+				<th style="width:200px;">Modified Date</th>
+				<th style="width:200px;">Action</th>
+			</tr>
+			
+			<tr ng-repeat="file in listFiles | orderBy: 'modified_at'">
+				
+				<td context-menu="menuOptions">
+					<md-icon md-font-icon="{{getIcon(file.type)}}"></md-icon> <a href="javascript:;">{{file.name}}</a>
+				</td>
+				<td>{{file.size_mb}} MB</td>
+				<td>{{file.type}}</td>
+				<td>{{file.modified_at}}</td>
+				<td><md-button class="md-primary-bg" ng-click="insertSlug(file.media)">insert</md-button></td>
+			</tr>
+		</table>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="column" layout-align="center stretch" class="p-0">
+      <div layout="row" layout-align="space-between center" layout-wrap >
+		
+		<div flex="100" layout="row" layout-align="end center" class="ph-15 pv-5">
+			<div class="green-fg md-subhead font-weight-600" ng-show="completeUpload">
+				Uploaded Succesfully		
+			</div>
+			<input type="file" style="display:none" class="upload-file" ng-model="addFile" name="" onchange="angular.element(this).scope().uploadFile(event)">
+			<md-button class="md-fab upload-button md-mini" aria-label="addFile"><md-icon md-font-icon="icon-plus" class="white-fg" ></md-icon></md-button>	
+		</div>
+		<div flex="100">
+			<md-progress-linear md-mode="determinate" value="{{percent}}" class="md-accent"></md-progress-linear>			
+		</div>
+		
+	</div>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+
+

@@ -1,0 +1,142 @@
+<!-- <link rel="stylesheet" type="text/css" href="app/main/dataset/dataset.css"> -->
+<div id="simple-table" class="page-layout carded fullwidth single-scroll pb-100 ">
+
+    <!-- HEADER -->
+     <div class="top-bg md-accent-bg "></div>
+
+     <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+                <span class="h2 white-fg">Define Dataset: {{dataset_name}}</span>
+            </div>
+
+
+        </div>
+
+        <style type="text/css">
+
+
+            .goal-header{
+                            height: 75px;
+                            min-height: 75px;
+                            max-height: 90px;
+                            padding: 24px;
+
+                        }
+        </style>
+
+    <!-- CONTENT -->
+        <div class="content-card" layout="column">
+
+
+
+        <!-- <div class="md-title mt-32">Basic form with validation</div>
+        <div class="pb-16">With this form example, Submit button will only be activated if all the required fields are
+            filled and if there is no error on the form.
+        </div> -->
+        <!--<div layout="column">-->
+
+            <!-- BASIC FORM -->
+            <!--<div class="form-wrapper md-whiteframe-1dp" flex="100">-->
+
+
+                <!-- <input type="file" id="file1" name="file" multiple
+            ng-files="getTheFiles($files)" />
+
+
+        <input type="button" ng-click="uploadFiles()" value="Upload" /> -->
+       <!-- <h1 style="color:red"> {{add_replace}} {{file}}</h1>-->
+
+                    <!--<div id="form_data" class="form-title">Import Tables</div>-->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center" ng-show="wizardCheck">
+
+                <div flex layout="row" layout-align="end center">
+                    <div flex layout="row" layout-align="end center" ng-include="'app/main/dataset/include/_action.html'"></div>
+                </div>
+            </div>
+
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="end center" ng-show="wizardSteps">
+                <div ng-show="wizardSteps" layout="row" style="margin-right: 26%;">
+                    <div layout="row" layout-align="center center"  >
+                        <md-icon  md-font-icon="icon-check" class="white-fg green-bg line-height-24 text-center" style="width:24px;border-radius: 50%;font-size:16px"></md-icon>
+                    </div>
+                    <div layout="row" layout-align="center center"  >
+                        <md-icon  md-font-icon="icon-check" class="white-fg green-bg line-height-24 text-center mh-20" style="width:24px;border-radius: 50%;font-size:16px"></md-icon>
+                    </div>
+                    <div layout="row" layout-align="center center" class="md-accent-bg line-height-24 text-center" style="width:24px;border-radius: 50%;">
+                    3
+                    </div>
+                    <!-- <div style="float: left;font-size: 25px;" class="wiz_step1">&#x25CB;</div>
+                    <div style="float: left;font-size: 25px;" class="wiz_step2">&#x25CB;</div>
+                    <div style="float: left;font-size: 25px;" class="wiz_step3">&#x25CB;</div> -->
+                </div>
+               
+                <h3 style="float: right;opacity: 0.6;" ng-show="wizardSteps">Step 3</h3>
+                <md-button type="submit" ng-click="nextStep()" class="md-raised md-accent" aria-label="Submit" ng-disabled="next" style="float:right;" ng-show="wizardSteps">
+                    Next
+                </md-button>
+                <md-button class="md-raised md-primary ph-15" ng-click="skipStep()" style="float: right;" ng-show="wizardSteps" ng-disabled="skipThisStep">
+                        Skip this step
+                </md-button>
+                
+                
+            </div>
+
+
+
+            <md-content class="content" >
+                <div flex layout="row" layout-align="end center">
+                    <a href="javascript:;">
+                        <md-button class="ph-15 md-accent md-raised" ng-click="createColumn($event)" ng-disabled="isDisabled" style="float:right;"><md-tooltip md-direction="top" class="md-body-1">Insert a new column in the selected dataset</md-tooltip>Add New Column</md-button>
+                        <md-progress-circular md-mode="indeterminate" ng-show="isLoading" md-diameter="20" style="float:right;margin-top:8%;"></md-progress-circular><span style="color:red;font-size:13px;">{{error_message}}</span>
+                    </a>
+                    <md-button type="submit" ng-click="SavevalidateColumns()" class="md-raised md-accent ph-15" aria-label="Submit"><md-tooltip md-direction="top" class="md-body-1">Save all changes for selected dataset</md-tooltip>Save Dataset Definition</md-button>
+
+                </div>
+
+
+                  <form name="dataset" class="md-inline-form" novalidate>
+                    <div ng-repeat="(key,column) in columns" id="{{key}}" class="colList">
+                        <input type="hidden" name="column_name" ng-model="data.columnName" value="{{key}}" area-label="">
+                        <label for="">Column: <strong class="colName">{{column}}</strong></label>
+                        <div layout="column" layout-gt-xs="row">
+                            <md-input-container flex>
+                                <label>Select Type</label>
+                                <md-select name="type" ng-model="data.type" required><!-- // ng-model="vm.basicForm.state" -->
+                                    <md-option value="string" ng-selected="true">String</md-option>
+                                    <md-option value="integer" ng-selected="rawColumns[key] == 'integer'">Numeric</md-option>
+                                    <md-option value="date" ng-selected="rawColumns[key] == 'date'">Date</md-option>
+                                    <md-option value="areacode" ng-selected="rawColumns[key] == 'areacode'">Area Code</md-option>
+                                </md-select>
+                        <div class="errors" ng-messages="dataset.state.$error">
+                        <div ng-message="required">Required</div>
+                        </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <md-button type="submit" ng-click="SavevalidateColumns()" class="md-raised md-accent ph-15" aria-label="Submit"><md-tooltip md-direction="top" class="md-body-1">Save all changes for selected dataset</md-tooltip>
+                      Save Dataset Definition
+                  </md-button>
+                    </form>
+                </md-content>
+
+            </div>
+            <!-- / BASIC FORM -->
+
+
+        </div>
+    <!-- / CONTENT -->
+
+</div>
+
+<input type="hidden" value="" name="newColumns" id="colData" />
+<div class="columnsList" id="cloneDiv" class="displayn" style="display: none;">
+    <label for="">Column: <strong class="colName"></strong></label>
+    <div layout="column" layout-gt-xs="row">
+        <md-input-container flex>
+           <input type="text" name="name" id="" class="colmType" aria-label="text" style="color: #000;" readonly>
+        </md-input-container>
+    </div>
+</div>

@@ -1,0 +1,449 @@
+<div class="page-layout carded fullwidth single-scroll pb-100" layout="row">
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+    <!-- CENTER -->
+    <div class="center" flex>
+        <!-- CONTENT HEADER -->
+        <div class="goal-header" layout="column">
+            <div layout="row">
+                <span flex="80" class="h2 white-fg">Edit Visualization </span>
+                <span class="h2" flex="20" style="color: white">Dataset: <span class="blue-fg" ng-click="viewDataset(datasets[0].dataset_id)" style="cursor:pointer;color: white!important">{{datasets[0].dataset_name}}</span></span>
+            </div>
+            <!--
+                <div class="breadcrumb" flex>
+                		<md-icon md-font-icon="icon-dns" class="s16"></md-icon>
+                		<md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                		<span class="parent">LIST DATA</span>
+                </div>
+                -->
+        </div>
+        <!-- / CONTENT HEADER -->
+        <style type="text/css">
+            .goal-header{
+                height: 75px;
+                min-height: 75px;
+                max-height: 90px;
+                padding: 24px;
+            }
+            .page-layout .top-bg{
+                height: 139px;
+            }
+            .select2-container a{
+               border: none !important;
+               background:#fff  !important;
+               border-bottom: 1px solid #e1e1e1;
+
+
+            }
+           
+            .select2-arrow{
+                background: #fff !important;
+                border-left: none !important;
+
+            }
+             .select2-arrow b:after{
+               display: block;
+               content: '\25BC';
+               position:relative;
+               top:2px;
+               speak:none;
+               font-size: 13px;
+               transform: scaleY(0.5) scaleX(1);
+
+
+
+            }
+            .select2-container{
+                border-bottom: 1px solid #e1e1e1 !important;
+            }
+
+
+            @media only screen and (max-width: 599px){
+                .content-card > .toolbar{
+                    min-height:128px !important;
+                }
+                .ps-container > div > form > .filterable{
+                    margin-left: 0px !important;
+
+                }
+            }
+
+        </style>
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+                <div flex="40" layout="row" ng-include="'app/main/visualizations/include/include_toolbar_left.html'">
+                    
+                </div>
+
+                <div flex="60" flex-xs="100" flex-sm="100" layout="row" layout-align="end center">
+                    <md-button ui-sref="app.visualizations_add" class="ph-15 md-accent md-raised"  layout="row" layout-align="space-between center">
+                        <md-icon md-font-icon="icon-plus" class="s20 mr-10"></md-icon>
+                        <div><md-tooltip md-direction="top" class="md-body-1">Add a new visualization </md-tooltip>Add Visualization</div>
+                    </md-button>
+                    <md-button ng-href="" class="ph-15 md-accent md-raised" ng-click="update_visual('yes')" layout="row" layout-align="space-between center">
+                        <md-icon md-font-icon="icon-desktop-mac" class="s20 mr-10"></md-icon>
+                        <div><md-tooltip md-direction="top" class="md-body-1">View visualization of this dataset </md-tooltip>Save & View Visualization</div>
+                    </md-button>
+                    <md-button ui-sref="app.genvisuals_list" class="ph-15 md-accent md-raised"  layout="row" layout-align="space-between center">
+                        <md-icon md-font-icon="icon-chart-bar" class="s20 mr-10"></md-icon>
+                        <div><md-tooltip md-direction="top" class="md-body-1">List of all visualization </md-tooltip>All Visualization</div>
+                    </md-button>
+                </div>
+                <!--  <div flex layout="row" layout-align="end center">
+                    <a href="visualizations/list">
+                    	 <md-button class=" md-accent md-raised ph-15">All Visualizations</md-button>
+                    </a>
+                    </div> -->
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+            <!-- CONTENT -->
+            <md-content class="ph-30 pb-30" ms-scroll>
+                <!-- CONTENT -->
+                <div layout="row" layout-xs="column" layout-align="center center" class="">
+                    <div class="ph-20 pv-10 md-button" layout="row" layout-align="center center">
+                        <md-tooltip md-direction="top" >Completed</md-tooltip>
+                        <div>
+                            <div layout="row" layout-align="center center"  >
+                                <md-icon  md-font-icon="icon-check" class="white-fg green-bg line-height-24 text-center" style="width:24px;border-radius: 50%;font-size:16px"></md-icon>
+                            </div>
+                        </div>
+                        <div class="mh-5 md-subhead" ng-click="addVizState()">
+                            Add Visualization
+                        </div>
+                    </div>
+                    <div class="ph-20 pv-10 md-button" layout="row" layout-align="center center" ng-click="editViz()">   
+                        <md-tooltip md-direction="top" >Step 2: Fill the settings in the form below</md-tooltip>
+                        <div>
+                            <div layout="row" layout-align="center center" class="md-accent-bg line-height-24 text-center" style="width:24px;border-radius: 50%;">
+                            2
+                            </div>
+                        </div>
+                        <div class="mh-5 md-subhead">
+                            Edit Visualization
+                        </div>
+                    </div>
+                    <div class="ph-20 pv-10 md-button" layout="row" layout-align="center center" ng-click="update_visual('yes')">
+                        <md-tooltip md-direction="top" >Step 3: Next Step</md-tooltip>
+                        <div>
+                            <div layout="row" layout-align="center center" class="md-accent-bg white-fg line-height-24 text-center" style="width:24px;border-radius: 50%;">
+                            3
+                            </div>
+                        </div>
+                        <div class="mh-5 md-subhead grey-700-fg">
+                            View Visualization
+                        </div>
+                    </div>
+                  
+                </div>
+                <div>
+                   <!--  <h2 class="">Visualization Name: <span class="blue-fg">{{visual_name}} <md-icon md-font-icon="icon-pencil-box-outline" style="cursor: pointer;" class="s24" ng-click="editName()"><md-tooltip md-direction="top" class="md-body-1">Edit Visualization name </md-tooltip></md-icon></span></h2> -->
+                    <form name="editVisual" layout="row" layout-wrap  >
+                        <!-- <md-input-container flex="100">
+                            <label class="font-size-18 font-weight-300">Visualization Name</label>
+                            <input ng-model="visualization.visualization_title">
+                            </md-input-container >
+                            -->
+
+                        <div flex="100" md-whiteframe="2" class="ph-20 pt-20" layout="row" layout-align="start start" layout-wrap ng-show="visualName">
+                            
+                            <!-- <md-input-container class="md-block" flex="100">
+                                <md-button class="md-raised md-accent submit-button ph-15" ng-click="getColumns()" ng-disabled="disableButton" style="float:left;">Get Columns</md-button>
+                                <md-progress-circular md-mode="indeterminate" ng-show="isLoading" md-diameter="20" style="float:left;margin-top:1%;"></md-progress-circular>
+                                <p style="margin-top: 1%; color: red;" ng-show="message">{{error_message}}</p>
+                                </md-input-container> -->
+                            <md-input-container class="md-block" flex="100" >
+                                <label class="font-size-20 font-weight-300">Visualization </label>
+                                <input type="text" name="visual_name" ng-model="visual_name" value="" />
+                            </md-input-container>
+                            <div flex="100">
+                            </div>
+                        </div>
+                        
+                        <div flex="50" flex-xs="100" flex-sm="100" flex-md="100" class="mt-40 pr-15">
+                            <div md-whiteframe="2" class="repeat" flex="100">
+                                <div  class="frame expanded">
+                                    <!--  <h2 style="text-align: center;margin-top: 2%;padding-top: 2%;">Chart <span class="chartCount">1</span></h2> -->
+                                    <div layout="row">
+                                        <div class="md-accent-bg ph-10 pv-5 md-headline chartCount mt-5">1</div>
+                                        <div flex="90" layout="row" layout-align="center center" class="md-title">
+                                            {{chartsData.title.chart_1}}
+                                        </div>
+                                        <div style="float: right; margin-top: 2%; margin-right: 4%; font-size: 23px; cursor: pointer;" class="exp_col"><md-tooltip md-direction="top" class="md-body-1">Minimize / Maximize </md-tooltip>
+                                        <img src="assets/images/arrow-down.png" style="width:16px;margin-top:5px"></div>
+                                    </div>
+                                    <md-input-container class="md-block mt-30" flex="95" style="margin-left: 2%;" >
+                                        <span class="font-size-14 font-weight-300 grey-600-fg">Chart Title</span>
+                                        <input type="text" name="chart_title" ng-model="chartsData.title.chart_1" value="" required ng-change="showChartType(chartsData.title.chart_1)" aria-label="charttitle" />
+                                        <div ng-messages="editVisual.chart_title.$error" role="alert" multiple>
+                                            <div ng-message="required">
+                                                <span>Chart Title is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%; padding-bottom: 2%;" ng-show="chartTyp">
+                                        <span class="font-size-14 font-weight-300 grey-600-fg">Chart Type</span>
+                                        <md-select ng-model="chartType['chart_1']" aria-label="select" ng-change="showAxisesFields()">
+                                            <md-option ng-repeat="value in chart_types" ng-value="value.value" >{{value.label}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mt-35" flex="95" style="margin-left: 2%; padding-bottom: 2%;" ng-show="chartType['chart_1'] == 'CustomMap'">
+                                     <span class="font-size-14 font-weight-300 grey-600-fg">Select Map</span>
+                                    <select ui-select2 ng-model="chartsData.mapArea['chart_1']"  style="width: 100%;" class="font-size-16">
+                                        <option value="{{maps.id}}" ng-repeat="maps in mapList" class="font-size-16" >{{maps.title}}</option>
+                                    </select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mt-10 mb-35" flex="95" style="margin-left: 2%;" ng-show="chartXAxis">
+                                        <span class="font-size-14 font-weight-300 grey-600-fg" ng-if="chartType['chart_1'] != 'CustomMap'">Select Variable For X-Axis</span>
+                                        <span class="font-size-14 font-weight-300 grey-600-fg" ng-if="chartType['chart_1'] == 'CustomMap'">Select Area Code of MAP</span>
+                                        <md-select ng-model="chartsData.column_one.chart_1" aria-label="selectchartx" ng-disabled="disableColumns" >
+                                            <md-option ng-value="0">
+                                                <!-- ng-if="dataset.validated == 1" -->
+                                                Select
+                                            </md-option>
+                                            <md-option ng-repeat="(key, column) in columns" ng-value="key">
+                                                <!-- ng-if="dataset.validated == 1" -->
+                                                {{column}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;" ng-if="chartType['chart_1'] == 'CustomMap'">
+                                        <span class="font-size-14 font-weight-300 grey-600-fg">Select Data To Display on MAP</span>
+                                        <md-select ng-model="chartsData.viewData['chart_1']" aria-label="selectchartmap" ng-disabled="disableColumns">
+                                            <md-option ng-repeat="(key, column) in columns" ng-value="key">
+                                                <!-- ng-if="dataset.validated == 1" -->
+                                                {{column}}
+                                            </md-option>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;" ng-show="chartYAxis">
+                                        <span class="font-size-14 font-weight-300 grey-600-fg" ng-if="chartType['chart_1'] != 'CustomMap'">Select Variables For Y-Axis </span>
+                                        <span class="font-size-14 font-weight-300 grey-600-fg" ng-if="chartType['chart_1'] == 'CustomMap'">Values For Display on Tooltip</span>
+                                        <md-select ng-model="chartsData.columns_two.chart_1" aria-label="selectcharty" ng-disabled="disableColumns" multiple ng-change="showFormula()">
+                                            <md-option ng-repeat="(key, column) in columns" ng-value="key">
+                                                <!-- ng-if="dataset.validated == 1" -->
+                                                {{column}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;" ng-show="formulaHS">
+                                        <span class="font-size-14 font-weight-300 grey-600-fg">Select Formula</span>
+                                        <md-select ng-model="chartsData.formula['chart_1']" aria-label="select">
+                                            <md-option ng-repeat="(key, value) in {'no':'No Formula','count':'Count','addition':'Addition'}" value="{{key}}">{{value}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;margin-top: 2.5%; padding-bottom:2%; display: none;">
+                                        <label >Visual Setting</label>
+                                        <textarea name="address"  required ng-model="chartsData.visual_settings['chart_1'][0]">{{chartsData.visual_settings['chart_1'][0]}}</textarea>
+                                    </md-input-container>
+                                   <!-- <md-input-container class="md-block mt-35" flex="95" style="margin-left: 2%; padding-bottom: 2%;" ng-show="chartType['chart_1'] == 'CustomMap'">
+                                        <label class="font-size-18 font-weight-300">Map Area</label>
+                                        <md-select ui-select2 ng-model="chartsData.mapArea['chart_1']">
+                                            <md-option value="{{maps.id}}" ng-repeat="maps in mapList" >{{maps.title}}</md-option>
+                                        </md-select>
+                                    </md-input-container> -->
+                                    <!-- <div class="ph-15 pb-10" ng-show="chartType['chart_1'] == 'CustomMap'">
+                                        <md-autocomplete 
+                                            md-selected-item="$scope.mapList[chartsData.mapArea['chart_1']]"
+                                            md-search-text="searchText" 
+                                            md-items="maps in getMapdata(searchText)" 
+                                            md-item-text="maps.title"
+                                            md-min-length="0"
+                                            placeholder="Map Area">
+                                          <md-item-template>
+                                            <span md-highlight-text="searchText">{{maps.title}}</span>
+                                          </md-item-template>
+                                          <md-not-found>
+                                            No matches found.
+                                          </md-not-found>
+                                        </md-autocomplete>
+                                    </div> -->
+                                    <md-button class="md-raised md-primary display-button ph-15" ng-click="showCustom($event, 'chart_1', chartType)"><md-tooltip md-direction="top" class="md-body-1">Add chart design settings to the dataset</md-tooltip>Chart Design Settings</md-button>
+                                </div>
+
+
+
+                                <!--Repeat Charts-->
+                                <div class="frame" ng-repeat="chart in charts" ng-if="$index != 0" style="margin-top: 2%; height: 50px; overflow: hidden;">
+                                <md-divider></md-divider>
+                                    <md-button class="deleteFrame md-icon-button mt-5" aria-label="delete_chart" style="float: right;"><md-icon flex="20" md-font-icon="icon-trash" class="s20 red-fg"></md-icon></md-button>
+                                    <div layout="row">
+                                        <div class="md-accent-bg ph-10 pv-5 md-headline chartCount mt-5">{{$index+1}}</div>
+                                        <div flex="90" layout="row" layout-align="center center" class="md-title">
+                                            {{chartsData.title['chart_'+($index+1)]}}
+                                        </div>
+                                        <div style="float: right; margin-top: 2%; margin-right: 4%; font-size: 23px; cursor: pointer;" class="exp_col"><md-tooltip md-direction="top" class="md-body-1">Minimize / Maximize </md-tooltip><img src="assets/images/arrow-down.png" style="width:16px;margin-top:5px;transform: rotate(179deg);'"></div>
+
+                                    </div>
+
+                                    <md-input-container class="md-block mt-30" flex="95" style="margin-left: 2%;"> <label class="font-size-16 font-weight-300">Chart Title</label> <input type="text" name="chart_title" ng-model="chartsData.title['chart_'+($index+1)]" value="" /> </md-input-container>
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%; padding-bottom: 2%;">
+                                        <label class="font-size-18 font-weight-300">Chart Type</label> 
+                                        <md-select ng-model="chartType['chart_'+($index+1)]" aria-label="select">
+                                            <md-option ng-repeat="value in chart_types" ng-value="value.value">{{value.label}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <!-- <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%; padding-bottom: 2%;" ng-show="chartType['chart_'+($index+1)] == 'CustomMap'">
+                                        <label class="font-size-18 font-weight-300">Map Area</label>
+                                        <md-select ng-model="chartsData.mapArea['chart_'+($index+1)]">
+                                            <md-option value="{{maps.id}}" ng-repeat="maps in mapList" >{{maps.title}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mt-10 mb-35" flex="95" style="margin-left: 2%;">
+                                        <label class="font-size-18 font-weight-300">Select string type variable only</label> 
+                                        <md-select ng-model="chartsData.column_one['chart_'+($index+1)]" ng-disabled="disableColumns">
+                                            <md-option ng-repeat="(key, column) in columns" ng-value="key">{{column}} </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;">
+                                        <label class="font-size-18 font-weight-300">Select number type variables only</label> 
+                                        <md-select ng-model="chartsData.columns_two['chart_'+($index+1)]" multiple>
+                                            <md-option ng-repeat="(key, column) in columns" ng-value="key" >{{column}} </md-option>
+                                        </md-select>
+                                    </md-input-container> -->
+                                    <md-input-container class="md-block mt-35" flex="95" style="margin-left: 2%; padding-bottom: 2%;" ng-show="chartType['chart_'+($index+1)] == 'CustomMap'">
+                                     <label class="font-size-18 font-weight-300">Select Map</label>
+                                    <select ui-select2 ng-model="chartsData.mapArea['chart_'+($index+1)]"  style="width: 100%;" class="font-size-16">
+                                        <option value="{{maps.id}}" ng-repeat="maps in mapList" class="font-size-16" >{{maps.title}}</option>
+                                    </select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mt-10 mb-35" flex="95" style="margin-left: 2%;" ng-show="chartXAxis">
+                                        <label class="font-size-18 font-weight-300" ng-if="chartType['chart_'+($index+1)] != 'CustomMap'">Select Variable For X-Axis</label>
+                                        <label class="font-size-18 font-weight-300" ng-if="chartType['chart_'+($index+1)] == 'CustomMap'">Select Area Code of MAP</label>
+                                        <md-select ng-model="chartsData.column_one['chart_'+($index+1)]" ng-disabled="disableColumns">
+                                            <md-option ng-repeat="(key, column) in columns" ng-value="key">
+                                                <!-- ng-if="dataset.validated == 1" -->
+                                                {{column}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;" ng-if="chartType['chart_'+($index+1)] == 'CustomMap'">
+                                        <label class="font-size-18 font-weight-300">Select Data To Display on MAP</label>
+                                        <md-select ng-model="chartsData.viewData['chart_'+($index+1)]" ng-disabled="disableColumns">
+                                            <md-option ng-repeat="(key, column) in columns" ng-value="key">
+                                                <!-- ng-if="dataset.validated == 1" -->
+                                                {{column}}
+                                            </md-option>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;" ng-show="chartYAxis">
+                                        <label class="font-size-18 font-weight-300" ng-if="chartType['chart_'+($index+1)] != 'CustomMap'">Select Variables For Y-Axis</label>
+                                        <label class="font-size-18 font-weight-300" ng-if="chartType['chart_'+($index+1)] == 'CustomMap'">Values For Display on Tooltip</label>
+                                        <md-select ng-model="chartsData.columns_two['chart_'+($index+1)]" ng-disabled="disableColumns" multiple ng-change="showFormula()">
+                                            <md-option ng-repeat="(key, column) in columns" ng-value="key">
+                                                <!-- ng-if="dataset.validated == 1" -->
+                                                {{column}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;">
+                                        <label class="font-size-18 font-weight-300">Select Formula</label> 
+                                        <md-select ng-model="chartsData.formula['chart_'+($index+1)]">
+                                            <md-option ng-repeat="(key, value) in {'count':'Count','addition':'Addition','no':'No Formula'}" value="{{key}}">{{value}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container class="md-block mv-35" flex="95" style="margin-left: 2%;margin-top: 2.5%; padding-bottom:2%;display: none;"> <label >Visual Setting</label> <textarea name="address" required ng-model="chartsData.visual_settings['chart_'+($index+1)][0]"></textarea> </md-input-container>
+                                    
+                                    <md-button class="md-raised md-primary display-button" ng-click="showCustom($event,'chart_'+($index+1),chartType)"><md-tooltip md-direction="top" class="md-body-1">Add chart design settings to the dataset</md-tooltip>Chart Design Settings</md-button>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div flex="50" flex-xs="100" flex-sm="100" flex-md="100" style="margin-bottom: 2%;" class=" mt-40 pl-15 filterable" >
+                            
+                                <div md-whiteframe="2" class="frame">
+                                    <div class="filtersList">
+                                        <div layout="row">
+                                            
+                                            <div flex="90" layout="row" layout-align="center center" class="md-title mv-20">
+                                                Select filterable columns
+                                            </div>
+                                        </div>
+                                       
+                                        
+                                        <div layout="column" layout-align="center stretch" class="p-30" ng-if="extraFilters == null" ng-hide="nofilterAvail">
+                                            <div class="p-30 " style="border:1px dashed #e8e8e8;text-align: center">
+                                                <span class="grey-400-fg md-headline ">No Filter Available</span>
+                                            </div>
+                                        </div>
+                                         <md-divider></md-divider>
+                                       
+                                         <div layout="row" class=" pl-5" ng-repeat="eFilter in extraFilters">
+                                            <span class="white-fg grey-bg md-headline mt-20 mh-10 mb-15 filterCount md-body-2" style="border-radius: 50%;height: 28px;line-height: 28px;width: 28px;text-align: center">{{$index+1}}</span>
+                                            <div flex="40" layout="row" >
+                                                <md-input-container class="md-block" flex="95" style="margin-left: 2%;" >
+                                                    <label class="font-size-18 font-weight-300">Select Filter Column</label>
+                                                    <md-select ng-model="filter_columns['filter_'+($index+1)]">
+                                                        <md-option ng-repeat="(key, column) in columns" ng-value="key">
+                                                            {{column}}
+                                                        </md-option>
+                                                    </md-select>
+                                                </md-input-container>
+                                            </div>
+                                            <div flex="40" layout="row">
+                                                <md-input-container class="md-block" flex="95" style="margin-left: 2%;">
+                                                    <label class="font-size-18 font-weight-300">Type of the filterable column</label>
+                                                    <md-select ng-model="filter_type['filter_'+($index+1)]">
+                                                        <md-option value="range">Range</md-option>
+                                                        <md-option value="dropdown">Single Select</md-option>
+                                                        <md-option value="mdropdown">Multi Select</md-option>
+                                                    </md-select>
+                                                </md-input-container>
+                                            </div>
+                                            <div flex class="mr-30 mt-24">
+                                                <a href="" style="float:right;margin-right:1%;margin-top:1%;" class="deleteFilter" filter-ind="{{($index+1)}}">
+                                                <md-tooltip md-direction="top" class="md-body-1">Remove Filter</md-tooltip>
+                                                <md-icon flex="20" md-font-icon="icon-trash" class="s20 red-fg"></md-icon>
+                                            </a>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                    <div layout="row" layout-align="space-between center">
+                                         <md-button md-colors="{background: 'green'}" flex="14" md-colors-watch="false" aria-label="CREATE VISUALIZATION" style="margin-top: 2%;" ng-click="addFilter()" class="ph-15 md-raised"><md-tooltip md-direction="top" class="md-body-1">Add multiple filters to the selected dataset</md-tooltip>Add Filter Variable</md-button>
+                                         
+                                         <div>
+                                            <md-button class="md-icon-button" ng-click="AddEmbed($event)">
+                                                <md-tooltip md-direction="top" class="md-body-1">Add Custom JS code</md-tooltip>
+                                                <md-icon md-font-icon="icon-code-tags" ></md-icon>
+                                            </md-button>
+                                        </div>
+                                     </div>
+                                </div>
+                        </div>
+                        <div flex="100">
+                           <!--  <label class="font-size-16 font-weight-500 grey-600-fg mt-10">Embed CSS</label>
+                                <md-input-container class="md-block">
+                                    
+                                    <textarea rows="5" ng-model="chartsData.embedCss" md-select-on-focus aria-label="embedCss"></textarea>
+                                </md-input-container> -->
+                           <!--  <md-button class="md-raised md-accent ph-15" ng-click="AddEmbed($event)">Add Embed code</md-button> -->
+                        </div>
+                        <div flex="100" layout="row" layout-align="space-between center">
+                            <md-button md-colors="{background: 'green'}"  flex="14" md-colors-watch="false" aria-label="CREATE VISUALIZATION"  ng-click="addMoreChart()" class="ph-15 md-raised mt-15 ml-0"><md-tooltip md-direction="top" class="md-body-1">Add multiple charts to the selected dataset</md-tooltip>Add Another Chart</md-button>
+                            
+                            <md-button type="submit" class="md-raised md-accent submit-button ph-15 mt-15 mr-0" s aria-label="CREATE VISUALIZATION" ng-click="update_visual('no')" ><md-tooltip md-direction="top" class="md-body-1">Save the above settings to the database</md-tooltip>SAVE VISUALIZATION</md-button>
+                        </div>
+                        <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+                        <!-- <span style="color: red;">Error message</span> -->
+                </div>
+                </form>
+        </div>
+        <!-- /CONTENT -->
+        </md-content>
+        <!-- / CONTENT -->
+    </div>
+    <!-- / CONTENT CARD -->
+</div>
+<!-- / CENTER -->
+</div>
+
+
+
+

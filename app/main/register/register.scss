@@ -1,0 +1,37 @@
+ .register-v2{
+        height: 100%;
+        overflow: hidden;
+      
+        background-size: cover;
+    }
+        .layout-align-end-end{
+            height: 520px
+        }
+        .content{
+            overflow-y: scroll
+        }
+        .goal-header{
+            height: 75px;
+            min-height: 75px;
+            max-height: 90px;
+            padding: 24px;
+
+        }
+        .page-layout .top-bg{
+            height: 139px;
+        }
+        .md-select-menu-container.md-active md-select-menu{
+        	width:484px;
+        	margin-top:50px;
+        }
+        .lf-ng-md-file-input-container{
+        	height: 40px;
+        }
+        .lf-ng-md-file-input-caption-text{
+        	font-weight: 300 !important;
+        	font-size: 12px;
+
+        }
+        .white-bg-transparent{
+        	background-color: rgba(255, 255, 255, 0.6);border-radius: 5px;
+        }

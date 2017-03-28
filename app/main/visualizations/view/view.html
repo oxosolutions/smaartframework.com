@@ -1,0 +1,220 @@
+<div class="page-layout simple fullwidth pb-30" layout="column">
+<style type="text/css">
+    .goal-header{
+        height:160px;
+    }
+    .page-layout.simple.fullwidth > .header, .page-layout.simple.inner-sidenav > .header{
+        height: 133px;
+    }
+    .page-layout.simple.fullwidth > .goal-header{
+
+        min-height:80px;
+        max-height:100%;
+    }
+</style>
+    <div class="header md-accent-bg goal-header">
+        <div flex>
+            <span class="h2 white-fg">Visualization</span>
+        </div>
+
+    </div>
+
+    <div layout="row" layout-sm="column" layout-xs="column" layout-align="space-around stretch" class="mt-20 mh-10" style="margin-top: -67px;">
+        <md-card flex="75" flex-sm="100" flex-xs="100" layout="column" class="md-background-bg p-10" style="box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2), 0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12)">
+            <div class="h2 border-bottom p-10" >Visualization Preview</div>
+            <div class="border-bottom" flex="20" layout="row" layout-xs="column" bind-html-compile="options" layout-align="space-around stretch">
+
+                <!--<div flex class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label>Column for X-Axis</label>
+                             <md-select ng-model="visualization.columnx" ng-change="reDrawVisualization()">
+                                 <md-option ng-repeat="string_column in vm.string_columns" value="{{string_column.label}}">
+                                         {{string_column.label}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div>
+                <div flex class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label>Column for Y-Axis</label>
+                             <md-select ng-model="visualization.columny" ng-change="reDrawVisualization()" multiple="true">
+                                 <md-option ng-repeat="number_column in vm.number_columns" value="{{number_column.label}}">
+                                         {{number_column.label}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div>
+                <div flex class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label>Chart Type</label>
+                             <md-select ng-model="visualization.charttype" ng-change="setVisualizationType()">
+                                 <md-option ng-repeat="chart_type in vm.chart_types" value="{{chart_type.value}}">
+                                         {{chart_type.label}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div>-->
+
+
+                <!--
+                <div flex class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label>Age</label>
+                             <md-select ng-model="user.age">
+                                 <md-option ng-repeat="age in ages" value="{{age.abbrev}}">
+                                         {{age.abbrev}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div>
+                <div flex class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label>Gender</label>
+                             <md-select ng-model="user.gender">
+                                 <md-option ng-repeat="gender in genders" value="{{gender.abbrev}}">
+                                         {{gender.abbrev}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div>
+                <div flex class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label>Year</label>
+                             <md-select ng-model="user.year">
+                                 <md-option ng-repeat="year in years" value="{{year.abbrev}}">
+                                         {{year.abbrev}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div>
+                -->
+
+            </div>
+
+            <div id="chart_container" class="chart-container">
+                <div id="chart_wrapper"></div>
+            </div>
+
+
+
+
+
+        </md-card>
+        <md-card flex="25" flex-sm="25" flex-xs="100" layout="column" class="md-background-bg pt-10 ph-10 " layout-align="start stretch" style="box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2), 0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12)">
+            <div class="h2 border-bottom p-10" >Chart Settings</div>
+            <div layout="column" layout-sm="row" layout-wrap layout-align="center stretch">
+                <div flex flex-sm="50" class="p-10" ng-show="showFirst">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label class="font-size-18 font-weight-700">Column for X-Axis</label>
+                             <md-select ng-model="visualization.columnx" ng-change="reDrawVisualization('non-filter')" aria-label="demo">
+                                 <md-option ng-repeat="string_column in vm.string_columns" value="{{string_column.id}}" ><!-- selected="{{ $index == 1 ? 'selected' : '' }}" -->
+                                         {{string_column.label}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div>
+                <!-- <div flex flex-sm="50" class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label class="font-size-18 font-weight-700">Column for Y-Axis</label>
+                             <md-select ng-model="visualization.columny" ng-change="reDrawVisualization('non-filter')" multiple="true">
+                                 <md-option ng-repeat="number_column in vm.number_columns" value="{{number_column.id}}">
+                                         {{number_column.label}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div> -->
+
+                <div flex flex-sm="50" class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label class="font-size-18 font-weight-700">Column for Y-Axis</label>
+                             <md-select ng-model="visualization.columny" ng-change="reDrawVisualization('non-filter')" aria-label="select">
+                                 <md-option ng-repeat="(key,number_column) in vm.number_columns" value="{{key}}" ng-if="key != 'id'">
+                                         {{number_column}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div>
+                <div flex flex-sm="50" class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label class="font-size-18 font-weight-700">Chart Type</label>
+                             <md-select ng-model="visualization.charttype" ng-change="setVisualizationType()">
+                                 <md-option ng-repeat="chart_type in vm.chart_types" value="{{chart_type.value}}">
+                                         {{chart_type.label}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div><p ng-show="pr">{{viewpercent}}%</p>
+                <md-progress-linear md-mode="determinate" value="{{percent}}" class="md-accent"></md-progress-linear>
+                <!-- <div flex flex-sm="50" class="p-10">
+                    <md-input-container class="md-block" flex-gt-sm>
+                             <label class="font-size-18 font-weight-700">Filterable Columns</label>
+                             <md-select ng-model="visualization.filterable_columns" ng-change="drawFilters()" multiple="true">
+                                 <md-option ng-repeat="filterable_column in vm.filterable_columns" value="{{filterable_column.id}}">
+                                         {{filterable_column.label}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                </div> -->
+            </div>
+            <!--
+
+            <div class="h2 ph-10" layout="row" layout-align="start center">Filters</div>
+            <div class="mb-20 mt-10 ph-10" layout="row" layout-align="start center">Please select the filters</div>
+            -->
+            <div>
+                 <form layout="row" layout-wrap >
+                 <!--
+                    <md-input-container flex="100" flex-sm="50" class="p-10">
+                        <label class="pl-10">value 1</label>
+                        <input>
+                     </md-input-container >
+                     <md-input-container flex="100" flex-sm="50" class="p-10">
+                        <label class="pl-10">value 2</label>
+                        <input>
+                    </md-input-container>
+
+                    <md-input-container class="md-block p-10" flex="100" flex-sm="50">
+                             <label>drop down</label>
+                             <md-select ng-model="user.state">
+                                 <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                                         {{state.abbrev}}
+                                </md-option>
+                             </md-select>
+                    </md-input-container>
+                   <md-input-container flex="100" flex-sm="50" class="p-10">
+                        <label>MultiSelect</label>
+                        <md-select ng-model="selectedVegetables"
+                                           md-on-close="clearSearchTerm()"
+                                           data-md-container-class="selectdemoSelectHeader"
+                                           multiple>
+                            <md-select-header class="demo-select-header">
+                                <input ng-model="searchTerm"
+                                           type="search"
+                                           placeholder=""
+                                           class="demo-header-searchbox md-text">
+                            </md-select-header>
+                            <md-optgroup label="">
+                                <md-option ng-value="vegetable" ng-repeat="vegetable in vegetables |
+                                            filter:searchTerm">{{vegetable}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container flex="100">
+                    -->
+
+
+                        <md-button type="submit" class="md-raised md-accent submit-button ph-15" aria-label="Save Settings" ng-click="drawVisual()">Draw Chart</md-button><!-- <md-button type="submit" class="md-raised md-accent submit-button ph-15" aria-label="Save Settings" ng-disabled>Save Settings</md-button> --><p style="font-size: 13px;" ng-show="procReq">Processing Request...</p>
+
+                    </div>
+
+
+
+
+                 </form>
+            </div>
+
+        </md-card>
+
+
+    </div>
+</div>
+

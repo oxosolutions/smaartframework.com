@@ -1,0 +1,350 @@
+<div class="page-layout carded fullwidth single-scroll pb-30" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center" flex>
+
+        <!-- CONTENT HEADER -->
+        <div class="goal-header" layout="column">
+            <div flex>
+              <span class="h2 white-fg">Edit survey</span>
+            </div>
+
+            <!--
+            <div class="breadcrumb" flex>
+                <md-icon md-font-icon="icon-dns" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">LIST DATA</span>
+            </div>
+            -->
+        </div>
+        <!-- / CONTENT HEADER -->
+        <style type="text/css">
+                .dataTables_wrapper .top {
+                        border-bottom: 1px solid #e8e8e8;
+                        padding: 0 0 24px 0;
+                        }
+                        .dataTables_wrapper .dataTables_filter input{
+                        width: 225px;
+                        }
+                    .goal-header{
+                            height: 75px;
+                        min-height: 75px;
+                        max-height: 90px;
+                        padding: 24px;
+
+                        }
+                        .action-separator{
+                        color:#787878;
+                        padding: 0 4px;
+                        }
+                .page-layout .top-bg{
+                    height: 139px;
+                }
+                .text-field-design{
+                border:1px solid hsla(0, 0%, 0%, 0.12) !important;
+                border-width: 1px !important;
+                padding :8px !important;
+                
+            }
+            .text-field-design:focus{
+                border:1px solid #a8a8a8 !important;
+                border-width: 1px !important;
+                padding :8px !important;
+                
+            }
+            textarea{
+                border:1px solid hsla(0, 0%, 0%, 0.12) !important;
+                border-width: 1px !important;
+                padding :8px !important;
+            }
+            textarea:focus{
+                 border:1px solid #a8a8a8 !important;
+                border-width: 1px !important;
+                padding :8px !important;
+            }
+
+            </style>
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+                <div flex="20" layout="row" layout-align="start center" class="pv-30 h3" hide-xs>
+                    <h3 class=" "> Survey :&nbsp;</h3> <span> {{surveyDataForEdit.response.name}} </span>
+                </div>
+                <div flex >
+                   <!--  <a href="survey/add">
+                        <md-button class=" md-accent md-raised ph-15" aria-label="all surveys"><md-tooltip md-direction="top" class="md-body-1">Add a new survey </md-tooltip>Add Survey</md-button>
+                    </a>
+                   <a ui-sref="app.survey_addQuestion({id:id.id})" id="{{id.id}}/">
+                        <md-button class=" md-accent md-raised ph-15" aria-label="all surveys"><md-tooltip md-direction="top" class="md-body-1">Manage Groups and Questions in the survey</md-tooltip>Manage Survey Questions</md-button>
+                    </a>
+                    <a href="survey/list">
+                        <md-button class=" md-accent md-raised ph-15" aria-label="all surveys"><md-tooltip md-direction="top" class="md-body-1">view list of all survey</md-tooltip>All Surveys</md-button>
+                    </a> -->
+                    <div layout="row" layout-align="end center"  ng-include="'/app/main/survey/_include.html'"></div>
+                </div>
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+            <!-- CONTENT -->
+            <md-content class="content" ms-scroll>
+                <div layout="row"  class="">
+                    <div md-whiteframe="2" flex="50"  class="pv-30 ph-15">
+                        <div layout="row" layout-wrap>
+                            <label class="font-size-14 font-weight-300 grey-600-fg">Survey Name</label>
+                            <md-input-container class="md-block mt-5" md-no-float flex="100">
+                                
+                                <input type="text" name="name" aria-label="demo" ng-model="surveyDataForEdit.response.name" class="text-field-design">
+                                <div ng-messages="loginForm.name.$error" role="alert" multiple>
+                                    <div ng-message="required">
+                                        <span>Name is required</span>
+                                    </div>   
+                                </div>
+                            </md-input-container>
+                            <label class="font-size-14 font-weight-300 grey-600-fg">Description</label>
+                            <md-input-container class="md-block mt-5" flex="100">
+                                 
+                                 <textarea ng-model="surveyDataForEdit.response.description" aria-label="demo" md-maxlength="500" rows="3" md-select-on-focus></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div layout="column" class="pl-20" flex="50">
+                        <div md-whiteframe="2" class=" expanded" flex="100">
+                            <div layout="row">
+                                <div class="md-subhead pl-10" layout="row" flex="90" layout-align="start center">
+                                    <div flex="50" layout="row" layout-align="start center">
+                                        <h2>Survey Settings</h2>
+                                    </div>
+                                </div>
+                                <div flex="10" layout="row" layout-align="end center" class="pr-10">
+                                    <md-button class="md-icon-button accrodian" style="transform: rotate(0deg);"><md-tooltip md-direction="top" class="md-body-1">Minimize / Maximize </md-tooltip><md-icon md-font-icon="icon-chevron-down"></md-icon></md-button>
+                                </div>
+                            </div>
+                            <md-divider></md-divider>
+                            <div flex="100" class="survey_set expanded">
+                                <md-list-item>
+                                    <p class="font-size-16"> Enable survey</p>
+                                    <span><md-tooltip md-direction="top" class="md-body-1">Enable / Disable survey </md-tooltip><md-switch ng-model="enableDisable" aria-label="Switch 1"></md-switch></span>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+
+                                <md-list-item>
+                                    <p class="font-size-16"> Authentication required : </p>
+                                    <span><md-tooltip md-direction="top" class="md-body-1">Enable / Disable authentication </md-tooltip><md-switch ng-model="authReq" ng-change="checkAuthEnable()" aria-label="Switch 1"></md-switch>
+                                    <md-divider></md-divider></span>
+                                </md-list-item>
+                                <md-list-item ng-show="authtype" layout="row" layout-align="center center" layout-wrap class="ml-30">
+                                    <p flex="100" class="font-size-16"> Authentication type :  </p>
+                                    <md-radio-group flex="100" ng-model="authType" ng-click="chechAuthType()" style="width:50%;">
+                                        <div style="width: 50%; float: left;">
+                                            <md-radio-button value="role">Role based</md-radio-button>
+                                        </div>
+                                        <div style="width: 50%; float: left;">
+                                            <md-radio-button value="ind">Individual based</md-radio-button>
+                                        </div>
+                                    </md-radio-group>
+                                        <md-divider></md-divider>
+
+                                </md-list-item>
+                                <md-list-item ng-show="users_list" class="ml-30">
+                                    <p class="font-size-16"> Individual list</p>
+                                    <md-input-container class="md-block" flex="50">
+                                         <label >List individual are</label>
+                                         <md-select ng-model="users" required multiple >
+                                             <md-option ng-repeat="user in usersList" value="{{user.id}}" ><!-- ng-if="dataset.validated == 1" -->
+                                                     {{user.name}}
+                                            </md-option>
+                                         </md-select>
+                                         <div ng-messages="visual.datasetList.$error" role="alert" multiple>
+                                            <div ng-message="required">
+                                                <span>Dataset field is required</span>
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+
+                                <md-list-item ng-show="role_list">
+                                    <p class="font-size-16"> Roles list</p>
+                                    <md-input-container class="md-block" flex="50">
+                                             <label >List of roles are</label>
+                                             <md-select ng-model="roles" required multiple>
+                                                 <md-option value="{{key}}" ng-repeat="(key,role) in rolesList">
+                                                         {{role}}
+                                                </md-option>
+                                             </md-select>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item>
+                                    <p class="font-size-16"> Enable survey scheduling   </p>
+                                    <span><md-tooltip md-direction="top" class="md-body-1">Enable / Disable survey scheduling </md-tooltip><md-switch ng-model="scheduling" ng-change="surveyScheduling()" aria-label="Switch 1"></md-switch>
+                                    <md-divider></md-divider></span>
+                                </md-list-item>
+                                <md-list-item ng-show="surveyDates" class="ml-30">
+                                    <p class="font-size-16"> Survey start date</p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                        <!-- <label class="font-size-16 font-weight-300 grey-600-fg ">eg. Survey Start Date</label> -->
+                                        <input type="text" aria-label="demo" name="name" ng-model="startDate" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="surveyDates" class="ml-30">
+                                    <p class="font-size-16"> Survey expire date </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                        <!-- <label class="font-size-16 font-weight-300 grey-600-fg ">eg. survey expired Date</label> -->
+                                        <input type="text" aria-label="demo" name="name" ng-model="expiryDate" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item>
+                                    <p class="font-size-16"> Enable survey timer</p>
+                                    <span><md-tooltip md-direction="top" class="md-body-1">Enable / Disable survey timer </md-tooltip><md-switch ng-model="surveyTimer" ng-change="checkSurveyTimer()" aria-label="Switch 1"></md-switch>
+                                    <md-divider></md-divider></span>
+                                </md-list-item>
+                                <md-list-item ng-show="surveyTimerShow" layout="row" layout-align="center center" layout-wrap class="ml-30">
+                                    <p flex="100" class="font-size-16"> Survey timer type</p>
+                                    <md-radio-group flex="100" ng-model="timerType" ng-click="checkTimerType()" style="width:50%;">
+                                        <div style="width: 50%; float: left;">
+                                            <md-radio-button value="expiry">Survey expiry time</md-radio-button>
+                                        </div>
+                                        <div style="width: 50%; float: left;">
+                                            <md-radio-button value="duration">Survey duration</md-radio-button>
+                                        </div>
+                                    </md-radio-group>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="surveyDuration" class="ml-30">
+                                    <p class="font-size-16"> Survey duration (in minutes)</p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                        <!-- <label class="font-size-16 font-weight-300 grey-600-fg ">eg. survey Duration time .</label> -->
+                                        <input type="text" aria-label="demo" name="name" ng-model="duration" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item >
+                                    <p class="font-size-16"> Enable survey response limit</p>
+                                    <span><md-tooltip md-direction="top" class="md-body-1">Enable / Disable survey response limit </md-tooltip><md-switch ng-model="responeLimit" ng-change="enableResponseLimit()" aria-label="Switch 1"></md-switch></span>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="surevyResponseLimit" class="ml-30">
+                                    <p class="font-size-16"> Survey response limit  </p>
+                                    <!-- <input type="text" aria-label="demo" name="name" ng-model="responseLimitValue" /> -->
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                        <!-- <label class="font-size-16 font-weight-300 grey-600-fg ">eg. Survey Responce Limit</label> -->
+                                        <input type="text" aria-label="demo" name="name" ng-model="responseLimitValue" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item  ng-show="surevyResponseLimit" layout="row" layout-align="center center" layout-wrap class="ml-30">
+                                    <p flex="100" class="font-size-16"> Response limit type</p>
+                                    <md-radio-group flex="100" ng-model="responseLimitType" style="width:50%;">
+                                        <div style="width: 50%; float: left;">
+                                            <md-radio-button value="per_user">Per user</md-radio-button>
+                                        </div>
+                                        <div style="width: 50%; float: left;">
+                                            <md-radio-button value="per_ip_address">Per IP address</md-radio-button>
+                                        </div>
+                                    </md-radio-group>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item>
+                                    <p class="font-size-16"> Display custom error messages</p>
+                                    <span><md-tooltip md-direction="top" class="md-body-1">Enable to manage custom error messages</md-tooltip><md-switch ng-model="displayCustomMessage" ng-change="displayCustomMess()" aria-label="Switch 1"></md-switch></span>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Survey is disabled </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                        <!-- <label class="font-size-16 font-weight-300 grey-600-fg ">eg. Survey is Disable</label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.survey_status" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Survey authorization required  </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                        <!-- <label class="font-size-16 font-weight-300 grey-600-fg ">eg. You need to loggin to access this survey</label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.survey_auth_required" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Survey un-authorization role   </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                        <!-- <label class="font-size-16 font-weight-300 grey-600-fg ">eg. Un-authorised Role</label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.survey_unauth_role" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Survey un-authorization user   </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                       <!--  <label class="font-size-16 font-weight-300 grey-600-fg ">eg un-authorised User</label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.survey_unauth_user" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Invalid survey id  </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                       <!--  <label class="font-size-16 font-weight-300 grey-600-fg ">eg. survey id is invalid .</label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.invalid_survey_id" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Empty survey Id</p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                       <!--  <label class="font-size-16 font-weight-300 grey-600-fg ">eg. survey id is empty </label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.empty_survey" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Survey not started </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                       <!--  <label class="font-size-16 font-weight-300 grey-600-fg ">eg. survey not started Yet</label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.survey_not_started" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Survey expired </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                       <!--  <label class="font-size-16 font-weight-300 grey-600-fg ">eg. survey is expired</label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.survey_expired" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                                <md-list-item ng-show="customMess" class="ml-30">
+                                    <p class="font-size-16" style="width: 20%;"> Survey responce limit </p>
+                                    <md-input-container class="md-block mb-0" md-no-float style="width:50%;">
+                                       <!--  <label class="font-size-16 font-weight-300 grey-600-fg ">eg. survey is expired</label> -->
+                                        <input type="text" name="name" aria-label="demo" ng-model="customMesg.responce_limit_exceeded" class="text-field-design"/>
+                                    </md-input-container>
+                                    <md-divider></md-divider>
+                                </md-list-item>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <md-button class="md-raised md-accent white-fg mt-15 ml-0" ng-click="update_survey()">
+                    Save settings 
+                    </md-button>
+                    <md-progress-circular md-mode="indeterminate" md-diameter="20" ng-show="isLoading"></md-progress-circular>
+
+                
+                
+            </md-content>
+            <!-- / CONTENT -->
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

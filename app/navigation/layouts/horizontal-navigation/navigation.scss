@@ -1,0 +1,126 @@
+#layout-horizontal-navigation {
+	// Horizontal navigation
+	#horizontal-navigation {
+		height: 56px;
+		min-height: 56px;
+		max-height: 56px;
+		
+		z-index:999;
+
+		.ms-navigation-horizontal {
+
+			ul, li {
+			}
+
+			// First <ul>
+			.horizontal {
+				display: flex;
+				flex: 1;
+
+				li {
+
+
+					&:not(.active):hover {
+						background: rgba(0, 0, 0, 0.12);
+					}
+				}
+
+				// Root menu items
+				> li {
+					border-right:1px solid #e8e8e8;
+					> .ms-navigation-horizontal-item {
+
+						> .ms-navigation-horizontal-button {
+							padding: 16px 25px;
+							font-size:16px; 
+
+							.arrow {
+								display: none;
+							}
+
+							&.active {
+
+							}
+						}
+					}
+
+					&:last-child {
+
+					}
+
+					// Not root menu items
+					li {
+
+						.ms-navigation-horizontal-item {
+
+							.ms-navigation-horizontal-button {
+
+								&.active {
+
+								}
+							}
+						}
+					}
+				}
+
+				// Every menu item that has children
+				.has-children {
+
+					ul {
+
+					}
+
+					&:hover {
+
+						> ul {
+							
+						}
+					}
+				}
+
+				// Root menu items that has children
+				> .has-children {
+
+					> ul {
+
+					}
+				}
+
+				.ms-navigation-horizontal-item {
+
+					.ms-navigation-horizontal-button {
+
+
+						.icon {
+
+						}
+
+						// Badge
+						.badge {
+
+						}
+
+						.arrow {
+			
+						}
+
+						&.active {
+
+							.badge {
+
+							}
+
+							.icon {
+						
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+}

@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="app/main/dataset/dataset.css">
+<style type="text/css">
+
+</style>
+<div flex layout="row" layout-align="end center">
+<!-- <div flex layout="row" layout-align="start center" class="pv-30 h3" hide-xs>
+    <h3 class="text-truncate "><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">{{dataset_name}}</span></md-tooltip>Dataset: <span class=" text-bold">{{dataset_name}}</span> </h3>
+</div>
+
+<div>
+<md-button class="md-icon-button" area-label="pencil" ng-click="editName($event,vm.dataset_id,dataset_name)" ng-controller="ViewDatasetController"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Edit name of the dataset</span></md-tooltip><md-icon md-font-icon="icon-pencil-box-outline" class="s24"></md-icon></md-button>
+</div> -->
+
+<md-button ui-sref="app.dataset_list" class="md-accent md-raised pr-15" layout="row" layout-align="space-between center"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10"> View list of all dataset</span></md-tooltip><md-icon md-font-icon="icon-format-list-bulleted" class=""></md-icon><div>List</div></md-button>
+
+<md-button ui-sref="app.dataset_view({id:vm.dataset_id})" ng-class="{'ph-15':'true', 'md-accent':st != 'app.dataset_view','md-raised':'true','orange-700-bg':st ==  'app.dataset_view','white-fg':st ==  'app.dataset_view'}" layout="row" layout-align="space-between center" active><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">View records of dataset</span></md-tooltip><md-icon md-font-icon="icon-desktop-mac" ng-class="{'s20':'true', 'mr-10':'true','white-fg':st ==  'app.dataset_view'}"></md-icon><div>View</div></md-button>
+
+<md-button ui-sref="app.dataset_edit({id:vm.dataset_id})" ng-class="{'ph-15':'true', 'md-accent':st != 'app.dataset_edit','md-raised':'true','orange-700-bg':st ==  'app.dataset_edit','white-fg':st ==  'app.dataset_edit'}" layout="row" layout-align="space-between center"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Edit records of dataset</span></md-tooltip><md-icon md-font-icon="icon-pencil" ng-class="{'s20':'true', 'mr-10':'true','white-fg':st ==  'app.dataset_edit'}"></md-icon><div>Edit</div></md-button>
+
+<md-button ui-sref="app.column_validate({id:vm.dataset_id,wizard:''})" ng-class="{'ph-15':'true', 'md-accent':st != 'app.column_validate','md-raised':'true','orange-700-bg':st ==  'app.column_validate','white-fg':st ==  'app.column_validate'}" layout="row" layout-align="space-between center"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Define type of variables</span></md-tooltip><md-icon md-font-icon="icon-blinds" ng-class="{'s20':'true', 'mr-10':'true','white-fg':st ==  'app.column_validate'}"></md-icon><div>Define</div></md-button>
+
+<md-button ui-sref="app.validate({id:vm.dataset_id})" ng-class="{'ph-15':'true', 'md-accent':st != 'app.validate','md-raised':'true','orange-700-bg':st ==  'app.validate','white-fg':st ==  'app.validate'}" layout="row" layout-align="space-between center"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Validate dataset for errors</span></md-tooltip><md-icon md-font-icon="icon-check-bookmark" ng-class="{'s20':'true', 'mr-10':'true','white-fg':st ==  'app.validate'}"></md-icon><div>Validate</div></md-button>
+
+<md-button ui-sref="app.data_filtration({id:vm.dataset_id,wizard:''})" ng-class="{'ph-15':'true', 'md-accent':st != 'app.data_filtration','md-raised':'true','orange-700-bg':st ==  'app.data_filtration','white-fg':st ==  'app.data_filtration'}" layout="row" layout-align="space-between center"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Create subset of Dataset</span></md-tooltip><md-icon md-font-icon="icon-filter" ng-class="{'s20':'true', 'mr-10':'true','white-fg':st ==  'app.data_filtration'}"></md-icon><div>Filter</div></md-button>
+
+<md-button ng-click="showCustom($event,vm.dataset_id)" ng-controller="ViewDatasetController" ng-class="{'ph-15':'true', 'md-accent':st != 'app.visualization','md-raised':'true','orange-700-bg':st ==  'app.visualization','white-fg':st ==  'app.visualization'}" layout="row" layout-align="space-between center" style="width:130px"><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Create visualization of dataset</span></md-tooltip><md-icon style="float:left;margin-top: 7px;" md-font-icon="icon-chart-bar" ng-class="{'s20':'true', 'mr-10':'true','white-fg':st ==  'app.visualization'}" ></md-icon><div>Visualize</div></md-button>
+
+<md-button ng-click="deleteDataset(vm.dataset_id)" ng-controller="ViewDatasetController" class="ph-15 md-warn md-raised" ><md-tooltip md-direction="top" class="md-body-1"><span class="p-10">Delete dataset</span></md-tooltip><md-icon md-font-icon="icon-delete" class="s20 mr-10"></md-icon><div>Delete</div></md-button>
+</div>

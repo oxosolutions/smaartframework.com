@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="app/main/dashboard/dashboard.css">
+<div class="" layout="row" layout-align="space-between stretch">
+
+
+ 
+	<div id="user" flex="100" flex-sm="100"  flex-xs="100" class="main scrollable" ms-scroll >
+		<div class="contacts-list" >
+			
+
+
+
+			<table class="dataTable row-border hover " datatable="ng" dt-options="vm.dtOptions" >
+
+						<thead>
+							
+							<tr>
+								
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="File Name">
+									<div class="table-header"><span class="column-title">User ID</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="File Name">
+									<div class="table-header"><span class="column-title">User Name</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Created date">
+									<div class="table-header"><span class="column-title">Email</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Validated">
+									<div class="table-header"><span class="column-title">Phone</span></div>
+								</th>
+								<th class="secondary-text sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions">
+									<div class="table-header"><span class="column-title">Designation</span></div>
+								</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in userlist" >
+								
+								<td>{{user.id}}</td>
+								<td>{{user.name}}</td>
+								<td>{{user.email}}</td>
+								<td>{{user.phone}}</td>
+								<td>{{user.designation}}
+								<td>
+									<md-progress-circular md-mode="indeterminate" md-diameter="10" style="float:left;margin-top:1%;display: none;" class="loader_{{$index}}"></md-progress-circular>
+									&nbsp;
+									<a href="javascript:;" ng-if="user.approved == 1" ng-click="unapprove(user.id,$index)">Disapprove</a>
+									<a href="javascript:;" ng-if="user.approved == 0" ng-click="approve(user.id,$index)">Approve</a>
+									<span class="action-separator">/</span>
+									<a href="javascript:;" ng-click="editUser($event,user.id)">Edit</a>
+									<span class="action-separator">/</span>
+									<a href="javascript:;" ng-click="deleteUser(user.id)" style="color:red">Delete</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>			
+		</div>
+	</div>
+</div>

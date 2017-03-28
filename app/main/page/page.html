@@ -1,0 +1,65 @@
+<div class="page-layout carded fullwidth single-scroll" layout="row">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg md-accent-bg "></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center " flex>
+
+        <!-- CONTENT HEADER -->
+        <div class=" goal-header" layout="column">
+            <div flex>
+            	<span class="h2 white-fg">{{title}}</span>
+            </div>
+
+
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar" layout="row" layout-xs="column" layout-align="start center">
+
+				<div flex layout="row" layout-align="start center" class="pv-30 h3" hide-xs>
+                    <h3 class=" ">{{sub_title}}</h3>
+                </div>
+
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+            <style type="text/css">
+                .goal-header{
+                    height: 75px;
+                    min-height: 75px;
+                    max-height: 90px;
+                    padding: 24px;
+                }
+                .page-layout .top-bg {
+                    height: 139px;
+                }
+            </style>
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading" style="margin: 0 auto; margin-top:5%;margin-bottom:5%;"></md-progress-circular>
+            <!-- CONTENT -->
+            <md-content class="" ms-scroll>
+
+                <!-- CONTENT -->
+                <div class="" bind-html-compile="content">
+                
+                </div>
+
+
+                <!-- /CONTENT -->
+
+            </md-content>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>
+

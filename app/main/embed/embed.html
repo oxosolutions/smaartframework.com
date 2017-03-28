@@ -1,0 +1,330 @@
+<div class="page-layout simple fullwidth" layout="column" >
+<style type="text/css">
+.goal-header{
+	height:160px;
+}
+.page-layout.simple.fullwidth > .header, .page-layout.simple.inner-sidenav > .header{
+	height: 133px;
+}
+.page-layout.simple.fullwidth > .goal-header{
+	min-height:80px;
+	max-height:100%;
+}
+.chart-wrapper-outer{
+	margin-bottom: 20px;
+	border: 1px solid #E8E8E8;
+    background-color:#FFFFFF;
+}
+.chart_title{
+	
+	width: 100%;
+	display: block;
+	margin: 0;
+	padding: 8px 0 8px 15px;
+	font-size: 16px;
+	color: #666666;
+	border-bottom: 1px solid #e8e8e8;
+}
+.rzslider .rz-pointer.rz-active:after{
+	background-color:#ff9201;
+}
+.mapChart{
+	clear: both;
+	display: block;
+	position: relative;
+	vertical-align: middle;
+}
+.land{
+	fill: #e8e8e8;
+	fill-opacity: 1;
+	stroke:white;
+	stroke-opacity: 1;
+	stroke-width:0.5;
+}
+.inf {
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    width: 250px;
+    margin: 0 0 0 -125px;
+    padding: 8px;
+    z-index: 9999;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 18px;
+}
+.inf:after {
+	content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    bottom: -10px;
+    left: 50%;
+    margin: 0 0 0 -10px;
+    border-top: 10px solid #ffffff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    z-index: 9999;
+}
+
+.inf .title {
+    font-size: 17px;
+    line-height: 20px;
+    border-bottom: 1px solid #666666;
+    text-align: center;
+    color: #168dc5;
+    padding: 0px 0 8px 0;
+    margin: 0;
+    display: block;
+}
+.inf .data {
+    display: block;
+    border-bottom: 1px dotted #e8e8e8;
+    padding: 4px 0;
+    margin: 0;
+}
+.map-leagend {
+    width:60%;
+    position: relative;
+    margin:0 0 20px 20px;
+    border: 1px solid #e8e8e8;
+}
+.map-leagend div {
+    height: 30px;
+    float: left;
+}
+.map-leagend div:first-child:before {
+    content:"";
+    position: absolute;
+    top:-20px;
+    left: -1px;
+    width: 0;
+    height: 20px;
+    border-left: 1px solid #e8e8e8;
+}
+.map-leagend div:first-child:after {
+    content:attr(data-value);
+    position: absolute;
+    display: inline-block;
+    top:-20px;
+    left: 5px;
+    width: auto;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.map-leagend div:last-child:before {
+    content:attr(data-value);
+    position: absolute;
+    display: inline-block;
+    top:-20px;
+    right: 5px;
+    width: auto;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.map-leagend div:last-child:after {
+    content:"";
+    position: absolute;
+    top:-20px;
+    right: -1px;
+    width: 0;
+    height: 20px;
+    border-right: 1px solid #e8e8e8;
+}
+
+.map-leagend:after {
+    content:"";
+    display: block;
+    width: 100%;
+    height: 0;
+    clear:both;
+}
+.visualization-title{
+    color:#168dc5;
+}
+.smaart-watermark{
+	color: #d8d8d8;
+    text-align: right;
+    float: right;
+    margin: -25px 0 0 0;
+    padding: 0 20px 0 0;
+}
+.smaart-watermark a{
+	color:#b2b2b2;
+	text-decoration: none;
+}
+.smaart-watermark a:hover{
+	color: #039be5;
+    text-decoration: none;
+}
+{{embedCss}}
+</style>
+   <!--  <div class="header md-accent-bg goal-header">
+        <div flex>
+            <span class="h2 white-fg">View Visualization</span>
+        </div>
+
+    </div> -->
+
+    <div ng-if="filters.length == 0" id="iframe">
+        <div layout="column" layout-sm="column" layout-xs="column" layout-align="space-around stretch" class="mb-20">
+            <div class="h2 border visualization-title white-bg" layout="column" layout-align="center center">
+                <span flex class="pv-15">{{viz_name}}</span>
+            </div>
+        </div>
+        <div layout="column" layout-sm="column" layout-xs="column" layout-align="space-around stretch" class="mb-20">
+            <div ng-show="showCharts" flex="100" class="">
+                <div id="chart_container" class="chart-container">
+                    <div ng-repeat="chart in charts.titles" class="chart-wrapper-outer">
+                        <h3 class="chart_title">{{chart}}</h3>
+                        <div id="chart_wrapper_{{$index+1}}" class="chart-wrapper">
+                        </div>
+                    </div>
+                </div>
+                <!-- <div id="map_container" ng-show="map_cont" class="map-container">
+                    <div ng-repeat="chart in charts.titles" class="chart-wrapper-outer">
+                        <h3 class="chart_title">{{chart}}</h3>
+                        <div id="custom_map_wrapper_{{$index+1}}">
+                        
+                        </div>
+                    </div>
+                </div> -->
+                <div id="options_container" class="options-container">
+                    <div id="options_wrapper"></div>
+                </div>
+                <div id="data_container" class="data-container" style="display:none">
+                    <div id="data_wrapper"></div>
+                </div>
+            </div>
+            <div ng-show="noCharts" layout="row" layout-align="center center" class="m-20 " style="border: 1px dashed #e8e8e8;">
+                <h2 class="p-10">No Chart settings found!</h2>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="filters.length != 0" class="">
+        <div layout="column" layout-sm="column" layout-xs="column" layout-align="space-around stretch" class="mb-20">
+            <div class="h2 border-bottom visualization-title white-bg" layout="column" layout-align="center center">
+                <span flex class="pv-15">{{viz_name}}</span>
+            </div>
+        </div>
+        <div layout="column" layout-sm="column" layout-xs="column" layout-align="space-around stretch" class="mb-20">
+            <div layout="row" class="">
+                <div flex="75" flex-sm="100" flex-xs="100" layout="column" class="">
+                    <div ng-show="showCharts">
+                        <div id="chart_container"  class="chart-container">
+                            <div ng-repeat="chart in charts.titles" class="chart-wrapper-outer">
+                                <h3 class="chart_title">{{chart}}</h3>
+                                <div id="chart_wrapper_{{$index+1}}" class="chart-wrapper">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div id="map_container" ng-show="map_cont" class="map-container">
+                            <div ng-repeat="chart in charts.titles" class="chart-wrapper-outer">
+                                <h3 class="chart_title">{{chart}}</h3>
+                                <div id="custom_map_wrapper_{{$index+1}}">
+                                
+                                </div>
+                            </div>
+                        </div> -->
+                        <div id="options_container" class="options-container">
+                            <div id="options_wrapper"></div>
+                        </div>
+                        <div id="data_container" class="data-container" style="display:none">
+                            <div id="data_wrapper"></div>
+                        </div>
+                    </div>
+                    <div ng-show="noCharts" layout="row" layout-align="center center" class="m-20 " style="border: 1px dashed #e8e8e8;">
+                        <h2 class="p-10">No Chart settings found!</h2>
+                    </div>
+                </div>
+                <div flex="25" flex-sm="25" flex-xs="100" layout="column">
+                    <div  class="md-background-bg border pt-10 ph-10 ml-15" layout-align="start stretch" ng-if="filters.length != 0">
+                        <div class="h2 border-bottom p-10" >Filters</div>
+                            <div ng-show="showFilter">
+                                <div ng-repeat="(key,filter) in filters track by $index">
+                                    <div ng-if="filter.column_type == 'range'">
+                                        <div layout="column" layout-sm="row" layout-wrap layout-align="center stretch">
+                                            <div flex flex-sm="50" class="p-10" ng-init="slider[key].min = filter.column_min;slider[key].max = filter.column_max;slider.options.floor=filter.column_min;slider.options.column = key">
+                                                <label class="font-size-18" style="text-transform: capitalize;">{{filter.column_name}}</label>
+                                                <!-- For Doc: https://github.com/angular-slider/angularjs-slider -->
+                                                <rzslider
+                                                    rz-slider-model="slider[key].min"
+                                                    rz-slider-high="slider[key].max"
+                                                    rz-slider-options="slider.options"></rzslider>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div ng-if="filter.column_type == 'dropdown'">
+                                        <div layout="column" layout-sm="row" layout-wrap layout-align="center stretch">
+                                            <div flex flex-sm="50" class="p-10">
+                                                <md-input-container class="md-block" flex-gt-sm>
+                                                         <label class="font-size-18 font-weight-700" style="text-transform: capitalize;">{{filter.column_name}}</label>
+                                                         <md-select ng-model="vm.visFilters[key]">
+                                                             <md-option ng-repeat="data in filter.column_data track by $index" value="{{data}}" ><!-- selected="{{ $index == 1 ? 'selected' : '' }}" -->
+                                                                     {{data}}
+                                                            </md-option>
+                                                         </md-select>
+                                                </md-input-container>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div ng-if="filter.column_type == 'mdropdown'">
+                                        <div layout="column" layout-sm="row" layout-wrap layout-align="center stretch">
+                                            <div flex flex-sm="50" class="p-10">
+                                                <md-input-container class="md-block" flex-gt-sm>
+                                                         <label class="font-size-18 font-weight-700" style="text-transform: capitalize;">{{filter.column_name}}</label>
+                                                         <md-select ng-model="vm.visFiltersMulti[key]" multiple>
+                                                             <md-option ng-repeat="data in filter.column_data track by $index" value="{{data}}" ><!-- selected="{{ $index == 1 ? 'selected' : '' }}" -->
+                                                                     {{data}}
+                                                            </md-option>
+                                                         </md-select>
+                                                </md-input-container>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            <!--
+                            <div class="h2 border-bottom p-10" >Chart Settings</div>
+                            <div layout="column" layout-sm="row" layout-wrap layout-align="center stretch">
+                                <div flex flex-sm="50" class="p-10">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                             <label class="font-size-18 font-weight-700">Chart Type</label>
+                                             <md-select ng-model="visualization.charttype" ng-change="setVisualizationType()">
+                                                 <md-option ng-repeat="chart_type in vm.chart_types" value="{{chart_type.value}}">
+                                                         {{chart_type.label}}
+                                                </md-option>
+                                             </md-select>
+                                    </md-input-container>
+                                </div>
+                                -->
+
+                                    
+                                    <div style="margin-bottom:30px">
+                                        <form layout="row" layout-wrap >
+                                        <md-button type="submit" class="md-raised md-accent submit-button ph-15" aria-label="Save Settings" ng-click="drawVisual('filter')">Filter Data</md-button>
+                                        <md-button type="submit" class="md-raised md-accent submit-button ph-15" aria-label="Save Settings" ng-click="drawVisual('remove')">Remove Filter</md-button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div ng-show="filterNotFound" layout="row" layout-align="center center" class="m-20 " style="border: 1px dashed #e8e8e8;">
+                                    <h2 class="p-10">No filters available!</h2>
+                                </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+ 
+
+    </div>
+</div>

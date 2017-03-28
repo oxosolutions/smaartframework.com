@@ -1,0 +1,139 @@
+<!-- <md-card>
+	<div class="p-20" layout="row" layout-align="center center" layout-wrap>
+		<div flex="100">
+			Select the widgets to be displyed on dashboard
+		</div>
+		<div flex="100">
+			<div layout="row" layout-wrap class="" md-whiteframe="4">
+				<div layout="row" flex="33" layout-align="center center" class="pv-20">
+					<div>[]</div>
+					<div>image</div>
+				</div>
+				<div layout="row" flex="33" layout-align="center center" class="pv-20">
+					<div>[]</div>
+					<div>image</div>
+				</div>
+				<div layout="row" flex="33" layout-align="center center" class="pv-20">
+					<div>[]</div>
+					<div>image</div>
+				</div>
+				<div layout="row" flex="33" layout-align="center center" class="pv-20">
+					<div>[]</div>
+					<div>image</div>
+				</div>
+				<div layout="row" flex="33" layout-align="center center" class="pv-20">
+					<div>[]</div>
+					<div>image</div>
+				</div>
+				<div layout="row" flex="33" layout-align="center center" class="pv-20">
+					<div>[]</div>
+					<div>image</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</md-card> -->
+
+<div class="page-layout simple fullwidth">
+
+    
+    <div class="header md-accent-bg">
+        <span class="h2">User Settings</span>
+    </div>
+    <style type="text/css">
+    	.page-layout.simple.fullwidth > .header{
+                height: 80px;
+                min-height: 80px;
+                max-height: 80px;
+        } 
+    </style>
+
+    <div class="content" layout="row" layout-wrap>
+    	<div layout="column" flex="50" flex-xs="100" flex-sm="100" flex-md="50" class="p-5">
+    		<md-card layout="row" layout-wrap>
+    			<div flex="100" layout="column" layout-align="center center" class="pv-10 ">
+    				<div flex class="md-title pb-10 ph-10">Dashboard Widgets Status</div>
+    				<md-divider style="width:100%"></md-divider>
+    				<div flex class="md-body-1 grey-700-fg pt-10 ph-10">Select the widgets which you want to display on your dashboard  </div>
+    				
+    			</div>
+
+    			<div flex="100" class="font-weight-500 md-accent">
+    				<md-list >
+	    			<md-list-item >
+				    		<p >Dashboard Widget Name</p>
+				    		<p layout="row" layout-align="end center">Enable</p>
+				   	</md-list-item>
+	    			<!-- <div layout="row">
+					 	<md-subheader flex="60" class="md-no-sticky">Select the widgets which you want to display on your dashboard </md-subheader>
+					 	<md-subheader flex="30" class="md-no-sticky">Enable/Disable</md-subheader>
+					</div> -->
+				 	<md-divider></md-divider>
+					<md-list-item >
+			    		<p> User Profile </p>
+			    		<md-checkbox class="md-secondary" ng-model="user.profile"></md-checkbox>
+			  		</md-list-item>
+			  		<md-list-item >
+			    		<p> Organization </p>
+			    		<md-checkbox class="md-secondary" ng-model="user.organization"></md-checkbox>
+			  		</md-list-item>
+			  		<md-divider></md-divider>
+					<md-list-item >
+			    		<p> User List </p>
+			    		<md-checkbox class="md-secondary" ng-model="user.userlist"></md-checkbox>
+			  		</md-list-item>
+			  		<md-divider></md-divider>
+					<md-list-item >
+			    		<p> Surveys </p>
+			    		<md-checkbox class="md-secondary" ng-model="user.survey"></md-checkbox>
+			  		</md-list-item>
+			  		<md-divider></md-divider>
+					<md-list-item >
+			    		<p> Datasets </p>
+			    		<md-checkbox class="md-secondary" ng-model="user.dataset"></md-checkbox>
+			  		</md-list-item>
+			  		<md-divider></md-divider>
+					<md-list-item >
+			    		<p> Visualizations </p>
+			    		<md-checkbox class="md-secondary" ng-model="user.visualization"></md-checkbox>
+			  		</md-list-item>
+			  		<md-divider></md-divider>
+					<md-list-item >
+			    		<p> Tweets </p>
+			    		<md-checkbox class="md-secondary" ng-model="user.tweet"></md-checkbox>
+			  		</md-list-item>
+				</md-list>
+    			</div>
+    		</md-card>
+    	</div>
+    	<div layout="column" flex="50" flex-xs="100" flex-sm="100" flex-md="50" class="p-5 " >
+    		<md-card layout="column" layout-wrap layout-align="center stretch" class="pb-100">
+    			<div flex="50" layout="column" layout-align="center center" class="pv-10 pb-15">
+    				<div flex class="md-title pb-10">User Settings</div>
+    				<md-divider style="width:100%"></md-divider>
+    				<div flex class="md-body-1 grey-700-fg pt-10">Fill form below to save user specific settings</div>
+    				
+    			</div>
+    			<div flex="50" class="ph-25 pb-100	">
+	    			<md-list class="pb-50">
+	    				 <md-input-container class="md-block mt-20" md-no-float>
+	                        <label class="font-size-18 font-weight-500 grey-600-fg">Twitter Username </label>
+		                    <input type="text"  ng-model="user.twitter_username"  >
+		                </md-input-container>
+		            </md-list>
+			  	</div>
+			  
+    		</md-card>
+    	</div>
+    	<md-card flex="100" layout="row" layout-align="end center">
+    		
+    		
+    		<div flex="100" layout="row" layout-align="end stretch ">
+    			<md-button class="md-accent md-raised" ng-click="saveSettings(user)">
+    				Save Settings
+    			</md-button>
+    		</div>
+    	</md-card>
+    </div>
+</div>
